@@ -4,10 +4,12 @@
 
 export * from './types.js'
 export { BrevoProvider, createBrevoProvider } from './brevo.js'
+export { SESProvider, createSESProvider } from './ses.js'
 export { MockProvider, createMockProvider } from './mock.js'
 
 import type { EmailProvider } from './types.js'
 import { createBrevoProvider } from './brevo.js'
+import { createSESProvider } from './ses.js'
 import { createMockProvider } from './mock.js'
 import { logger } from '@sv-sdk/shared'
 
@@ -22,6 +24,9 @@ export function getEmailProvider(): EmailProvider {
   switch (providerType) {
     case 'brevo':
       return createBrevoProvider()
+
+    case 'ses':
+      return createSESProvider()
 
     case 'mock':
       return createMockProvider()

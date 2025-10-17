@@ -26,3 +26,6 @@ export { processWebhook, getUnprocessedWebhooks, retryWebhookProcessing } from '
 // Providers
 export { getEmailProvider, type EmailProvider, type EmailMessage, type EmailResult, type WebhookEvent } from './providers/index.js'
 
+// Cost tracking
+export { calculateEmailCosts, getCurrentMonthCost, estimateSendCost } from './cost-tracking.js'
+

@@ -13,6 +13,7 @@ import { createEmailCommand } from './commands/email.js'
 import { createPermissionsCommand } from './commands/permissions.js'
 import { createDbCommand } from './commands/db.js'
 import { createHealthCommand } from './commands/health.js'
+import { createDevCommand } from './commands/dev.js'
 
 // Load environment variables
 import 'dotenv/config'
@@ -23,6 +24,7 @@ program
   .name('sdk')
   .description('SV-SDK Command Line Interface')
   .version('0.0.1')
+  .option('-v, --verbose', 'Enable verbose logging')
   .addHelpText(
     'after',
     `
@@ -46,6 +48,7 @@ program.addCommand(createEmailCommand())
 program.addCommand(createPermissionsCommand())
 program.addCommand(createDbCommand())
 program.addCommand(createHealthCommand())
+program.addCommand(createDevCommand())
 
 // Parse arguments
 program.parse()

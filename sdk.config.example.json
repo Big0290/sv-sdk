@@ -1,0 +1,46 @@
+{
+  "database": {
+    "url": "postgresql://sv_sdk_user:password@localhost:5432/sv_sdk",
+    "pool": {
+      "max": 20,
+      "min": 5
+    }
+  },
+  "redis": {
+    "url": "redis://localhost:6379"
+  },
+  "auth": {
+    "sessionTimeout": 43200,
+    "maxLoginAttempts": 5,
+    "passwordPolicy": {
+      "minLength": 12,
+      "requireNumbers": true,
+      "requireSpecialChars": true,
+      "requireUppercase": true
+    }
+  },
+  "email": {
+    "provider": "brevo",
+    "from": "noreply@example.com",
+    "queue": {
+      "concurrency": 5,
+      "retries": 3
+    }
+  },
+  "audit": {
+    "retentionDays": 365,
+    "maskPII": true,
+    "batchSize": 100
+  },
+  "security": {
+    "rateLimit": {
+      "enabled": true,
+      "maxRequests": 100,
+      "windowMs": 900000
+    },
+    "csrf": {
+      "enabled": true
+    }
+  }
+}
+

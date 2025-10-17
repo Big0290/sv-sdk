@@ -19,6 +19,9 @@ export { default as Modal } from './components/Modal.svelte'
 export { default as Container } from './components/Container.svelte'
 export { default as Grid } from './components/Grid.svelte'
 export { default as Stack } from './components/Stack.svelte'
+export { default as AppShell } from './components/AppShell.svelte'
+export { default as Sidebar } from './components/Sidebar.svelte'
+export { default as Navbar } from './components/Navbar.svelte'
 
 // Feedback Components
 export { default as Alert } from './components/Alert.svelte'
@@ -32,6 +35,10 @@ export { default as Skeleton } from './components/Skeleton.svelte'
 export { default as Table } from './components/Table.svelte'
 export { default as Tabs } from './components/Tabs.svelte'
 export { default as Accordion } from './components/Accordion.svelte'
+
+// Editor Components
+export { default as TemplateEditor } from './components/TemplateEditor.svelte'
+export { default as TemplatePreview } from './components/TemplatePreview.svelte'
 
 // Utility Components
 export { default as Dropdown } from './components/Dropdown.svelte'
