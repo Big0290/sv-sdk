@@ -1,0 +1,7 @@
+export { SDKError } from './base.js'
+export { ValidationError } from './validation.js'
+export { AuthenticationError, SessionError, AccountLockedError } from './authentication.js'
+export { PermissionError, RoleError } from './permission.js'
+export { DatabaseError, NotFoundError, ConstraintError } from './database.js'
+export { ExternalServiceError, TimeoutError } from './external.js'
+export { RateLimitError } from './rate-limit.js'

@@ -1,0 +1,52 @@
+{
+  "name": "sv-sdk",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Svelte 5 SDK Platform - Comprehensive authentication, permissions, audit, and email system",
+  "keywords": [
+    "svelte",
+    "sveltekit",
+    "authentication",
+    "permissions",
+    "audit",
+    "email",
+    "sdk"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:unit": "turbo run test:unit",
+    "test:integration": "turbo run test:integration",
+    "test:coverage": "turbo run test:coverage",
+    "test:ci": "turbo run test:ci",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "type-check": "turbo run type-check",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,svelte}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,svelte}\"",
+    "db:generate": "pnpm --filter @sv-sdk/db-config db:generate",
+    "db:migrate": "pnpm --filter @sv-sdk/db-config db:migrate",
+    "db:seed": "pnpm --filter @sv-sdk/db-config db:seed",
+    "db:studio": "pnpm --filter @sv-sdk/db-config db:studio",
+    "clean": "rm -rf node_modules packages/*/node_modules apps/*/node_modules packages/*/dist apps/*/dist .turbo",
+    "setup": "./scripts/dev-setup.sh"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^3.2.4",
+    "drizzle-kit": "^0.31.5",
+    "eslint": "^9.37.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-svelte": "^3.3.2",
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

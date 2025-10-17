@@ -1,0 +1,37 @@
+{
+  "name": "@sv-sdk/validators",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Validation schemas and DTOs for SV-SDK",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./auth": "./src/auth-dtos.ts",
+    "./email": "./src/email-dtos.ts",
+    "./audit": "./src/audit-dtos.ts",
+    "./permissions": "./src/permissions-dtos.ts",
+    "./utils": "./src/validation-utils.ts"
+  },
+  "scripts": {
+    "dev": "tsc --watch --noEmit",
+    "build": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sv-sdk/db-config": "workspace:*",
+    "@sv-sdk/shared": "workspace:*",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
+

@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build artifacts
+dist/
+build/
+.turbo/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+!README.md
+docs/
+
+# Tests
+test/
+tests/
+**/*.test.ts
+**/*.spec.ts
+coverage/
+.nyc_output/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# CI/CD
+.github/
+
+# Development tools
+.prettierrc
+.prettierignore
+.eslintrc
+.eslintignore
+vitest.config.ts
+playwright.config.ts
+
+# Mock data
+emails/
+

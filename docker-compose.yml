@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sv_sdk_postgres
+    environment:
+      POSTGRES_DB: sv_sdk
+      POSTGRES_USER: sv_sdk_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-dev_password_change_in_production}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sv_sdk_user -d sv_sdk"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sv_sdk_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: sv_sdk_redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-dev_redis_password}
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sv_sdk_network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  sv_sdk_network:
+    driver: bridge

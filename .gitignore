@@ -1,0 +1,81 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.svelte-kit/
+.turbo/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.test
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Mock email output
+emails/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Package manager lock files (keep pnpm-lock.yaml)
+package-lock.json
+yarn.lock
+
+# Build artifacts
+*.tar.gz
+*.zip
+
+# Secrets and credentials
+secrets/
+*.pem
+*.key
+*.cert
+
+# Backup files
+*.backup
+*.bak
+
+# Drizzle generated files (uncomment if you want to ignore them)
+# migrations/
+
