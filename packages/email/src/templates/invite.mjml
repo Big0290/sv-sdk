@@ -1,0 +1,45 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="Arial, sans-serif" />
+      <mj-text font-size="14px" color="#333333" line-height="1.6" />
+      <mj-button background-color="#4F46E5" color="#ffffff" font-weight="bold" border-radius="4px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f5f5f5">
+    <mj-section background-color="#ffffff" padding="40px 20px">
+      <mj-column>
+        <mj-text font-size="24px" font-weight="bold" align="center" color="#1f2937">
+          You're Invited!
+        </mj-text>
+        <mj-text font-size="16px" padding-top="20px">
+          Hi there,
+        </mj-text>
+        <mj-text>
+          {{inviterName}} has invited you to join <strong>{{organizationName}}</strong> on SV-SDK.
+        </mj-text>
+        <mj-button href="{{inviteUrl}}" padding-top="20px">
+          Accept Invitation
+        </mj-button>
+        <mj-text font-size="12px" color="#6b7280" padding-top="20px">
+          This invitation will expire in 7 days. If you don't want to join, you can safely ignore this email.
+        </mj-text>
+        <mj-divider border-color="#e5e7eb" padding-top="30px" padding-bottom="20px" />
+        <mj-text font-size="12px" color="#9ca3af" align="center">
+          If the button doesn't work, copy and paste this link into your browser:
+        </mj-text>
+        <mj-text font-size="12px" color="#4F46E5" align="center">
+          {{inviteUrl}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#f5f5f5" padding="20px">
+      <mj-column>
+        <mj-text font-size="11px" color="#9ca3af" align="center">
+          © 2024 SV-SDK. All rights reserved.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
+

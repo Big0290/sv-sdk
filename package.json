@@ -37,12 +37,16 @@
     "db:seed": "pnpm --filter @sv-sdk/db-config db:seed",
     "db:studio": "pnpm --filter @sv-sdk/db-config db:studio",
     "clean": "rm -rf node_modules packages/*/node_modules apps/*/node_modules packages/*/dist apps/*/dist .turbo",
-    "setup": "./scripts/dev-setup.sh"
+    "setup": "./scripts/dev-setup.sh",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.12",
     "@vitest/ui": "^3.2.4",
     "drizzle-kit": "^0.31.5",
     "eslint": "^9.37.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
     "prettier": "^3.6.2",
     "prettier-plugin-svelte": "^3.3.2",
     "turbo": "^2.5.8",
