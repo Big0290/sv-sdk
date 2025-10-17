@@ -1,0 +1,49 @@
+{
+  "name": "demo-app",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --port 5174",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check . && eslint .",
+    "format": "prettier --write .",
+    "test:unit": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@sv-sdk/auth": "workspace:*",
+    "@sv-sdk/core": "workspace:*",
+    "@sv-sdk/email": "workspace:*",
+    "@sv-sdk/permissions": "workspace:*",
+    "@sv-sdk/security": "workspace:*",
+    "@sv-sdk/shared": "workspace:*",
+    "@sv-sdk/ui": "workspace:*",
+    "better-auth": "^1.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@sveltejs/adapter-auto": "^6.1.0",
+    "@sveltejs/kit": "^2.43.2",
+    "@sveltejs/vite-plugin-svelte": "^6.2.0",
+    "@types/node": "^22",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-svelte": "^3.12.4",
+    "playwright": "^1.55.1",
+    "postcss": "^8.4.49",
+    "prettier": "^3.6.2",
+    "prettier-plugin-svelte": "^3.4.0",
+    "svelte": "^5.39.5",
+    "svelte-check": "^4.3.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
+  }
+}
+

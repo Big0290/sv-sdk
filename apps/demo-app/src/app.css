@@ -1,0 +1,15 @@
+@import '@sv-sdk/ui/styles';
+
+/* Demo app specific styles */
+.hero {
+  @apply min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-900 dark:to-gray-800;
+}
+
+.feature-card {
+  @apply bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow;
+}
+
+.code-block {
+  @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-4 rounded-lg overflow-x-auto font-mono text-sm;
+}
+
