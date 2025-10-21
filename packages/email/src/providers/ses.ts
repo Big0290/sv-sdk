@@ -16,7 +16,7 @@ export class SESProvider implements EmailProvider {
   async getDeliveryStatus(messageId: string): Promise<import('./types.js').DeliveryStatus> {
     return {
       messageId,
-      status: 'unknown',
+      status: 'queued',
       timestamp: new Date(),
     }
   }

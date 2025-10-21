@@ -28,16 +28,7 @@ export function getEmailProvider(): EmailProvider {
     case 'ses': {
       // SES provider doesn't have getDeliveryStatus and test methods yet
       // Return as EmailProvider with partial implementation
-      const ses = createSESProvider()
-      return {
-        ...ses,
-        getDeliveryStatus: async () => ({
-          messageId: 'unknown',
-          status: 'unknown' as const,
-          timestamp: new Date(),
-        }),
-        test: async () => true,
-      }
+      return createSESProvider()
     }
 
     case 'mock':

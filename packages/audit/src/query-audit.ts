@@ -37,7 +37,8 @@ export async function fetchAuditLogs(
   sort: AuditLogSort = { field: 'createdAt', order: 'desc' }
 ): Promise<PaginatedResponse<AuditLog>> {
   try {
-    const conditions = []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const conditions: any[] = []
 
     if (filters.eventType) {
       conditions.push(eq(auditLogs.eventType, filters.eventType))

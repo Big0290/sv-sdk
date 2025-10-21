@@ -90,7 +90,8 @@ export async function getEmailHistory(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<PaginatedResponse<any>> {
   try {
-    const conditions = []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const conditions: any[] = []
 
     if (filters.recipient) {
       conditions.push(eq(emailSends.recipient, filters.recipient))
