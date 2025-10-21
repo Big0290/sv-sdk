@@ -70,7 +70,7 @@ async function restore(backupFile: string) {
     }
 
     console.log('🎉 Restore completed successfully!')
-  } catch {
+  } catch (error) {
     console.error('\n❌ Restore failed:', error)
     process.exit(1)
   }
