@@ -3,7 +3,7 @@
  */
 
 import { Command } from 'commander'
-import { checkConnection, checkSchemas } from '@sv-sdk/db-config'
+import { checkConnection, checkSchemas } from '@big0290/db-config'
 import chalk from 'chalk'
 import ora from 'ora'
 import { execSync } from 'child_process'
@@ -18,7 +18,7 @@ export function createDbCommand(): Command {
       const spinner = ora('Running migrations...').start()
 
       try {
-        execSync('pnpm --filter @sv-sdk/db-config db:migrate', { stdio: 'inherit' })
+        execSync('pnpm --filter @big0290/db-config db:migrate', { stdio: 'inherit' })
         spinner.succeed('Migrations completed!')
       } catch {
         spinner.fail('Migration failed')
@@ -33,7 +33,7 @@ export function createDbCommand(): Command {
       const spinner = ora('Seeding database...').start()
 
       try {
-        execSync('pnpm --filter @sv-sdk/db-config db:seed', { stdio: 'inherit' })
+        execSync('pnpm --filter @big0290/db-config db:seed', { stdio: 'inherit' })
         spinner.succeed('Database seeded!')
       } catch {
         spinner.fail('Seeding failed')

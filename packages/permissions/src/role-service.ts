@@ -2,10 +2,10 @@
  * Role management service
  */
 
-import { db, roles, userRoles, type Role, type NewRole, eq, and } from '@sv-sdk/db-config'
+import { db, roles, userRoles, type Role, type NewRole, eq, and } from '@big0290/db-config'
 import { invalidatePermissionCache, invalidateRolePermissionCache } from './cache.js'
-import { logAudit } from '@sv-sdk/audit'
-import { logger, NotFoundError, ConstraintError, RoleError } from '@sv-sdk/shared'
+import { logAudit } from '@big0290/audit'
+import { logger, NotFoundError, ConstraintError, RoleError } from '@big0290/shared'
 import { nanoid } from 'nanoid'
 
 /**

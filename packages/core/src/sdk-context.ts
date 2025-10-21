@@ -3,10 +3,10 @@
  * Shared context passed to all plugins and components
  */
 
-import type { Database } from '@sv-sdk/db-config'
-import type { Logger } from '@sv-sdk/shared'
+import type { Database } from '@big0290/db-config'
+import type { Logger } from '@big0290/shared'
 import type { EventBus } from './event-bus.js'
-import type { Redis } from '@sv-sdk/cache'
+import type { Redis } from '@big0290/cache'
 
 /**
  * SDK Configuration

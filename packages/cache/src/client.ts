@@ -3,7 +3,7 @@
  */
 
 import Redis from 'ioredis'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 // Get Redis URL from environment
 const REDIS_URL = process.env.REDIS_URL

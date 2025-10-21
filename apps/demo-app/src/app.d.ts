@@ -1,4 +1,4 @@
-import type { User, Session } from '@sv-sdk/auth'
+import type { User, Session } from '@big0290/auth'
 
 declare global {
   namespace App {

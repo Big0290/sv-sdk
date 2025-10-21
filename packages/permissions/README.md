@@ -1,4 +1,4 @@
-# @sv-sdk/permissions
+# @big0290/permissions
 
 Role-Based Access Control (RBAC) system with Redis caching for the SV-SDK platform.
 
@@ -16,7 +16,7 @@ Role-Based Access Control (RBAC) system with Redis caching for the SV-SDK platfo
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/permissions
+pnpm add @big0290/permissions
 ```
 
 ## Permission Format
@@ -24,6 +24,7 @@ pnpm add @sv-sdk/permissions
 Permissions follow the pattern: `action:scope:resource`
 
 **Examples**:
+
 - `read:any:user` - Read any user
 - `update:own:profile` - Update own profile
 - `delete:any:email` - Delete any email
@@ -34,7 +35,7 @@ Permissions follow the pattern: `action:scope:resource`
 ### Check Permission
 
 ```typescript
-import { can, enforce } from '@sv-sdk/permissions'
+import { can, enforce } from '@big0290/permissions'
 
 // Check if user has permission
 const allowed = await can('user-123', 'read:any:user')
@@ -50,7 +51,7 @@ await enforce('user-123', 'update:any:user')
 ### Resource-Level Permissions
 
 ```typescript
-import { can, type PermissionContext } from '@sv-sdk/permissions'
+import { can, type PermissionContext } from '@big0290/permissions'
 
 // Check if user can update their own profile
 const context: PermissionContext = {
@@ -66,8 +67,8 @@ const allowed = await can('user-123', 'update:own:profile', context)
 ### Role Management
 
 ```typescript
-import { createRole, updateRole, deleteRole, getRoles } from '@sv-sdk/permissions'
-import { PERMISSIONS } from '@sv-sdk/permissions'
+import { createRole, updateRole, deleteRole, getRoles } from '@big0290/permissions'
+import { PERMISSIONS } from '@big0290/permissions'
 
 // Create role
 const role = await createRole({
@@ -93,7 +94,7 @@ const roles = await getRoles()
 ### User Role Assignment
 
 ```typescript
-import { assignRole, revokeRole, getUserRoles } from '@sv-sdk/permissions'
+import { assignRole, revokeRole, getUserRoles } from '@big0290/permissions'
 
 // Assign role to user
 await assignRole('user-123', 'editor-role-id', 'admin-456')
@@ -108,7 +109,7 @@ const userRoles = await getUserRoles('user-123')
 ### Bulk Operations
 
 ```typescript
-import { bulkAssignRole } from '@sv-sdk/permissions'
+import { bulkAssignRole } from '@big0290/permissions'
 
 // Assign role to multiple users
 const assigned = await bulkAssignRole(['user-1', 'user-2', 'user-3'], 'manager-role-id', 'admin-id')
@@ -121,7 +122,7 @@ console.log(`Assigned role to ${assigned} users`)
 Permissions are automatically cached in Redis (TTL: 5 minutes):
 
 ```typescript
-import { refreshPermissionCache, invalidatePermissionCache } from '@sv-sdk/permissions'
+import { refreshPermissionCache, invalidatePermissionCache } from '@big0290/permissions'
 
 // Manually refresh cache
 const permissions = await refreshPermissionCache('user-123')
@@ -144,7 +145,7 @@ Created by database seed:
 See `PERMISSIONS` constant for all available permissions:
 
 ```typescript
-import { PERMISSIONS, PERMISSION_DESCRIPTIONS } from '@sv-sdk/permissions'
+import { PERMISSIONS, PERMISSION_DESCRIPTIONS } from '@big0290/permissions'
 
 PERMISSIONS.USER_READ_ANY // 'read:any:user'
 PERMISSIONS.USER_UPDATE_OWN // 'update:own:user'
@@ -165,7 +166,7 @@ const desc = PERMISSION_DESCRIPTIONS[PERMISSIONS.USER_READ_ANY]
 
 ```typescript
 // src/hooks.server.ts
-import { checkRoutePermission } from '@sv-sdk/permissions'
+import { checkRoutePermission } from '@big0290/permissions'
 import type { Handle } from '@sveltejs/kit'
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -189,7 +190,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 ### API Route Protection
 
 ```typescript
-import { enforce } from '@sv-sdk/permissions'
+import { enforce } from '@big0290/permissions'
 import type { RequestHandler } from './$types'
 
 export const GET: RequestHandler = async ({ locals }) => {
@@ -250,11 +251,13 @@ await can(userId, 'delete:any:user') // false (different action)
 ## Performance
 
 **Permission Checks**:
+
 - Cache hit: < 5ms
 - Cache miss: < 50ms (with DB query)
 - Cache hit rate: > 80%
 
 **Caching Strategy**:
+
 - TTL: 5 minutes
 - Invalidation: On role assignment/revocation
 - Fallback: Database query on cache miss
@@ -284,10 +287,11 @@ pnpm test:coverage
 ## Integration
 
 Works with:
-- `@sv-sdk/auth` - User authentication
-- `@sv-sdk/audit` - Permission event logging
-- `@sv-sdk/cache` - Redis caching
-- `@sv-sdk/db-config` - Database access
+
+- `@big0290/auth` - User authentication
+- `@big0290/audit` - Permission event logging
+- `@big0290/cache` - Redis caching
+- `@big0290/db-config` - Database access
 
 ## Future Enhancements
 
@@ -299,4 +303,3 @@ Works with:
 ## License
 
 MIT
-

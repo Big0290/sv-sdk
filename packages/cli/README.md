@@ -1,4 +1,4 @@
-# @sv-sdk/cli
+# @big0290/cli
 
 Command-line interface for managing the SV-SDK platform.
 
@@ -7,7 +7,7 @@ Command-line interface for managing the SV-SDK platform.
 ### Global Installation
 
 ```bash
-pnpm add -g @sv-sdk/cli
+pnpm add -g @big0290/cli
 ```
 
 ### Workspace Installation
@@ -28,18 +28,21 @@ sdk [command] [options]
 ### Auth Commands
 
 **List users**:
+
 ```bash
 sdk auth list
 sdk auth list --role admin --limit 10
 ```
 
 **Create user**:
+
 ```bash
 sdk auth create --email user@example.com --name "John Doe" --role user
 sdk auth create  # Interactive prompts
 ```
 
 **Delete user**:
+
 ```bash
 sdk auth delete --email user@example.com
 sdk auth delete --email user@example.com --force
@@ -48,22 +51,26 @@ sdk auth delete --email user@example.com --force
 ### Email Commands
 
 **Send test email**:
+
 ```bash
 sdk email test --template verification_email --recipient test@example.com
 sdk email test  # Interactive prompts
 ```
 
 **List templates**:
+
 ```bash
 sdk email list-templates
 ```
 
 **Validate MJML template**:
+
 ```bash
 sdk email validate path/to/template.mjml
 ```
 
 **Email statistics**:
+
 ```bash
 sdk email stats
 ```
@@ -71,18 +78,21 @@ sdk email stats
 ### Audit Commands
 
 **Export logs**:
+
 ```bash
 sdk audit export --from 2024-01-01 --to 2024-01-31 --format json
 sdk audit export --format csv --output ./logs.csv
 ```
 
 **Search logs**:
+
 ```bash
 sdk audit search --event user.login --limit 50
 sdk audit search --user user-123
 ```
 
 **Apply retention**:
+
 ```bash
 sdk audit retention --days 365
 sdk audit retention --days 90 --no-archive
@@ -91,16 +101,19 @@ sdk audit retention --days 90 --no-archive
 ### Permission Commands
 
 **List roles**:
+
 ```bash
 sdk permissions list
 ```
 
 **Assign role**:
+
 ```bash
 sdk permissions assign --email user@example.com --role admin
 ```
 
 **Check permission**:
+
 ```bash
 sdk permissions check --email user@example.com --permission read:any:user
 ```
@@ -108,21 +121,25 @@ sdk permissions check --email user@example.com --permission read:any:user
 ### Database Commands
 
 **Run migrations**:
+
 ```bash
 sdk db migrate
 ```
 
 **Seed database**:
+
 ```bash
 sdk db seed
 ```
 
 **Database status**:
+
 ```bash
 sdk db status
 ```
 
 **Backup database**:
+
 ```bash
 sdk db backup
 sdk db backup --output /path/to/backups
@@ -131,11 +148,13 @@ sdk db backup --output /path/to/backups
 ### Health Check
 
 **Check system health**:
+
 ```bash
 sdk health
 ```
 
 Shows status of:
+
 - Database connection
 - Redis connection
 - Service health
@@ -254,4 +273,3 @@ npm link
 ## License
 
 MIT
-

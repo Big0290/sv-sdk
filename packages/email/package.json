@@ -1,5 +1,5 @@
 {
-  "name": "@sv-sdk/email",
+  "name": "@big0290/email",
   "version": "0.0.1",
   "type": "module",
   "repository": {
@@ -34,10 +34,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sv-sdk/audit": "workspace:*",
-    "@sv-sdk/cache": "workspace:*",
-    "@sv-sdk/db-config": "workspace:*",
-    "@sv-sdk/shared": "workspace:*",
+    "@big0290/audit": "workspace:*",
+    "@big0290/cache": "workspace:*",
+    "@big0290/db-config": "workspace:*",
+    "@big0290/shared": "workspace:*",
     "@aws-sdk/client-ses": "^3.709.0",
     "@getbrevo/brevo": "^2.2.0",
     "handlebars": "^4.7.8",

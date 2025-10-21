@@ -2,7 +2,7 @@
  * Email provider types and interfaces
  */
 
-import type { Result } from '@sv-sdk/shared'
+import type { Result } from '@big0290/shared'
 
 /**
  * Email message to send

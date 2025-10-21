@@ -4,8 +4,8 @@
  */
 
 import { describe, it, expect, beforeAll, afterAll } from 'vitest'
-import { signup } from '@sv-sdk/auth'
-import { getEmailHistory } from '@sv-sdk/email'
+import { signup } from '@big0290/auth'
+import { getEmailHistory } from '@big0290/email'
 
 describe('Auth + Email Integration', () => {
   beforeAll(async () => {
@@ -40,4 +40,3 @@ describe('Auth + Email Integration', () => {
     // This will be implemented when email package is fully integrated
   })
 })
-

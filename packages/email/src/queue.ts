@@ -2,12 +2,12 @@
  * Email queue using BullMQ
  */
 
-import { createQueue, createWorker, QUEUE_NAMES, QUEUE_PRIORITY, type Job } from '@sv-sdk/cache'
-import { db, emailSends } from '@sv-sdk/db-config'
+import { createQueue, createWorker, QUEUE_NAMES, QUEUE_PRIORITY, type Job } from '@big0290/cache'
+import { db, emailSends } from '@big0290/db-config'
 import { renderTemplate } from './renderer.js'
 import { getEmailProvider } from './providers/index.js'
-import { logAudit } from '@sv-sdk/audit'
-import { logger } from '@sv-sdk/shared'
+import { logAudit } from '@big0290/audit'
+import { logger } from '@big0290/shared'
 import { nanoid } from 'nanoid'
 
 /**

@@ -2,9 +2,9 @@
  * Graceful shutdown handler
  */
 
-import { logger } from '@sv-sdk/shared'
-import { closeConnections } from '@sv-sdk/db-config'
-import { closeRedisConnection } from '@sv-sdk/cache'
+import { logger } from '@big0290/shared'
+import { closeConnections } from '@big0290/db-config'
+import { closeRedisConnection } from '@big0290/cache'
 
 /**
  * Shutdown handler callback

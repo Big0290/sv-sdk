@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { fetchAuditLogs } from '@sv-sdk/audit';
+import { fetchAuditLogs } from '@big0290/audit';
 
 export const load: PageServerLoad = async ({ url }) => {
 	const page = parseInt(url.searchParams.get('page') || '1');

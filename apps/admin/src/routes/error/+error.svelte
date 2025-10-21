@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { Button } from '@sv-sdk/ui';
+	import { Button } from '@big0290/ui';
 </script>
 
 <div class="min-h-screen flex items-center justify-center px-4 bg-gray-50 dark:bg-gray-950">

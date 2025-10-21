@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, Button, Input, Alert } from '@sv-sdk/ui';
+	import { Card, Button, Input, Alert } from '@big0290/ui';
 
 	let saved = $state(false);
 

@@ -6,10 +6,10 @@
 import { auth } from './auth-config.js'
 import { enforcePasswordPolicy } from './password-policy.js'
 import { updateLastLogin } from './user-service.js'
-import { enforceRateLimit, RATE_LIMITS } from '@sv-sdk/security'
-import { validateRequest } from '@sv-sdk/validators'
-import { loginRequestSchema, signupRequestSchema, type LoginRequest, type SignupRequest } from '@sv-sdk/validators'
-import { AuthenticationError, logger, type Result, ok, err } from '@sv-sdk/shared'
+import { enforceRateLimit, RATE_LIMITS } from '@big0290/security'
+import { validateRequest } from '@big0290/validators'
+import { loginRequestSchema, signupRequestSchema, type LoginRequest, type SignupRequest } from '@big0290/validators'
+import { AuthenticationError, logger, type Result, ok, err } from '@big0290/shared'
 
 /**
  * Login user

@@ -3,7 +3,7 @@
  */
 
 import { z } from 'zod'
-import { insertRoleSchema } from '@sv-sdk/db-config'
+import { insertRoleSchema } from '@big0290/db-config'
 
 /**
  * Permission string schema

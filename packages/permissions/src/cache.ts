@@ -2,9 +2,9 @@
  * Permission caching with Redis
  */
 
-import { db, userRoles, roles, permissionCache, eq } from '@sv-sdk/db-config'
-import { cacheGet, cacheSet, cacheDelete, CACHE_KEYS, CACHE_TTL } from '@sv-sdk/cache'
-import { logger } from '@sv-sdk/shared'
+import { db, userRoles, roles, permissionCache, eq } from '@big0290/db-config'
+import { cacheGet, cacheSet, cacheDelete, CACHE_KEYS, CACHE_TTL } from '@big0290/cache'
+import { logger } from '@big0290/shared'
 import { nanoid } from 'nanoid'
 
 /**
@@ -150,7 +150,7 @@ async function upsertPermissionCache(userId: string, permissions: string[]): Pro
  */
 export async function cleanExpiredPermissionCache(): Promise<number> {
   try {
-    const { lt } = await import('@sv-sdk/db-config')
+    const { lt } = await import('@big0290/db-config')
     const now = new Date()
 
     const deleted = await db.delete(permissionCache).where(lt(permissionCache.expiresAt, now)).returning()

@@ -1,5 +1,5 @@
 {
-  "name": "@sv-sdk/cache",
+  "name": "@big0290/cache",
   "version": "0.0.1",
   "type": "module",
   "repository": {
@@ -36,7 +36,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sv-sdk/shared": "workspace:*",
+    "@big0290/shared": "workspace:*",
     "bullmq": "^5.28.1",
     "ioredis": "^5.4.2"
   },

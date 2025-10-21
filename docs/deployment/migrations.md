@@ -24,22 +24,26 @@ Best practices for running database migrations in production.
 ### Example: Adding Required Column
 
 **Step 1: Add Nullable Column**
+
 ```sql
 ALTER TABLE auth.users ADD COLUMN phone_number VARCHAR(20);
 ```
 
 **Step 2: Deploy App (Handles NULL)**
+
 ```typescript
 const user = await getUser(id)
 // Handle phone_number being null
 ```
 
 **Step 3: Backfill Data**
+
 ```sql
 UPDATE auth.users SET phone_number = '' WHERE phone_number IS NULL;
 ```
 
 **Step 4: Make Required**
+
 ```sql
 ALTER TABLE auth.users ALTER COLUMN phone_number SET NOT NULL;
 ```
@@ -182,12 +186,10 @@ export const migration = pgTable('users', {
 
 ```typescript
 // Create separate data migration script
-import { db, users } from '@sv-sdk/db-config'
+import { db, users } from '@big0290/db-config'
 
 // Backfill data
-await db.update(users)
-  .set({ status: 'active' })
-  .where(isNull(users.status))
+await db.update(users).set({ status: 'active' }).where(isNull(users.status))
 ```
 
 ---
@@ -199,6 +201,7 @@ await db.update(users)
 **Symptoms**: Migration hangs or times out
 
 **Solutions**:
+
 - Split large migrations into smaller chunks
 - Add indexes in separate migration
 - Use background jobs for data migrations
@@ -209,6 +212,7 @@ await db.update(users)
 **Symptoms**: Migration waiting for lock
 
 **Solutions**:
+
 - Run during low-traffic window
 - Check for long-running queries
 - Kill blocking queries (carefully!)
@@ -219,6 +223,7 @@ await db.update(users)
 **Symptoms**: Migration errors out
 
 **Solutions**:
+
 - Check error message
 - Verify schema syntax
 - Test in development first
@@ -251,6 +256,7 @@ CREATE INDEX CONCURRENTLY idx_users_email ON auth.users(email);
 ### Large Table Migrations
 
 For tables > 1M rows:
+
 - Create new table
 - Copy data in batches
 - Swap tables atomically
@@ -293,4 +299,3 @@ For tables > 1M rows:
 - [Drizzle Migrations](https://orm.drizzle.team/docs/migrations)
 - [PostgreSQL DDL](https://www.postgresql.org/docs/current/ddl.html)
 - [Zero-Downtime Deployments](https://www.braintreepayments.com/blog/safe-database-migration-pattern-without-downtime/)
-

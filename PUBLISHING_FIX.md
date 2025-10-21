@@ -16,19 +16,19 @@ The process '/home/runner/setup-pnpm/node_modules/.bin/pnpm' failed with exit co
 
 **Solution:** Added `"files": ["src"]` to all 11 packages:
 
-- @sv-sdk/auth
-- @sv-sdk/audit
-- @sv-sdk/cache
-- @sv-sdk/core
-- @sv-sdk/db-config
-- @sv-sdk/email
-- @sv-sdk/observability
-- @sv-sdk/permissions
-- @sv-sdk/security
-- @sv-sdk/shared
-- @sv-sdk/validators
+- @big0290/auth
+- @big0290/audit
+- @big0290/cache
+- @big0290/core
+- @big0290/db-config
+- @big0290/email
+- @big0290/observability
+- @big0290/permissions
+- @big0290/security
+- @big0290/shared
+- @big0290/validators
 
-_Note: @sv-sdk/cli and @sv-sdk/ui already had this configured correctly._
+_Note: @big0290/cli and @big0290/ui already had this configured correctly._
 
 ### Issue 2: Duplicate Publishing Workflows ✅ FIXED
 
@@ -119,10 +119,10 @@ git push --follow-tags
 
    ```bash
    # Configure npm
-   echo "@sv-sdk:registry=https://npm.pkg.github.com" >> .npmrc
+   echo "@big0290:registry=https://npm.pkg.github.com" >> .npmrc
 
    # Install a package
-   npm install @sv-sdk/core
+   npm install @big0290/core
    ```
 
 ## Remaining Workflows
@@ -154,12 +154,12 @@ Your repository now has these workflows:
 1. **Authenticate with GitHub:**
 
    ```bash
-   npm login --scope=@sv-sdk --registry=https://npm.pkg.github.com
+   npm login --scope=@big0290 --registry=https://npm.pkg.github.com
    ```
 
 2. **Use a .npmrc file:**
    ```
-   @sv-sdk:registry=https://npm.pkg.github.com
+   @big0290:registry=https://npm.pkg.github.com
    //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
    ```
 

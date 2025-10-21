@@ -1,6 +1,6 @@
 /**
  * Permission constants (placeholder)
- * Actual permissions will be defined in @sv-sdk/permissions package
+ * Actual permissions will be defined in @big0290/permissions package
  */
 
 /**

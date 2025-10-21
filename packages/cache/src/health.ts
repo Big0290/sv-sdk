@@ -3,7 +3,7 @@
  */
 
 import { redis, getRedisStatus } from './client.js'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 export interface RedisHealthResult {
   healthy: boolean

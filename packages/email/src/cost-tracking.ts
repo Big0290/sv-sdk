@@ -3,9 +3,9 @@
  * Track and estimate email sending costs per provider
  */
 
-import { db, emailSends } from '@sv-sdk/db-config'
-import { and, gte, lte } from '@sv-sdk/db-config'
-import { logger } from '@sv-sdk/shared'
+import { db, emailSends } from '@big0290/db-config'
+import { and, gte, lte } from '@big0290/db-config'
+import { logger } from '@big0290/shared'
 
 /**
  * Provider pricing (per 1000 emails)

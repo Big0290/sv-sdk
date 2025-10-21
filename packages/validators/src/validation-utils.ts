@@ -4,8 +4,8 @@
  */
 
 import { z, type ZodSchema } from 'zod'
-import { ValidationError } from '@sv-sdk/shared'
-import type { Result } from '@sv-sdk/shared'
+import { ValidationError } from '@big0290/shared'
+import type { Result } from '@big0290/shared'
 
 /**
  * Validate request data against schema

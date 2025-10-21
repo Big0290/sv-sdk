@@ -1,4 +1,4 @@
-# @sv-sdk/validators
+# @big0290/validators
 
 Validation schemas and DTOs for the SV-SDK platform. Built on Zod with runtime type safety.
 
@@ -14,7 +14,7 @@ Validation schemas and DTOs for the SV-SDK platform. Built on Zod with runtime t
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/validators
+pnpm add @big0290/validators
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ pnpm add @sv-sdk/validators
 ### Auth DTOs
 
 ```typescript
-import { loginRequestSchema, signupRequestSchema } from '@sv-sdk/validators/auth'
+import { loginRequestSchema, signupRequestSchema } from '@big0290/validators/auth'
 
 // Validate login
 const result = loginRequestSchema.safeParse({
@@ -42,7 +42,7 @@ const signupResult = signupRequestSchema.safeParse({
 ### Email DTOs
 
 ```typescript
-import { sendEmailRequestSchema, createTemplateRequestSchema } from '@sv-sdk/validators/email'
+import { sendEmailRequestSchema, createTemplateRequestSchema } from '@big0290/validators/email'
 
 // Validate send email
 const emailResult = sendEmailRequestSchema.safeParse({
@@ -55,8 +55,8 @@ const emailResult = sendEmailRequestSchema.safeParse({
 ### Validation Utilities
 
 ```typescript
-import { validateRequest, formatZodErrors } from '@sv-sdk/validators/utils'
-import { loginRequestSchema } from '@sv-sdk/validators/auth'
+import { validateRequest, formatZodErrors } from '@big0290/validators/utils'
+import { loginRequestSchema } from '@big0290/validators/auth'
 
 // Validate with Result type
 const result = validateRequest(loginRequestSchema, req.body)
@@ -75,7 +75,7 @@ const { email, password } = result.data
 ### Password Strength
 
 ```typescript
-import { validatePasswordStrength, checkPasswordBreach } from '@sv-sdk/validators'
+import { validatePasswordStrength, checkPasswordBreach } from '@big0290/validators'
 
 // Check password strength
 const strength = validatePasswordStrength('MyPassword123!')
@@ -94,7 +94,7 @@ const isBreached = await checkPasswordBreach('password123')
 ### API Response Types
 
 ```typescript
-import { createSuccessResponse, createErrorResponse, type ApiResponse } from '@sv-sdk/validators'
+import { createSuccessResponse, createErrorResponse, type ApiResponse } from '@big0290/validators'
 
 // Success response
 return createSuccessResponse({ id: '123', email: 'user@example.com' }, { requestId: 'req-123' })
@@ -106,7 +106,7 @@ return createErrorResponse('VALIDATION_ERROR', 'Invalid email format', { field: 
 ### Type Guards
 
 ```typescript
-import { isSuccessResponse, isEmail, assertDefined } from '@sv-sdk/validators'
+import { isSuccessResponse, isEmail, assertDefined } from '@big0290/validators'
 
 // Check API response type
 if (isSuccessResponse(response)) {
@@ -239,8 +239,8 @@ pnpm test:coverage
 
 Works seamlessly with:
 
-- `@sv-sdk/db-config` - Extends Drizzle schemas
-- `@sv-sdk/shared` - Uses Result type and error classes
+- `@big0290/db-config` - Extends Drizzle schemas
+- `@big0290/shared` - Uses Result type and error classes
 - All SDK packages - Provides validation layer
 
 ## Best Practices

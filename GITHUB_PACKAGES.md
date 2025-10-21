@@ -97,45 +97,45 @@ git push --follow-tags
 Users can install your packages with:
 
 ```bash
-# 1. Configure npm to use GitHub Package Registry for @sv-sdk scope
-npm config set @sv-sdk:registry https://npm.pkg.github.com
+# 1. Configure npm to use GitHub Package Registry for @big0290 scope
+npm config set @big0290:registry https://npm.pkg.github.com
 
 # 2. Authenticate (for private packages or if needed)
-npm login --scope=@sv-sdk --registry=https://npm.pkg.github.com
+npm login --scope=@big0290 --registry=https://npm.pkg.github.com
 # Username: your-github-username
 # Password: your-github-token (not your password!)
 
 # 3. Install packages
-npm install @sv-sdk/core
-npm install @sv-sdk/auth
-npm install @sv-sdk/ui
+npm install @big0290/core
+npm install @big0290/auth
+npm install @big0290/ui
 # ... etc
 ```
 
 Or with a project `.npmrc`:
 
 ```
-@sv-sdk:registry=https://npm.pkg.github.com
+@big0290:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
 ## Published Packages
 
-| Package                 | Description                  | Installation                  |
-| ----------------------- | ---------------------------- | ----------------------------- |
-| `@sv-sdk/core`          | SDK initialization & plugins | `npm i @sv-sdk/core`          |
-| `@sv-sdk/auth`          | BetterAuth authentication    | `npm i @sv-sdk/auth`          |
-| `@sv-sdk/ui`            | Svelte 5 components          | `npm i @sv-sdk/ui`            |
-| `@sv-sdk/permissions`   | RBAC system                  | `npm i @sv-sdk/permissions`   |
-| `@sv-sdk/email`         | Email with MJML              | `npm i @sv-sdk/email`         |
-| `@sv-sdk/audit`         | Audit logging                | `npm i @sv-sdk/audit`         |
-| `@sv-sdk/cache`         | Redis & BullMQ               | `npm i @sv-sdk/cache`         |
-| `@sv-sdk/security`      | Rate limiting, CSRF          | `npm i @sv-sdk/security`      |
-| `@sv-sdk/db-config`     | Drizzle ORM setup            | `npm i @sv-sdk/db-config`     |
-| `@sv-sdk/observability` | Health checks                | `npm i @sv-sdk/observability` |
-| `@sv-sdk/cli`           | CLI tool                     | `npm i -g @sv-sdk/cli`        |
-| `@sv-sdk/validators`    | Zod schemas                  | `npm i @sv-sdk/validators`    |
-| `@sv-sdk/shared`        | Shared utilities             | `npm i @sv-sdk/shared`        |
+| Package                  | Description                  | Installation                   |
+| ------------------------ | ---------------------------- | ------------------------------ |
+| `@big0290/core`          | SDK initialization & plugins | `npm i @big0290/core`          |
+| `@big0290/auth`          | BetterAuth authentication    | `npm i @big0290/auth`          |
+| `@big0290/ui`            | Svelte 5 components          | `npm i @big0290/ui`            |
+| `@big0290/permissions`   | RBAC system                  | `npm i @big0290/permissions`   |
+| `@big0290/email`         | Email with MJML              | `npm i @big0290/email`         |
+| `@big0290/audit`         | Audit logging                | `npm i @big0290/audit`         |
+| `@big0290/cache`         | Redis & BullMQ               | `npm i @big0290/cache`         |
+| `@big0290/security`      | Rate limiting, CSRF          | `npm i @big0290/security`      |
+| `@big0290/db-config`     | Drizzle ORM setup            | `npm i @big0290/db-config`     |
+| `@big0290/observability` | Health checks                | `npm i @big0290/observability` |
+| `@big0290/cli`           | CLI tool                     | `npm i -g @big0290/cli`        |
+| `@big0290/validators`    | Zod schemas                  | `npm i @big0290/validators`    |
+| `@big0290/shared`        | Shared utilities             | `npm i @big0290/shared`        |
 
 ## Troubleshooting
 
@@ -151,7 +151,7 @@ The workflow uses `GITHUB_TOKEN` which is automatically provided. If you see aut
 
 If publishing fails with 401:
 
-1. Check the package name matches the GitHub org (`@sv-sdk`)
+1. Check the package name matches the GitHub org (`@big0290`)
 2. Verify `publishConfig.registry` is set in package.json
 3. Ensure `publishConfig.access` is `"public"`
 

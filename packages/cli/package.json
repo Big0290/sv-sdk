@@ -1,5 +1,5 @@
 {
-  "name": "@sv-sdk/cli",
+  "name": "@big0290/cli",
   "version": "0.0.1",
   "type": "module",
   "repository": {
@@ -31,12 +31,12 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sv-sdk/audit": "workspace:*",
-    "@sv-sdk/auth": "workspace:*",
-    "@sv-sdk/db-config": "workspace:*",
-    "@sv-sdk/email": "workspace:*",
-    "@sv-sdk/permissions": "workspace:*",
-    "@sv-sdk/shared": "workspace:*",
+    "@big0290/audit": "workspace:*",
+    "@big0290/auth": "workspace:*",
+    "@big0290/db-config": "workspace:*",
+    "@big0290/email": "workspace:*",
+    "@big0290/permissions": "workspace:*",
+    "@big0290/shared": "workspace:*",
     "chalk": "^5.4.1",
     "commander": "^12.1.0",
     "inquirer": "^12.4.0",

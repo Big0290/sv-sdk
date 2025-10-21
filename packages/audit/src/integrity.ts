@@ -4,7 +4,7 @@
  */
 
 import crypto from 'crypto'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * Generate hash for audit log entry

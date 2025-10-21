@@ -16,7 +16,7 @@ The plugin system is the foundation of SV-SDK's extensibility. It allows you to:
 A plugin is an object that implements the `Plugin` interface:
 
 ```typescript
-import { createPlugin, type Plugin } from '@sv-sdk/core'
+import { createPlugin, type Plugin } from '@big0290/core'
 
 const myPlugin: Plugin = createPlugin({
   name: 'my-plugin', // Unique plugin name
@@ -181,7 +181,7 @@ interface SDKContext {
 ### Using the Database
 
 ```typescript
-import { users } from '@sv-sdk/db-config'
+import { users } from '@big0290/db-config'
 
 async init(ctx) {
   // Query users
@@ -214,7 +214,7 @@ async init(ctx) {
   await ctx.redis.del('key')
 
   // Use caching utilities
-  import { cacheSet, cacheGet } from '@sv-sdk/cache'
+  import { cacheSet, cacheGet } from '@big0290/cache'
 
   await cacheSet('user:123', userData, 300)
   const cached = await cacheGet('user:123')
@@ -312,8 +312,8 @@ const sdk = await createSDK({
 Here's a complete analytics plugin:
 
 ```typescript
-import { createPlugin } from '@sv-sdk/core'
-import type { Plugin } from '@sv-sdk/core'
+import { createPlugin } from '@big0290/core'
+import type { Plugin } from '@big0290/core'
 
 interface AnalyticsEvent {
   event: string
@@ -419,7 +419,7 @@ export default analyticsPlugin
 ### Load Plugins
 
 ```typescript
-import { createSDK } from '@sv-sdk/core'
+import { createSDK } from '@big0290/core'
 import analyticsPlugin from './plugins/analytics'
 import customPlugin from './plugins/custom'
 
@@ -447,10 +447,10 @@ if (analytics) {
 SV-SDK includes several built-in plugins you can use:
 
 ```typescript
-import { authPlugin } from '@sv-sdk/auth'
-import { emailPlugin } from '@sv-sdk/email'
-import { auditPlugin } from '@sv-sdk/audit'
-import { permissionsPlugin } from '@sv-sdk/permissions'
+import { authPlugin } from '@big0290/auth'
+import { emailPlugin } from '@big0290/email'
+import { auditPlugin } from '@big0290/audit'
+import { permissionsPlugin } from '@big0290/permissions'
 
 const sdk = await createSDK({
   plugins: [authPlugin, emailPlugin, auditPlugin, permissionsPlugin],

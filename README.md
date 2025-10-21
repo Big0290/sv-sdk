@@ -30,21 +30,21 @@ Built with modern technologies including **BetterAuth**, **Drizzle ORM**, **Redi
 
 ### 📦 Packages
 
-| Package                                           | Description                                     | Version |
-| ------------------------------------------------- | ----------------------------------------------- | ------- |
-| [@sv-sdk/core](./packages/core)                   | SDK initialization, plugin system, event bus    | 0.0.1   |
-| [@sv-sdk/auth](./packages/auth)                   | Authentication with BetterAuth, user management | 0.0.1   |
-| [@sv-sdk/permissions](./packages/permissions)     | RBAC permissions system with caching            | 0.0.1   |
-| [@sv-sdk/ui](./packages/ui)                       | Svelte 5 component library with 100+ components | 0.0.1   |
-| [@sv-sdk/email](./packages/email)                 | Email system with MJML, queues, webhooks        | 0.0.1   |
-| [@sv-sdk/audit](./packages/audit)                 | Audit logging, retention, compliance            | 0.0.1   |
-| [@sv-sdk/cache](./packages/cache)                 | Redis caching and BullMQ queue system           | 0.0.1   |
-| [@sv-sdk/security](./packages/security)           | Rate limiting, CSRF, security headers           | 0.0.1   |
-| [@sv-sdk/db-config](./packages/db-config)         | Database configuration with Drizzle ORM         | 0.0.1   |
-| [@sv-sdk/observability](./packages/observability) | Health checks, metrics, monitoring              | 0.0.1   |
-| [@sv-sdk/cli](./packages/cli)                     | Command-line interface for SDK management       | 0.0.1   |
-| [@sv-sdk/validators](./packages/validators)       | Zod schemas and validation utilities            | 0.0.1   |
-| [@sv-sdk/shared](./packages/shared)               | Shared utilities, types, constants              | 0.0.1   |
+| Package                                            | Description                                     | Version |
+| -------------------------------------------------- | ----------------------------------------------- | ------- |
+| [@big0290/core](./packages/core)                   | SDK initialization, plugin system, event bus    | 0.0.1   |
+| [@big0290/auth](./packages/auth)                   | Authentication with BetterAuth, user management | 0.0.1   |
+| [@big0290/permissions](./packages/permissions)     | RBAC permissions system with caching            | 0.0.1   |
+| [@big0290/ui](./packages/ui)                       | Svelte 5 component library with 100+ components | 0.0.1   |
+| [@big0290/email](./packages/email)                 | Email system with MJML, queues, webhooks        | 0.0.1   |
+| [@big0290/audit](./packages/audit)                 | Audit logging, retention, compliance            | 0.0.1   |
+| [@big0290/cache](./packages/cache)                 | Redis caching and BullMQ queue system           | 0.0.1   |
+| [@big0290/security](./packages/security)           | Rate limiting, CSRF, security headers           | 0.0.1   |
+| [@big0290/db-config](./packages/db-config)         | Database configuration with Drizzle ORM         | 0.0.1   |
+| [@big0290/observability](./packages/observability) | Health checks, metrics, monitoring              | 0.0.1   |
+| [@big0290/cli](./packages/cli)                     | Command-line interface for SDK management       | 0.0.1   |
+| [@big0290/validators](./packages/validators)       | Zod schemas and validation utilities            | 0.0.1   |
+| [@big0290/shared](./packages/shared)               | Shared utilities, types, constants              | 0.0.1   |
 
 ## Architecture Overview
 
@@ -202,7 +202,7 @@ pnpm db:seed
 pnpm dev
 
 # Or start specific apps
-pnpm --filter @sv-sdk/admin dev
+pnpm --filter @big0290/admin dev
 pnpm --filter demo-app dev
 ```
 
@@ -213,17 +213,17 @@ Create a SvelteKit app and integrate SV-SDK:
 **Install packages:**
 
 ```bash
-pnpm add @sv-sdk/auth @sv-sdk/permissions @sv-sdk/ui
+pnpm add @big0290/auth @big0290/permissions @big0290/ui
 ```
 
 **Configure hooks (`src/hooks.server.ts`):**
 
 ```typescript
 import type { Handle } from '@sveltejs/kit'
-import { auth } from '@sv-sdk/auth'
-import { checkRoutePermission } from '@sv-sdk/permissions'
-import { rateLimiter } from '@sv-sdk/security'
-import { logAudit } from '@sv-sdk/audit'
+import { auth } from '@big0290/auth'
+import { checkRoutePermission } from '@big0290/permissions'
+import { rateLimiter } from '@big0290/security'
+import { logAudit } from '@big0290/audit'
 
 export const handle: Handle = async ({ event, resolve }) => {
   const { pathname } = event.url
@@ -286,7 +286,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 ```svelte
 <script>
-  import { Button, Input, Card, Alert } from '@sv-sdk/ui'
+  import { Button, Input, Card, Alert } from '@big0290/ui'
 
   let email = $state('')
   let password = $state('')
@@ -329,7 +329,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 ### Authentication Flow
 
 ```typescript
-import { login, signup, logout } from '@sv-sdk/auth'
+import { login, signup, logout } from '@big0290/auth'
 
 // User signup
 const signupResult = await signup(
@@ -368,7 +368,7 @@ await logout(sessionToken)
 ### Permission Checking
 
 ```typescript
-import { can, enforce, assignRole } from '@sv-sdk/permissions'
+import { can, enforce, assignRole } from '@big0290/permissions'
 
 // Check permission
 const canEdit = await can('user-123', 'update:any:user')
@@ -387,7 +387,7 @@ await assignRole('user-123', 'admin-role-id', 'assigner-id')
 ### Email Sending
 
 ```typescript
-import { sendEmail, sendEmailImmediate } from '@sv-sdk/email'
+import { sendEmail, sendEmailImmediate } from '@big0290/email'
 
 // Send via queue (recommended)
 const result = await sendEmail('verification_email', 'user@example.com', {
@@ -406,7 +406,7 @@ await sendEmailImmediate('password_reset', 'user@example.com', {
 ### Audit Logging
 
 ```typescript
-import { logAudit, queryAuditLogs } from '@sv-sdk/audit'
+import { logAudit, queryAuditLogs } from '@big0290/audit'
 
 // Log an event
 await logAudit('user.login', {
@@ -434,7 +434,7 @@ const logs = await queryAuditLogs(
 ### Rate Limiting
 
 ```typescript
-import { rateLimiter } from '@sv-sdk/security'
+import { rateLimiter } from '@big0290/security'
 
 // Check rate limit
 const result = await rateLimiter.checkLimit('user-123', {

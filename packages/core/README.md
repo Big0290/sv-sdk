@@ -1,4 +1,4 @@
-# @sv-sdk/core
+# @big0290/core
 
 Core SDK and plugin system for the SV-SDK platform.
 
@@ -14,7 +14,7 @@ Core SDK and plugin system for the SV-SDK platform.
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/core
+pnpm add @big0290/core
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ pnpm add @sv-sdk/core
 ### Create SDK Instance
 
 ```typescript
-import { createSDK } from '@sv-sdk/core'
+import { createSDK } from '@big0290/core'
 
 const sdk = await createSDK({
   config: {
@@ -47,7 +47,7 @@ await sdk.shutdown()
 ### Create Plugin
 
 ```typescript
-import { createPlugin, type Plugin } from '@sv-sdk/core'
+import { createPlugin, type Plugin } from '@big0290/core'
 
 const myPlugin: Plugin = createPlugin({
   name: 'my-plugin',
@@ -94,7 +94,7 @@ const myPlugin: Plugin = createPlugin({
 ### Use Event Bus
 
 ```typescript
-import { createEventBus } from '@sv-sdk/core'
+import { createEventBus } from '@big0290/core'
 
 const eventBus = createEventBus()
 
@@ -196,7 +196,7 @@ const sdk = await createSDK({
 ### Health Checks
 
 ```typescript
-import { checkSystemHealth, livenessProbe, readinessProbe } from '@sv-sdk/core'
+import { checkSystemHealth, livenessProbe, readinessProbe } from '@big0290/core'
 
 // Comprehensive health check
 const health = await checkSystemHealth()
@@ -221,7 +221,7 @@ const readiness = await readinessProbe()
 ### Graceful Shutdown
 
 ```typescript
-import { shutdownManager } from '@sv-sdk/core'
+import { shutdownManager } from '@big0290/core'
 
 // Register custom shutdown handler
 shutdownManager.onShutdown(async () => {
@@ -312,18 +312,18 @@ pnpm test:coverage
 
 Required by all SDK packages:
 
-- `@sv-sdk/auth` - Implements as plugin
-- `@sv-sdk/audit` - Implements as plugin
-- `@sv-sdk/email` - Implements as plugin
-- `@sv-sdk/permissions` - Implements as plugin
+- `@big0290/auth` - Implements as plugin
+- `@big0290/audit` - Implements as plugin
+- `@big0290/email` - Implements as plugin
+- `@big0290/permissions` - Implements as plugin
 
 ## Example: Complete SDK Setup
 
 ```typescript
-import { createSDK } from '@sv-sdk/core'
-import { authPlugin } from '@sv-sdk/auth'
-import { emailPlugin } from '@sv-sdk/email'
-import { auditPlugin } from '@sv-sdk/audit'
+import { createSDK } from '@big0290/core'
+import { authPlugin } from '@big0290/auth'
+import { emailPlugin } from '@big0290/email'
+import { auditPlugin } from '@big0290/audit'
 
 const sdk = await createSDK({
   config: {

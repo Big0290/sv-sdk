@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
-import { getUserById } from '@sv-sdk/auth';
-import { getRoles } from '@sv-sdk/permissions';
-import { fetchAuditLogs } from '@sv-sdk/audit';
+import { getUserById } from '@big0290/auth';
+import { getRoles } from '@big0290/permissions';
+import { fetchAuditLogs } from '@big0290/audit';
 import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ params }) => {

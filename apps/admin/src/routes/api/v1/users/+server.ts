@@ -1,9 +1,9 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { getUsers, createUser } from '@sv-sdk/auth';
-import { enforce } from '@sv-sdk/permissions';
-import { validateRequest } from '@sv-sdk/validators';
-import { signupRequestSchema } from '@sv-sdk/validators';
+import { getUsers, createUser } from '@big0290/auth';
+import { enforce } from '@big0290/permissions';
+import { validateRequest } from '@big0290/validators';
+import { signupRequestSchema } from '@big0290/validators';
 
 /**
  * GET /api/v1/users

@@ -3,9 +3,9 @@
  * Creates and configures the SDK instance
  */
 
-import { db } from '@sv-sdk/db-config'
-import { redis } from '@sv-sdk/cache'
-import { createLogger, LogLevel } from '@sv-sdk/shared'
+import { db } from '@big0290/db-config'
+import { redis } from '@big0290/cache'
+import { createLogger, LogLevel } from '@big0290/shared'
 import { createEventBus } from './event-bus.js'
 import { createSDKContext, type SDKConfig } from './sdk-context.js'
 import { loadPlugins, unloadPlugins } from './plugin-loader.js'

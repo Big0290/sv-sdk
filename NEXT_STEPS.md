@@ -101,37 +101,37 @@ After publishing, users can install with:
 
 ```bash
 # Configure registry
-echo "@sv-sdk:registry=https://npm.pkg.github.com" >> .npmrc
+echo "@big0290:registry=https://npm.pkg.github.com" >> .npmrc
 
 # Install any package
-npm install @sv-sdk/core
-npm install @sv-sdk/auth
-npm install @sv-sdk/ui
+npm install @big0290/core
+npm install @big0290/auth
+npm install @big0290/ui
 ```
 
 For private packages, they'll need authentication:
 
 ```bash
-npm login --scope=@sv-sdk --registry=https://npm.pkg.github.com
+npm login --scope=@big0290 --registry=https://npm.pkg.github.com
 ```
 
 ## 📊 Package Status
 
 All packages ready at version **0.0.1**:
 
-✅ @sv-sdk/core - SDK initialization & plugin system  
-✅ @sv-sdk/auth - BetterAuth authentication  
-✅ @sv-sdk/ui - Svelte 5 component library (100+ components)  
-✅ @sv-sdk/permissions - RBAC with caching  
-✅ @sv-sdk/email - MJML templates & queues  
-✅ @sv-sdk/audit - Compliance logging  
-✅ @sv-sdk/cache - Redis & BullMQ  
-✅ @sv-sdk/security - Rate limiting, CSRF  
-✅ @sv-sdk/db-config - Drizzle ORM  
-✅ @sv-sdk/observability - Health checks  
-✅ @sv-sdk/cli - CLI tool  
-✅ @sv-sdk/validators - Zod schemas  
-✅ @sv-sdk/shared - Utilities
+✅ @big0290/core - SDK initialization & plugin system  
+✅ @big0290/auth - BetterAuth authentication  
+✅ @big0290/ui - Svelte 5 component library (100+ components)  
+✅ @big0290/permissions - RBAC with caching  
+✅ @big0290/email - MJML templates & queues  
+✅ @big0290/audit - Compliance logging  
+✅ @big0290/cache - Redis & BullMQ  
+✅ @big0290/security - Rate limiting, CSRF  
+✅ @big0290/db-config - Drizzle ORM  
+✅ @big0290/observability - Health checks  
+✅ @big0290/cli - CLI tool  
+✅ @big0290/validators - Zod schemas  
+✅ @big0290/shared - Utilities
 
 ## 🎓 Version Management
 

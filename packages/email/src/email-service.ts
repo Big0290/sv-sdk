@@ -6,10 +6,10 @@
 import { enqueueEmail } from './queue.js'
 import { renderTemplate, previewTemplate } from './renderer.js'
 import { getEmailProvider } from './providers/index.js'
-import { db, emailSends, eq, desc } from '@sv-sdk/db-config'
-import { logger, type Result, ok, err } from '@sv-sdk/shared'
-import type { PaginatedResponse, PaginationParams } from '@sv-sdk/shared'
-import { calculatePaginationMeta, calculateOffset } from '@sv-sdk/shared'
+import { db, emailSends, eq, desc } from '@big0290/db-config'
+import { logger, type Result, ok, err } from '@big0290/shared'
+import type { PaginatedResponse, PaginationParams } from '@big0290/shared'
+import { calculatePaginationMeta, calculateOffset } from '@big0290/shared'
 
 /**
  * Send email using queue

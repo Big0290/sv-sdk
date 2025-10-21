@@ -1,10 +1,10 @@
 /**
  * Auth DTOs - Validation schemas for authentication operations
- * Extends base schemas from @sv-sdk/db-config
+ * Extends base schemas from @big0290/db-config
  */
 
 import { z } from 'zod'
-import { insertUserSchema } from '@sv-sdk/db-config'
+import { insertUserSchema } from '@big0290/db-config'
 
 /**
  * Login request schema

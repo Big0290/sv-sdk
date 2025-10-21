@@ -2,9 +2,9 @@
  * Audit log retention policies
  */
 
-import { db, auditLogs } from '@sv-sdk/db-config'
-import { lt } from '@sv-sdk/db-config'
-import { logger } from '@sv-sdk/shared'
+import { db, auditLogs } from '@big0290/db-config'
+import { lt } from '@big0290/db-config'
+import { logger } from '@big0290/shared'
 import fs from 'fs/promises'
 import path from 'path'
 

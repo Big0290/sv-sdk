@@ -4,7 +4,7 @@
 
 import { Queue, Worker, QueueEvents, type QueueOptions, type WorkerOptions, type Job } from 'bullmq'
 import { redis } from './client.js'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * Get Redis connection options from client

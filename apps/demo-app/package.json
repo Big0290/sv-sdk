@@ -15,13 +15,13 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@sv-sdk/auth": "workspace:*",
-    "@sv-sdk/core": "workspace:*",
-    "@sv-sdk/email": "workspace:*",
-    "@sv-sdk/permissions": "workspace:*",
-    "@sv-sdk/security": "workspace:*",
-    "@sv-sdk/shared": "workspace:*",
-    "@sv-sdk/ui": "workspace:*",
+    "@big0290/auth": "workspace:*",
+    "@big0290/core": "workspace:*",
+    "@big0290/email": "workspace:*",
+    "@big0290/permissions": "workspace:*",
+    "@big0290/security": "workspace:*",
+    "@big0290/shared": "workspace:*",
+    "@big0290/ui": "workspace:*",
     "better-auth": "^1.3.28"
   },
   "devDependencies": {

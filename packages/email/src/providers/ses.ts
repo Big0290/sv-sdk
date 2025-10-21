@@ -4,7 +4,7 @@
 
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses'
 import type { EmailProvider, EmailMessage, EmailResult, WebhookEvent } from './types.js'
-import { logger, ok, err } from '@sv-sdk/shared'
+import { logger, ok, err } from '@big0290/shared'
 
 /**
  * AWS SES Provider
@@ -39,7 +39,7 @@ export class SESProvider implements EmailProvider {
     logger.info('AWS SES provider initialized', { region })
   }
 
-  async send(message: EmailMessage): Promise<import('@sv-sdk/shared').Result<EmailResult, Error>> {
+  async send(message: EmailMessage): Promise<import('@big0290/shared').Result<EmailResult, Error>> {
     try {
       const command = new SendEmailCommand({
         Source: message.from,

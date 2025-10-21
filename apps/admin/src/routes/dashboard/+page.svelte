@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Card } from '@sv-sdk/ui';
+	import { Card } from '@big0290/ui';
 
 	const { data }: { data: PageData } = $props();
 

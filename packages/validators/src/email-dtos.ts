@@ -3,7 +3,7 @@
  */
 
 import { z } from 'zod'
-import { insertEmailTemplateSchema } from '@sv-sdk/db-config'
+import { insertEmailTemplateSchema } from '@big0290/db-config'
 
 /**
  * Send email request schema

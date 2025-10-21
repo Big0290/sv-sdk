@@ -3,7 +3,7 @@
  * Type-safe event emission and subscription system
  */
 
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * Event listener function

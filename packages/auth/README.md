@@ -1,4 +1,4 @@
-# @sv-sdk/auth
+# @big0290/auth
 
 Authentication package for SV-SDK using BetterAuth with Drizzle adapter.
 
@@ -16,7 +16,7 @@ Authentication package for SV-SDK using BetterAuth with Drizzle adapter.
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/auth
+pnpm add @big0290/auth
 ```
 
 ## Configuration
@@ -36,7 +36,7 @@ REDIS_URL=redis://...
 ### User Service
 
 ```typescript
-import { getUsers, getUserById, createUser, updateUser, deleteUser } from '@sv-sdk/auth'
+import { getUsers, getUserById, createUser, updateUser, deleteUser } from '@big0290/auth'
 
 // Get users with filtering and pagination
 const result = await getUsers({ role: 'admin', isActive: true }, { page: 1, pageSize: 20 })
@@ -61,7 +61,7 @@ await deleteUser('user-123')
 ### Authentication Flows
 
 ```typescript
-import { login, signup, logout, requestPasswordReset } from '@sv-sdk/auth'
+import { login, signup, logout, requestPasswordReset } from '@big0290/auth'
 
 // Login
 const loginResult = await login(
@@ -105,7 +105,7 @@ await requestPasswordReset('user@example.com', {
 ### Password Policy
 
 ```typescript
-import { enforcePasswordPolicy, validatePassword } from '@sv-sdk/auth'
+import { enforcePasswordPolicy, validatePassword } from '@big0290/auth'
 
 // Enforce policy (throws error if invalid)
 await enforcePasswordPolicy('MyPassword123!')
@@ -123,7 +123,7 @@ const validation = await validatePassword('weak')
 ### Session Management
 
 ```typescript
-import { getUserSessions, revokeSession, revokeAllUserSessions } from '@sv-sdk/auth'
+import { getUserSessions, revokeSession, revokeAllUserSessions } from '@big0290/auth'
 
 // Get all sessions for user
 const sessions = await getUserSessions('user-123')
@@ -146,7 +146,7 @@ Quick example:
 
 ```typescript
 // src/hooks.server.ts
-import { auth } from '@sv-sdk/auth'
+import { auth } from '@big0290/auth'
 import type { Handle } from '@sveltejs/kit'
 
 export const handle: Handle = async ({ event, resolve }) => {

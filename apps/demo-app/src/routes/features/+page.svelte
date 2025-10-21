@@ -1,34 +1,34 @@
 <script lang="ts">
-  import { Card } from '@sv-sdk/ui'
+  import { Card } from '@big0290/ui'
 
   const packages = [
     {
-      name: '@sv-sdk/auth',
+      name: '@big0290/auth',
       description: 'Complete authentication system with BetterAuth integration',
       features: ['Email/password auth', 'Email verification', 'Password reset', 'Session management'],
     },
     {
-      name: '@sv-sdk/permissions',
+      name: '@big0290/permissions',
       description: 'RBAC system with caching and resource-level permissions',
       features: ['Role-based access', 'Permission caching', 'Resource ownership', 'Audit logging'],
     },
     {
-      name: '@sv-sdk/email',
+      name: '@big0290/email',
       description: 'Email system with MJML templates and queue processing',
       features: ['MJML templates', 'Multi-provider', 'Queue processing', 'Delivery tracking'],
     },
     {
-      name: '@sv-sdk/audit',
+      name: '@big0290/audit',
       description: 'Comprehensive audit logging with PII handling',
       features: ['Append-only logs', 'PII masking', 'Retention policies', 'Export (CSV/JSON)'],
     },
     {
-      name: '@sv-sdk/ui',
+      name: '@big0290/ui',
       description: 'Accessible Svelte 5 component library',
       features: ['Tailwind CSS', 'Dark mode', 'WCAG 2.1 AA', 'Responsive'],
     },
     {
-      name: '@sv-sdk/cli',
+      name: '@big0290/cli',
       description: 'Command-line tools for administration',
       features: ['User management', 'Email testing', 'Audit export', 'Health checks'],
     },

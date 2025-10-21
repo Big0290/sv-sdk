@@ -24,7 +24,7 @@ This guide covers:
 ## 1. Installation
 
 ```bash
-pnpm add @sv-sdk/auth @sv-sdk/permissions
+pnpm add @big0290/auth @big0290/permissions
 ```
 
 ## 2. Environment Configuration
@@ -72,9 +72,9 @@ Create `src/hooks.server.ts`:
 
 ```typescript
 import type { Handle } from '@sveltejs/kit'
-import { auth } from '@sv-sdk/auth'
-import { checkRoutePermission } from '@sv-sdk/permissions'
-import { logAudit } from '@sv-sdk/audit'
+import { auth } from '@big0290/auth'
+import { checkRoutePermission } from '@big0290/permissions'
+import { logAudit } from '@big0290/audit'
 
 export const handle: Handle = async ({ event, resolve }) => {
   const { pathname } = event.url
@@ -146,7 +146,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 Update `src/app.d.ts` for TypeScript:
 
 ```typescript
-import type { User, Session } from '@sv-sdk/auth'
+import type { User, Session } from '@big0290/auth'
 
 declare global {
   namespace App {
@@ -166,7 +166,7 @@ export {}
 
 ```svelte
 <script lang="ts">
-  import { Button, Input, Card, Alert } from '@sv-sdk/ui'
+  import { Button, Input, Card, Alert } from '@big0290/ui'
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
 
@@ -280,7 +280,7 @@ export {}
 
 ```svelte
 <script lang="ts">
-  import { Button, Input, Card, Alert } from '@sv-sdk/ui'
+  import { Button, Input, Card, Alert } from '@big0290/ui'
   import { goto } from '$app/navigation'
 
   let email = $state('')
@@ -439,8 +439,8 @@ export {}
 
 ```typescript
 import { json } from '@sveltejs/kit'
-import { login } from '@sv-sdk/auth'
-import { logAudit } from '@sv-sdk/audit'
+import { login } from '@big0290/auth'
+import { logAudit } from '@big0290/audit'
 import type { RequestHandler } from './$types'
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
@@ -476,9 +476,9 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 
 ```typescript
 import { json } from '@sveltejs/kit'
-import { signup } from '@sv-sdk/auth'
-import { sendEmail } from '@sv-sdk/email'
-import { logAudit } from '@sv-sdk/audit'
+import { signup } from '@big0290/auth'
+import { sendEmail } from '@big0290/email'
+import { logAudit } from '@big0290/audit'
 import type { RequestHandler } from './$types'
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
@@ -514,8 +514,8 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 
 ```typescript
 import { json } from '@sveltejs/kit'
-import { logout } from '@sv-sdk/auth'
-import { logAudit } from '@sv-sdk/audit'
+import { logout } from '@big0290/auth'
+import { logAudit } from '@big0290/audit'
 import type { RequestHandler } from './$types'
 
 export const POST: RequestHandler = async ({ locals, getClientAddress }) => {
@@ -540,7 +540,7 @@ export const POST: RequestHandler = async ({ locals, getClientAddress }) => {
 
 ```svelte
 <script lang="ts">
-  import { Button, Input, Card, Alert } from '@sv-sdk/ui'
+  import { Button, Input, Card, Alert } from '@big0290/ui'
 
   let email = $state('')
   let loading = $state(false)
@@ -622,7 +622,7 @@ export const POST: RequestHandler = async ({ locals, getClientAddress }) => {
 
 ```svelte
 <script lang="ts">
-  import { Button, Card } from '@sv-sdk/ui'
+  import { Button, Card } from '@big0290/ui'
   import type { PageData } from './$types'
 
   let { data }: { data: PageData } = $props()

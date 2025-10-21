@@ -1,5 +1,5 @@
 {
-  "name": "@sv-sdk/auth",
+  "name": "@big0290/auth",
   "version": "0.0.1",
   "type": "module",
   "repository": {
@@ -34,11 +34,11 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sv-sdk/cache": "workspace:*",
-    "@sv-sdk/db-config": "workspace:*",
-    "@sv-sdk/security": "workspace:*",
-    "@sv-sdk/shared": "workspace:*",
-    "@sv-sdk/validators": "workspace:*",
+    "@big0290/cache": "workspace:*",
+    "@big0290/db-config": "workspace:*",
+    "@big0290/security": "workspace:*",
+    "@big0290/shared": "workspace:*",
+    "@big0290/validators": "workspace:*",
     "better-auth": "^1.3.3",
     "nanoid": "^5.0.9"
   },

@@ -3,11 +3,11 @@
  * Process delivery status updates from email providers
  */
 
-import { db, emailSends, emailWebhooks } from '@sv-sdk/db-config'
-import { eq } from '@sv-sdk/db-config'
+import { db, emailSends, emailWebhooks } from '@big0290/db-config'
+import { eq } from '@big0290/db-config'
 import { getEmailProvider } from './providers/index.js'
-import { logAudit } from '@sv-sdk/audit'
-import { logger } from '@sv-sdk/shared'
+import { logAudit } from '@big0290/audit'
+import { logger } from '@big0290/shared'
 import { nanoid } from 'nanoid'
 import type { WebhookEvent } from './providers/types.js'
 

@@ -3,9 +3,9 @@
  */
 
 import { Command } from 'commander'
-import { testTemplate, getEmailStats } from '@sv-sdk/email'
-import { db, emailTemplates } from '@sv-sdk/db-config'
-import { validateTemplateMJML } from '@sv-sdk/email'
+import { testTemplate, getEmailStats } from '@big0290/email'
+import { db, emailTemplates } from '@big0290/db-config'
+import { validateTemplateMJML } from '@big0290/email'
 import chalk from 'chalk'
 import inquirer from 'inquirer'
 import ora from 'ora'
@@ -171,4 +171,3 @@ export function createEmailCommand(): Command {
 
   return email
 }
-

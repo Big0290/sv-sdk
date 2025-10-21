@@ -5,7 +5,7 @@ Production-ready authentication system powered by BetterAuth with Drizzle adapte
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/auth
+pnpm add @big0290/auth
 ```
 
 ## Features
@@ -35,7 +35,7 @@ SESSION_MAX_AGE=604800  # 7 days
 ```typescript
 // src/hooks.server.ts
 import type { Handle } from '@sveltejs/kit'
-import { auth } from '@sv-sdk/auth'
+import { auth } from '@big0290/auth'
 
 export const handle: Handle = async ({ event, resolve }) => {
   // Get session
@@ -56,7 +56,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 ### User Signup
 
 ```typescript
-import { signup } from '@sv-sdk/auth'
+import { signup } from '@big0290/auth'
 
 const result = await signup(
   {
@@ -81,7 +81,7 @@ if (result.success) {
 ### User Login
 
 ```typescript
-import { login } from '@sv-sdk/auth'
+import { login } from '@big0290/auth'
 
 const result = await login(
   {
@@ -106,7 +106,7 @@ if (result.success) {
 ### User Logout
 
 ```typescript
-import { logout } from '@sv-sdk/auth'
+import { logout } from '@big0290/auth'
 
 await logout(sessionToken)
 // Session is invalidated
@@ -115,7 +115,7 @@ await logout(sessionToken)
 ### Password Reset
 
 ```typescript
-import { requestPasswordReset, resetPassword } from '@sv-sdk/auth'
+import { requestPasswordReset, resetPassword } from '@big0290/auth'
 
 // Step 1: Request reset
 await requestPasswordReset('user@example.com', {
@@ -135,7 +135,7 @@ if (result.success) {
 ### Get Users
 
 ```typescript
-import { getUsers } from '@sv-sdk/auth'
+import { getUsers } from '@big0290/auth'
 
 const result = await getUsers(
   { role: 'admin', isActive: true }, // Filters
@@ -151,7 +151,7 @@ result.data.forEach((user) => {
 ### Get User by ID
 
 ```typescript
-import { getUserById } from '@sv-sdk/auth'
+import { getUserById } from '@big0290/auth'
 
 // Cached in Redis (5 min TTL)
 const user = await getUserById('user-123')
@@ -163,7 +163,7 @@ if (user) {
 ### Create User
 
 ```typescript
-import { createUser } from '@sv-sdk/auth'
+import { createUser } from '@big0290/auth'
 
 const user = await createUser({
   email: 'new-user@example.com',
@@ -176,7 +176,7 @@ const user = await createUser({
 ### Update User
 
 ```typescript
-import { updateUser } from '@sv-sdk/auth'
+import { updateUser } from '@big0290/auth'
 
 await updateUser('user-123', {
   name: 'John Updated',
@@ -188,7 +188,7 @@ await updateUser('user-123', {
 ### Delete User
 
 ```typescript
-import { deleteUser } from '@sv-sdk/auth'
+import { deleteUser } from '@big0290/auth'
 
 // Soft delete
 await deleteUser('user-123')
@@ -199,7 +199,7 @@ await deleteUser('user-123')
 ### Get User Sessions
 
 ```typescript
-import { getUserSessions } from '@sv-sdk/auth'
+import { getUserSessions } from '@big0290/auth'
 
 const sessions = await getUserSessions('user-123')
 sessions.forEach((session) => {
@@ -210,7 +210,7 @@ sessions.forEach((session) => {
 ### Revoke Session
 
 ```typescript
-import { revokeSession } from '@sv-sdk/auth'
+import { revokeSession } from '@big0290/auth'
 
 await revokeSession('session-abc')
 ```
@@ -218,7 +218,7 @@ await revokeSession('session-abc')
 ### Revoke All Sessions
 
 ```typescript
-import { revokeAllUserSessions } from '@sv-sdk/auth'
+import { revokeAllUserSessions } from '@big0290/auth'
 
 // Revoke all except current
 await revokeAllUserSessions('user-123', 'current-session-id')
@@ -230,7 +230,7 @@ await revokeAllUserSessions('user-123')
 ### Clean Expired Sessions
 
 ```typescript
-import { cleanExpiredSessions } from '@sv-sdk/auth'
+import { cleanExpiredSessions } from '@big0290/auth'
 
 // Run as cron job
 const cleaned = await cleanExpiredSessions()
@@ -242,7 +242,7 @@ console.log(`Cleaned ${cleaned} expired sessions`)
 ### Enforce Password Policy
 
 ```typescript
-import { enforcePasswordPolicy } from '@sv-sdk/auth'
+import { enforcePasswordPolicy } from '@big0290/auth'
 
 try {
   await enforcePasswordPolicy('MyPassword123!')
@@ -255,7 +255,7 @@ try {
 ### Validate Password
 
 ```typescript
-import { validatePassword } from '@sv-sdk/auth'
+import { validatePassword } from '@big0290/auth'
 
 const validation = await validatePassword('weak')
 
@@ -280,7 +280,7 @@ console.log('Score:', validation.score) // 0-4
 ### Custom Password Policy
 
 ```typescript
-import { configurePasswordPolicy } from '@sv-sdk/auth'
+import { configurePasswordPolicy } from '@big0290/auth'
 
 configurePasswordPolicy({
   minLength: 16,
@@ -312,7 +312,7 @@ Rate limits are per IP address and stored in Redis.
 ```typescript
 // src/routes/api/auth/login/+server.ts
 import { json } from '@sveltejs/kit'
-import { login } from '@sv-sdk/auth'
+import { login } from '@big0290/auth'
 import type { RequestHandler } from './$types'
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
@@ -339,7 +339,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 ```typescript
 // src/routes/api/auth/signup/+server.ts
 import { json } from '@sveltejs/kit'
-import { signup } from '@sv-sdk/auth'
+import { signup } from '@big0290/auth'
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
   const body = await request.json()
@@ -361,7 +361,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 ```typescript
 // src/routes/api/auth/logout/+server.ts
 import { json } from '@sveltejs/kit'
-import { logout } from '@sv-sdk/auth'
+import { logout } from '@big0290/auth'
 
 export const POST: RequestHandler = async ({ locals }) => {
   if (locals.session) {
@@ -374,7 +374,7 @@ export const POST: RequestHandler = async ({ locals }) => {
 ## TypeScript Types
 
 ```typescript
-import type { User, Session, AuthResult, SignupData, LoginData, PasswordValidation } from '@sv-sdk/auth'
+import type { User, Session, AuthResult, SignupData, LoginData, PasswordValidation } from '@big0290/auth'
 
 // User type
 interface User {

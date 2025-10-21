@@ -1,5 +1,5 @@
 {
-  "name": "@sv-sdk/validators",
+  "name": "@big0290/validators",
   "version": "0.0.1",
   "type": "module",
   "repository": {
@@ -36,8 +36,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sv-sdk/db-config": "workspace:*",
-    "@sv-sdk/shared": "workspace:*",
+    "@big0290/db-config": "workspace:*",
+    "@big0290/shared": "workspace:*",
     "zod": "^3.24.1"
   },
   "devDependencies": {

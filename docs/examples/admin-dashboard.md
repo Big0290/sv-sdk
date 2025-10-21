@@ -43,10 +43,10 @@ The authentication is configured in `hooks.server.ts`:
 
 ```typescript
 import type { Handle } from '@sveltejs/kit'
-import { auth } from '@sv-sdk/auth'
-import { checkRoutePermission } from '@sv-sdk/permissions'
-import { rateLimiter } from '@sv-sdk/security'
-import { logAudit } from '@sv-sdk/audit'
+import { auth } from '@big0290/auth'
+import { checkRoutePermission } from '@big0290/permissions'
+import { rateLimiter } from '@big0290/security'
+import { logAudit } from '@big0290/audit'
 
 export const handle: Handle = async ({ event, resolve }) => {
   const { pathname } = event.url
@@ -139,7 +139,7 @@ The admin layout provides consistent structure:
 ```svelte
 <!-- routes/+layout.svelte -->
 <script lang="ts">
-  import { Sidebar, Navbar, Toast } from '@sv-sdk/ui'
+  import { Sidebar, Navbar, Toast } from '@big0290/ui'
   import { page } from '$app/stores'
 
   let { data, children } = $props()
@@ -183,7 +183,7 @@ The admin layout provides consistent structure:
 ```svelte
 <!-- routes/users/+page.svelte -->
 <script lang="ts">
-  import { Button, Table, Input, Badge, Dropdown } from '@sv-sdk/ui'
+  import { Button, Table, Input, Badge, Dropdown } from '@big0290/ui'
   import { goto } from '$app/navigation'
   import type { PageData } from './$types'
 
@@ -272,8 +272,8 @@ The admin layout provides consistent structure:
 
 ```typescript
 // routes/users/+page.server.ts
-import { getUsers } from '@sv-sdk/auth'
-import { can } from '@sv-sdk/permissions'
+import { getUsers } from '@big0290/auth'
+import { can } from '@big0290/permissions'
 import type { PageServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 
@@ -298,7 +298,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 ```svelte
 <!-- routes/users/new/+page.svelte -->
 <script lang="ts">
-  import { Button, Input, Select, Card, Alert } from '@sv-sdk/ui'
+  import { Button, Input, Select, Card, Alert } from '@big0290/ui'
   import { goto } from '$app/navigation'
 
   let email = $state('')
@@ -378,7 +378,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 ```svelte
 <!-- routes/audit/+page.svelte -->
 <script lang="ts">
-  import { Table, Input, Badge, Card } from '@sv-sdk/ui'
+  import { Table, Input, Badge, Card } from '@big0290/ui'
   import type { PageData } from './$types'
 
   let { data }: { data: PageData } = $props()
@@ -434,7 +434,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 ```svelte
 <!-- routes/dashboard/+page.svelte -->
 <script lang="ts">
-  import { Card, Badge, Spinner } from '@sv-sdk/ui'
+  import { Card, Badge, Spinner } from '@big0290/ui'
   import { onMount } from 'svelte'
   import type { PageData } from './$types'
 
@@ -523,7 +523,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 2. **Layout** - Consistent sidebar and navbar for all admin pages
 3. **Permissions** - Every route checks permissions before loading
 4. **Audit Logging** - All admin actions are logged automatically
-5. **UI Components** - @sv-sdk/ui components for consistent design
+5. **UI Components** - @big0290/ui components for consistent design
 6. **Real-time** - Dashboard updates automatically
 7. **Type Safety** - Full TypeScript throughout
 
@@ -531,7 +531,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 ```bash
 # From project root
-pnpm --filter @sv-sdk/admin dev
+pnpm --filter @big0290/admin dev
 
 # Visit http://localhost:5173
 ```

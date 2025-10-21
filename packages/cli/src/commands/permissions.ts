@@ -3,8 +3,8 @@
  */
 
 import { Command } from 'commander'
-import { getRoles, assignRole, can } from '@sv-sdk/permissions'
-import { getUserByEmail } from '@sv-sdk/auth'
+import { getRoles, assignRole, can } from '@big0290/permissions'
+import { getUserByEmail } from '@big0290/auth'
 import chalk from 'chalk'
 import inquirer from 'inquirer'
 import ora from 'ora'

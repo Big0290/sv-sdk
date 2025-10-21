@@ -3,10 +3,10 @@
  * Append-only audit trail with PII masking
  */
 
-import { db, auditLogs, type NewAuditLog } from '@sv-sdk/db-config'
+import { db, auditLogs, type NewAuditLog } from '@big0290/db-config'
 import { maskPII } from './pii-handler.js'
 import { generateHash } from './integrity.js'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 import { nanoid } from 'nanoid'
 
 /**

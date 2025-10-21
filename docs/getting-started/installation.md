@@ -68,10 +68,10 @@ Add SV-SDK packages to your existing SvelteKit project:
 cd your-sveltekit-project
 
 # Install core packages
-pnpm add @sv-sdk/core @sv-sdk/auth @sv-sdk/permissions @sv-sdk/ui
+pnpm add @big0290/core @big0290/auth @big0290/permissions @big0290/ui
 
 # Install additional packages as needed
-pnpm add @sv-sdk/email @sv-sdk/audit @sv-sdk/cache @sv-sdk/security
+pnpm add @big0290/email @big0290/audit @big0290/cache @big0290/security
 ```
 
 ### Method 3: Use Docker (Easiest)
@@ -259,7 +259,7 @@ redis-cli -u redis://localhost:6379 ping
 pnpm dev
 
 # Or start specific apps
-pnpm --filter @sv-sdk/admin dev
+pnpm --filter @big0290/admin dev
 pnpm --filter demo-app dev
 ```
 

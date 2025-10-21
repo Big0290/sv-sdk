@@ -1,4 +1,4 @@
-# @sv-sdk/email
+# @big0290/email
 
 Comprehensive email system with MJML templates, multiple providers, queue processing, and webhook handling.
 
@@ -16,7 +16,7 @@ Comprehensive email system with MJML templates, multiple providers, queue proces
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/email
+pnpm add @big0290/email
 ```
 
 ## Configuration
@@ -40,7 +40,7 @@ REDIS_URL=redis://...
 ### Send Email
 
 ```typescript
-import { sendEmail } from '@sv-sdk/email'
+import { sendEmail } from '@big0290/email'
 
 // Send email using queue
 const result = await sendEmail('verification_email', 'user@example.com', {
@@ -56,7 +56,7 @@ if (result.success) {
 ### Send Immediate
 
 ```typescript
-import { sendEmailImmediate } from '@sv-sdk/email'
+import { sendEmailImmediate } from '@big0290/email'
 
 // Bypass queue for critical emails
 const result = await sendEmailImmediate('password_reset', 'user@example.com', {
@@ -84,12 +84,9 @@ if (result.success) {
 ### Get Email History
 
 ```typescript
-import { getEmailHistory } from '@sv-sdk/email'
+import { getEmailHistory } from '@big0290/email'
 
-const history = await getEmailHistory(
-  { recipient: 'user@example.com', status: 'delivered' },
-  { page: 1, pageSize: 20 }
-)
+const history = await getEmailHistory({ recipient: 'user@example.com', status: 'delivered' }, { page: 1, pageSize: 20 })
 
 console.log(`Found ${history.pagination.totalCount} emails`)
 ```
@@ -97,7 +94,7 @@ console.log(`Found ${history.pagination.totalCount} emails`)
 ### Email Statistics
 
 ```typescript
-import { getEmailStats } from '@sv-sdk/email'
+import { getEmailStats } from '@big0290/email'
 
 const stats = await getEmailStats()
 // {
@@ -117,7 +114,7 @@ const openRate = (stats.opened / stats.delivered) * 100
 ### Test Template
 
 ```typescript
-import { testTemplate } from '@sv-sdk/email'
+import { testTemplate } from '@big0290/email'
 
 await testTemplate('verification_email', 'test@example.com', {
   userName: 'Test User',
@@ -130,7 +127,7 @@ await testTemplate('verification_email', 'test@example.com', {
 Templates are stored in the database. Use the admin panel or create programmatically:
 
 ```typescript
-import { db, emailTemplates } from '@sv-sdk/db-config'
+import { db, emailTemplates } from '@big0290/db-config'
 
 await db.insert(emailTemplates).values({
   id: nanoid(),
@@ -162,12 +159,8 @@ MJML is a responsive email framework:
   <mj-body>
     <mj-section background-color="#f0f0f0">
       <mj-column>
-        <mj-text font-size="20px" color="#333">
-          Hello {{userName}}!
-        </mj-text>
-        <mj-button href="{{actionUrl}}">
-          Click Here
-        </mj-button>
+        <mj-text font-size="20px" color="#333"> Hello {{ userName }}! </mj-text>
+        <mj-button href="{{actionUrl}}"> Click Here </mj-button>
       </mj-column>
     </mj-section>
   </mj-body>
@@ -175,6 +168,7 @@ MJML is a responsive email framework:
 ```
 
 **Components**:
+
 - `<mj-text>` - Text content
 - `<mj-button>` - Call-to-action button
 - `<mj-image>` - Images
@@ -182,6 +176,7 @@ MJML is a responsive email framework:
 - `<mj-spacer>` - Vertical spacing
 
 **Resources**:
+
 - [MJML Documentation](https://mjml.io/documentation/)
 - [MJML Try It Live](https://mjml.io/try-it-live)
 
@@ -190,7 +185,7 @@ MJML is a responsive email framework:
 Handle delivery events from email providers:
 
 ```typescript
-import { processWebhook } from '@sv-sdk/email'
+import { processWebhook } from '@big0290/email'
 
 // In your webhook endpoint
 export async function POST({ request }) {
@@ -204,6 +199,7 @@ export async function POST({ request }) {
 ```
 
 **Webhook Events**:
+
 - `delivered` - Email delivered successfully
 - `bounced` - Email bounced
 - `opened` - Recipient opened email
@@ -214,14 +210,15 @@ export async function POST({ request }) {
 ## Queue Management
 
 The email queue automatically:
+
 - ✅ Retries failed sends (3 attempts with exponential backoff)
 - ✅ Removes old jobs (completed: 100, failed: 500)
 - ✅ Handles high volume (>100 emails/second)
 - ✅ Prioritizes urgent emails
 
 ```typescript
-import { enqueueEmail } from '@sv-sdk/email'
-import { QUEUE_PRIORITY } from '@sv-sdk/cache'
+import { enqueueEmail } from '@big0290/email'
+import { QUEUE_PRIORITY } from '@big0290/cache'
 
 // High priority
 await enqueueEmail('password_reset', to, variables, {
@@ -259,14 +256,17 @@ VALUES
 ## Performance
 
 **Template Rendering**:
+
 - < 100ms per email
 - MJML compilation cached
 
 **Queue Throughput**:
+
 - > 100 emails/second
 - Configurable concurrency
 
 **Provider Latency**:
+
 - Brevo: ~200-500ms
 - Mock: ~10ms
 
@@ -325,4 +325,3 @@ pnpm test:coverage
 ## License
 
 MIT
-

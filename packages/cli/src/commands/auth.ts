@@ -3,7 +3,7 @@
  */
 
 import { Command } from 'commander'
-import { getUsers, createUser, deleteUser, getUserByEmail } from '@sv-sdk/auth'
+import { getUsers, createUser, deleteUser, getUserByEmail } from '@big0290/auth'
 import chalk from 'chalk'
 import inquirer from 'inquirer'
 import ora from 'ora'
@@ -21,10 +21,7 @@ export function createAuthCommand(): Command {
       const spinner = ora('Fetching users...').start()
 
       try {
-        const result = await getUsers(
-          { role: options.role },
-          { page: 1, pageSize: parseInt(options.limit) }
-        )
+        const result = await getUsers({ role: options.role }, { page: 1, pageSize: parseInt(options.limit) })
 
         spinner.succeed(`Found ${result.pagination.totalCount} users`)
 
@@ -160,4 +157,3 @@ export function createAuthCommand(): Command {
 
   return auth
 }
-

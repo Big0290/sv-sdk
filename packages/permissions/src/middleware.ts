@@ -3,7 +3,7 @@
  */
 
 import { can, enforce, type PermissionContext } from './rbac.js'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * Create permission check middleware

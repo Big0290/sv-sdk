@@ -1,4 +1,4 @@
-# @sv-sdk/audit
+# @big0290/audit
 
 Comprehensive audit logging package with PII handling, retention policies, and log integrity.
 
@@ -16,7 +16,7 @@ Comprehensive audit logging package with PII handling, retention policies, and l
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/audit
+pnpm add @big0290/audit
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ pnpm add @sv-sdk/audit
 ### Basic Logging
 
 ```typescript
-import { logAudit } from '@sv-sdk/audit'
+import { logAudit } from '@big0290/audit'
 
 // Log an event
 await logAudit('user.login', {
@@ -48,7 +48,7 @@ await logAudit('admin.action', { adminId: 'admin-1', action: 'view_logs' }, { ma
 ### Query Logs
 
 ```typescript
-import { fetchAuditLogs } from '@sv-sdk/audit'
+import { fetchAuditLogs } from '@big0290/audit'
 
 // Get logs with filters
 const result = await fetchAuditLogs(
@@ -69,7 +69,7 @@ console.log(result.data)
 ### Search Logs
 
 ```typescript
-import { searchAuditLogs } from '@sv-sdk/audit'
+import { searchAuditLogs } from '@big0290/audit'
 
 // Full-text search in metadata
 const results = await searchAuditLogs('payment failed', { page: 1, pageSize: 20 })
@@ -78,7 +78,7 @@ const results = await searchAuditLogs('payment failed', { page: 1, pageSize: 20 
 ### Export Logs
 
 ```typescript
-import { exportAuditLogsJSON, exportAuditLogsCSV } from '@sv-sdk/audit'
+import { exportAuditLogsJSON, exportAuditLogsCSV } from '@big0290/audit'
 
 // Export to JSON
 const json = await exportAuditLogsJSON({
@@ -99,7 +99,7 @@ await fs.writeFile('login-logs.csv', csv)
 ### Retention Policy
 
 ```typescript
-import { applyRetentionPolicy, DEFAULT_RETENTION_POLICY } from '@sv-sdk/audit'
+import { applyRetentionPolicy, DEFAULT_RETENTION_POLICY } from '@big0290/audit'
 
 // Apply default policy (365 days)
 const result = await applyRetentionPolicy()
@@ -121,7 +121,7 @@ await applyRetentionPolicy({
 For high-volume logging, use batch mode:
 
 ```typescript
-import { logAudit, flushBatch } from '@sv-sdk/audit'
+import { logAudit, flushBatch } from '@big0290/audit'
 
 // Enable batch mode
 await logAudit('event.1', { data: 'value' }, { batch: true })
@@ -140,7 +140,7 @@ await flushBatch()
 ### Log Integrity
 
 ```typescript
-import { verifyHashChain } from '@sv-sdk/audit'
+import { verifyHashChain } from '@big0290/audit'
 
 // Verify log integrity
 const logs = await fetchAuditLogs()
@@ -167,7 +167,7 @@ Automatically masks sensitive fields:
 ### Configure Custom PII Fields
 
 ```typescript
-import { configurePIIFields } from '@sv-sdk/audit'
+import { configurePIIFields } from '@big0290/audit'
 
 configurePIIFields(['customerName', 'billingAddress', 'taxId'])
 ```
@@ -175,7 +175,7 @@ configurePIIFields(['customerName', 'billingAddress', 'taxId'])
 ### Manual PII Masking
 
 ```typescript
-import { maskPII } from '@sv-sdk/audit'
+import { maskPII } from '@big0290/audit'
 
 const data = {
   email: 'user@example.com',
@@ -284,10 +284,10 @@ pnpm test:coverage
 
 Integrated with:
 
-- `@sv-sdk/auth` - Authentication events
-- `@sv-sdk/permissions` - Permission events
-- `@sv-sdk/email` - Email events
-- `@sv-sdk/security` - Security events
+- `@big0290/auth` - Authentication events
+- `@big0290/permissions` - Permission events
+- `@big0290/email` - Email events
+- `@big0290/security` - Security events
 
 ## License
 

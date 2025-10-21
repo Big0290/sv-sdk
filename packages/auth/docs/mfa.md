@@ -1,6 +1,6 @@
 # Multi-Factor Authentication (MFA) - Future Feature
 
-This document outlines the plan for implementing MFA in a future version of @sv-sdk/auth.
+This document outlines the plan for implementing MFA in a future version of @big0290/auth.
 
 ## Overview
 
@@ -60,7 +60,7 @@ CREATE TABLE auth.mfa_sessions (
 **Requirements**:
 
 - SMS provider integration (Twilio, SNS)
-- Email provider (already available via @sv-sdk/email)
+- Email provider (already available via @big0290/email)
 
 ### Phase 3: WebAuthn / Passkeys
 

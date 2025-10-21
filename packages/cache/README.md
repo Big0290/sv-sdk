@@ -1,4 +1,4 @@
-# @sv-sdk/cache
+# @big0290/cache
 
 Redis caching and BullMQ queue system for the SV-SDK platform.
 
@@ -13,7 +13,7 @@ Redis caching and BullMQ queue system for the SV-SDK platform.
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/cache
+pnpm add @big0290/cache
 ```
 
 ## Configuration
@@ -29,7 +29,7 @@ REDIS_URL=redis://:password@localhost:6379
 ### Cache Operations
 
 ```typescript
-import { cacheGet, cacheSet, cacheDelete, CACHE_TTL, CACHE_KEYS } from '@sv-sdk/cache'
+import { cacheGet, cacheSet, cacheDelete, CACHE_TTL, CACHE_KEYS } from '@big0290/cache'
 
 // Set value with TTL
 await cacheSet(CACHE_KEYS.user('123'), { name: 'John Doe', email: 'john@example.com' }, CACHE_TTL.MEDIUM)
@@ -47,7 +47,7 @@ await cacheDeletePattern('user:*')
 ### Queue Operations
 
 ```typescript
-import { createQueue, createWorker, type Job } from '@sv-sdk/cache'
+import { createQueue, createWorker, type Job } from '@big0290/cache'
 
 // Create queue
 const emailQueue = createQueue('emails')
@@ -84,7 +84,7 @@ const metrics = await getQueueMetrics(emailQueue)
 ### Health Checks
 
 ```typescript
-import { checkRedisHealth, pingRedis } from '@sv-sdk/cache'
+import { checkRedisHealth, pingRedis } from '@big0290/cache'
 
 // Quick health check
 const healthy = await pingRedis()
@@ -105,7 +105,7 @@ const health = await checkRedisHealth()
 Use consistent key naming with factory functions:
 
 ```typescript
-import { CACHE_KEYS } from '@sv-sdk/cache'
+import { CACHE_KEYS } from '@big0290/cache'
 
 // Predefined key patterns
 CACHE_KEYS.user('123') // 'user:123'
@@ -120,7 +120,7 @@ CACHE_KEYS.build('custom', 'key', '123') // 'custom:key:123'
 ### TTL Constants
 
 ```typescript
-import { CACHE_TTL } from '@sv-sdk/cache'
+import { CACHE_TTL } from '@big0290/cache'
 
 CACHE_TTL.SHORT // 60 seconds (1 minute)
 CACHE_TTL.MEDIUM // 300 seconds (5 minutes)
@@ -134,7 +134,7 @@ CACHE_TTL.WEEK // 604800 seconds (7 days)
 ### Multi-Get/Set
 
 ```typescript
-import { cacheMultiGet, cacheMultiSet } from '@sv-sdk/cache'
+import { cacheMultiGet, cacheMultiSet } from '@big0290/cache'
 
 // Get multiple keys at once
 const values = await cacheMultiGet<User>(['user:1', 'user:2', 'user:3'])
@@ -150,7 +150,7 @@ await cacheMultiSet([
 ### Cache Increment/Decrement
 
 ```typescript
-import { cacheIncrement, cacheDecrement } from '@sv-sdk/cache'
+import { cacheIncrement, cacheDecrement } from '@big0290/cache'
 
 // Increment counter
 const newValue = await cacheIncrement('page:views', 1)
@@ -162,7 +162,7 @@ await cacheDecrement('rate_limit:user:123', 1)
 ### Queue Events
 
 ```typescript
-import { createQueueEvents } from '@sv-sdk/cache'
+import { createQueueEvents } from '@big0290/cache'
 
 const queueEvents = createQueueEvents('emails')
 
@@ -182,7 +182,7 @@ queueEvents.on('progress', ({ jobId, data }) => {
 ### Queue Management
 
 ```typescript
-import { pauseQueue, resumeQueue, cleanQueue, drainQueue } from '@sv-sdk/cache'
+import { pauseQueue, resumeQueue, cleanQueue, drainQueue } from '@big0290/cache'
 
 // Pause queue (stop processing new jobs)
 await pauseQueue(queue)
@@ -257,7 +257,7 @@ return result
 Close connections on application shutdown:
 
 ```typescript
-import { closeRedisConnection } from '@sv-sdk/cache'
+import { closeRedisConnection } from '@big0290/cache'
 
 process.on('SIGTERM', async () => {
   await closeRedisConnection()
@@ -282,17 +282,17 @@ pnpm test:coverage
 
 Works seamlessly with:
 
-- `@sv-sdk/auth` - Session caching
-- `@sv-sdk/permissions` - Permission caching
-- `@sv-sdk/email` - Email queue processing
-- `@sv-sdk/security` - Rate limiting
+- `@big0290/auth` - Session caching
+- `@big0290/permissions` - Permission caching
+- `@big0290/email` - Email queue processing
+- `@big0290/security` - Rate limiting
 
 ## Monitoring
 
 Monitor Redis health:
 
 ```typescript
-import { checkRedisHealthDetailed } from '@sv-sdk/cache'
+import { checkRedisHealthDetailed } from '@big0290/cache'
 
 setInterval(async () => {
   const health = await checkRedisHealthDetailed()

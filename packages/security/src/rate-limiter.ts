@@ -3,8 +3,8 @@
  * Implements sliding window rate limiting
  */
 
-import { redis, CACHE_KEYS } from '@sv-sdk/cache'
-import { RateLimitError, logger } from '@sv-sdk/shared'
+import { redis, CACHE_KEYS } from '@big0290/cache'
+import { RateLimitError, logger } from '@big0290/shared'
 
 /**
  * Rate limit configuration

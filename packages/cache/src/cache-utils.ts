@@ -4,7 +4,7 @@
  */
 
 import { redis } from './client.js'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * Get value from cache

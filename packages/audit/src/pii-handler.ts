@@ -3,7 +3,7 @@
  * Automatically detects and masks sensitive data
  */
 
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * PII field patterns

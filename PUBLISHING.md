@@ -106,13 +106,13 @@ https://github.com/Big0290/sv-sdk/packages
 And can be installed with:
 
 ```bash
-# Configure npm to use GitHub Package Registry for @sv-sdk scope
-echo "@sv-sdk:registry=https://npm.pkg.github.com" >> .npmrc
+# Configure npm to use GitHub Package Registry for @big0290 scope
+echo "@big0290:registry=https://npm.pkg.github.com" >> .npmrc
 
 # Install packages
-npm install @sv-sdk/core
-npm install @sv-sdk/auth
-npm install @sv-sdk/ui
+npm install @big0290/core
+npm install @big0290/auth
+npm install @big0290/ui
 # ... etc
 ```
 
@@ -120,21 +120,21 @@ npm install @sv-sdk/ui
 
 The following packages will be published:
 
-| Package                 | Description                             |
-| ----------------------- | --------------------------------------- |
-| `@sv-sdk/core`          | Core SDK and plugin system              |
-| `@sv-sdk/auth`          | Authentication with BetterAuth          |
-| `@sv-sdk/ui`            | Svelte 5 component library              |
-| `@sv-sdk/permissions`   | RBAC permissions system                 |
-| `@sv-sdk/email`         | Email system with MJML templates        |
-| `@sv-sdk/audit`         | Audit logging and compliance            |
-| `@sv-sdk/cache`         | Redis caching and BullMQ queues         |
-| `@sv-sdk/security`      | Rate limiting, CSRF, security headers   |
-| `@sv-sdk/db-config`     | Database configuration with Drizzle ORM |
-| `@sv-sdk/observability` | Health checks and monitoring            |
-| `@sv-sdk/cli`           | Command-line interface                  |
-| `@sv-sdk/validators`    | Validation schemas and DTOs             |
-| `@sv-sdk/shared`        | Shared utilities and types              |
+| Package                  | Description                             |
+| ------------------------ | --------------------------------------- |
+| `@big0290/core`          | Core SDK and plugin system              |
+| `@big0290/auth`          | Authentication with BetterAuth          |
+| `@big0290/ui`            | Svelte 5 component library              |
+| `@big0290/permissions`   | RBAC permissions system                 |
+| `@big0290/email`         | Email system with MJML templates        |
+| `@big0290/audit`         | Audit logging and compliance            |
+| `@big0290/cache`         | Redis caching and BullMQ queues         |
+| `@big0290/security`      | Rate limiting, CSRF, security headers   |
+| `@big0290/db-config`     | Database configuration with Drizzle ORM |
+| `@big0290/observability` | Health checks and monitoring            |
+| `@big0290/cli`           | Command-line interface                  |
+| `@big0290/validators`    | Validation schemas and DTOs             |
+| `@big0290/shared`        | Shared utilities and types              |
 
 ## Versioning
 
@@ -153,14 +153,14 @@ If you see `ENEEDAUTH` or `401 Unauthorized`:
 1. Verify your token has package permissions
 2. Check `.npmrc` is configured correctly
 3. Ensure `GITHUB_TOKEN` environment variable is set
-4. Try: `npm login --scope=@sv-sdk --registry=https://npm.pkg.github.com`
+4. Try: `npm login --scope=@big0290 --registry=https://npm.pkg.github.com`
 
 ### Package Not Found
 
 If published packages can't be installed:
 
 1. Ensure the package is set to **public** in GitHub
-2. Configure `.npmrc` with `@sv-sdk:registry=https://npm.pkg.github.com`
+2. Configure `.npmrc` with `@big0290:registry=https://npm.pkg.github.com`
 3. Check package visibility at `https://github.com/Big0290/sv-sdk/packages`
 
 ### CLI bin File Not Found

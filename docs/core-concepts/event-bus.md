@@ -16,7 +16,7 @@ The Event Bus is a central message broker that allows plugins to:
 ### Emitting Events
 
 ```typescript
-import type { SDKContext } from '@sv-sdk/core'
+import type { SDKContext } from '@big0290/core'
 
 async function createUser(ctx: SDKContext, userData) {
   // Create user in database
@@ -292,7 +292,7 @@ interface EventMap {
 }
 
 // Type-safe event bus
-import { TypedEventBus } from '@sv-sdk/core'
+import { TypedEventBus } from '@big0290/core'
 
 const eventBus = new TypedEventBus<EventMap>()
 
@@ -406,7 +406,7 @@ const myPlugin = createPlugin({
 
 ```typescript
 // ❌ Bad - direct dependency
-import { emailService } from '@sv-sdk/email'
+import { emailService } from '@big0290/email'
 await emailService.send(...)
 
 // ✅ Good - event-based communication

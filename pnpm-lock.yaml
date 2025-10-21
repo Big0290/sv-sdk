@@ -65,40 +65,40 @@ importers:
 
   apps/admin:
     dependencies:
-      '@sv-sdk/audit':
+      '@big0290/audit':
         specifier: workspace:*
         version: link:../../packages/audit
-      '@sv-sdk/auth':
+      '@big0290/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@sv-sdk/cache':
+      '@big0290/cache':
         specifier: workspace:*
         version: link:../../packages/cache
-      '@sv-sdk/core':
+      '@big0290/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@sv-sdk/db-config':
+      '@big0290/db-config':
         specifier: workspace:*
         version: link:../../packages/db-config
-      '@sv-sdk/email':
+      '@big0290/email':
         specifier: workspace:*
         version: link:../../packages/email
-      '@sv-sdk/observability':
+      '@big0290/observability':
         specifier: workspace:*
         version: link:../../packages/observability
-      '@sv-sdk/permissions':
+      '@big0290/permissions':
         specifier: workspace:*
         version: link:../../packages/permissions
-      '@sv-sdk/security':
+      '@big0290/security':
         specifier: workspace:*
         version: link:../../packages/security
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@sv-sdk/ui':
+      '@big0290/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@sv-sdk/validators':
+      '@big0290/validators':
         specifier: workspace:*
         version: link:../../packages/validators
       better-auth:
@@ -186,25 +186,25 @@ importers:
 
   apps/demo-app:
     dependencies:
-      '@sv-sdk/auth':
+      '@big0290/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@sv-sdk/core':
+      '@big0290/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@sv-sdk/email':
+      '@big0290/email':
         specifier: workspace:*
         version: link:../../packages/email
-      '@sv-sdk/permissions':
+      '@big0290/permissions':
         specifier: workspace:*
         version: link:../../packages/permissions
-      '@sv-sdk/security':
+      '@big0290/security':
         specifier: workspace:*
         version: link:../../packages/security
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@sv-sdk/ui':
+      '@big0290/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       better-auth:
@@ -271,16 +271,16 @@ importers:
 
   packages/audit:
     dependencies:
-      '@sv-sdk/core':
+      '@big0290/core':
         specifier: workspace:*
         version: link:../core
-      '@sv-sdk/db-config':
+      '@big0290/db-config':
         specifier: workspace:*
         version: link:../db-config
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
-      '@sv-sdk/validators':
+      '@big0290/validators':
         specifier: workspace:*
         version: link:../validators
       nanoid:
@@ -299,19 +299,19 @@ importers:
 
   packages/auth:
     dependencies:
-      '@sv-sdk/cache':
+      '@big0290/cache':
         specifier: workspace:*
         version: link:../cache
-      '@sv-sdk/db-config':
+      '@big0290/db-config':
         specifier: workspace:*
         version: link:../db-config
-      '@sv-sdk/security':
+      '@big0290/security':
         specifier: workspace:*
         version: link:../security
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
-      '@sv-sdk/validators':
+      '@big0290/validators':
         specifier: workspace:*
         version: link:../validators
       better-auth:
@@ -333,7 +333,7 @@ importers:
 
   packages/cache:
     dependencies:
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
       bullmq:
@@ -355,22 +355,22 @@ importers:
 
   packages/cli:
     dependencies:
-      '@sv-sdk/audit':
+      '@big0290/audit':
         specifier: workspace:*
         version: link:../audit
-      '@sv-sdk/auth':
+      '@big0290/auth':
         specifier: workspace:*
         version: link:../auth
-      '@sv-sdk/db-config':
+      '@big0290/db-config':
         specifier: workspace:*
         version: link:../db-config
-      '@sv-sdk/email':
+      '@big0290/email':
         specifier: workspace:*
         version: link:../email
-      '@sv-sdk/permissions':
+      '@big0290/permissions':
         specifier: workspace:*
         version: link:../permissions
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
       chalk:
@@ -404,13 +404,13 @@ importers:
 
   packages/core:
     dependencies:
-      '@sv-sdk/cache':
+      '@big0290/cache':
         specifier: workspace:*
         version: link:../cache
-      '@sv-sdk/db-config':
+      '@big0290/db-config':
         specifier: workspace:*
         version: link:../db-config
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -463,21 +463,21 @@ importers:
       '@aws-sdk/client-ses':
         specifier: ^3.709.0
         version: 3.913.0
+      '@big0290/audit':
+        specifier: workspace:*
+        version: link:../audit
+      '@big0290/cache':
+        specifier: workspace:*
+        version: link:../cache
+      '@big0290/db-config':
+        specifier: workspace:*
+        version: link:../db-config
+      '@big0290/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@getbrevo/brevo':
         specifier: ^2.2.0
         version: 2.5.0
-      '@sv-sdk/audit':
-        specifier: workspace:*
-        version: link:../audit
-      '@sv-sdk/cache':
-        specifier: workspace:*
-        version: link:../cache
-      '@sv-sdk/db-config':
-        specifier: workspace:*
-        version: link:../db-config
-      '@sv-sdk/shared':
-        specifier: workspace:*
-        version: link:../shared
       handlebars:
         specifier: ^4.7.8
         version: 4.7.8
@@ -506,16 +506,16 @@ importers:
 
   packages/observability:
     dependencies:
-      '@sv-sdk/cache':
+      '@big0290/cache':
         specifier: workspace:*
         version: link:../cache
-      '@sv-sdk/core':
+      '@big0290/core':
         specifier: workspace:*
         version: link:../core
-      '@sv-sdk/db-config':
+      '@big0290/db-config':
         specifier: workspace:*
         version: link:../db-config
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -531,16 +531,16 @@ importers:
 
   packages/permissions:
     dependencies:
-      '@sv-sdk/audit':
+      '@big0290/audit':
         specifier: workspace:*
         version: link:../audit
-      '@sv-sdk/cache':
+      '@big0290/cache':
         specifier: workspace:*
         version: link:../cache
-      '@sv-sdk/db-config':
+      '@big0290/db-config':
         specifier: workspace:*
         version: link:../db-config
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
       nanoid:
@@ -559,10 +559,10 @@ importers:
 
   packages/security:
     dependencies:
-      '@sv-sdk/cache':
+      '@big0290/cache':
         specifier: workspace:*
         version: link:../cache
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
       nanoid:
@@ -663,10 +663,10 @@ importers:
 
   packages/validators:
     dependencies:
-      '@sv-sdk/db-config':
+      '@big0290/db-config':
         specifier: workspace:*
         version: link:../db-config
-      '@sv-sdk/shared':
+      '@big0290/shared':
         specifier: workspace:*
         version: link:../shared
       zod:

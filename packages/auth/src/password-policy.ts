@@ -2,8 +2,8 @@
  * Password policy enforcement
  */
 
-import { validatePasswordStrength, checkPasswordBreach } from '@sv-sdk/validators'
-import { ValidationError, logger } from '@sv-sdk/shared'
+import { validatePasswordStrength, checkPasswordBreach } from '@big0290/validators'
+import { ValidationError, logger } from '@big0290/shared'
 
 /**
  * Password policy configuration

@@ -11,7 +11,7 @@ import type { EmailProvider } from './types.js'
 import { createBrevoProvider } from './brevo.js'
 import { createSESProvider } from './ses.js'
 import { createMockProvider } from './mock.js'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * Get email provider based on environment configuration

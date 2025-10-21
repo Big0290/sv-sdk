@@ -15,7 +15,7 @@ SV-SDK is built as a **Turborepo monorepo** containing multiple interconnected p
 └───────────────────┬─────────────────────────────┘
                     │
 ┌───────────────────▼─────────────────────────────┐
-│                 @sv-sdk/core                     │
+│                 @big0290/core                     │
 │  • SDK Initialization                           │
 │  • Plugin System                                │
 │  • Event Bus                                    │
@@ -75,36 +75,36 @@ sv-sdk/
 
 ```
 Core Packages (No dependencies):
-- @sv-sdk/shared       # Utilities, types, constants
+- @big0290/shared       # Utilities, types, constants
 
 Database Layer:
-- @sv-sdk/db-config    # ← @sv-sdk/shared
-- @sv-sdk/cache        # ← @sv-sdk/shared
+- @big0290/db-config    # ← @big0290/shared
+- @big0290/cache        # ← @big0290/shared
 
 Validation Layer:
-- @sv-sdk/validators   # ← @sv-sdk/shared
+- @big0290/validators   # ← @big0290/shared
 
 Core SDK:
-- @sv-sdk/core         # ← @sv-sdk/shared, @sv-sdk/db-config, @sv-sdk/cache
+- @big0290/core         # ← @big0290/shared, @big0290/db-config, @big0290/cache
 
 Feature Packages:
-- @sv-sdk/auth         # ← @sv-sdk/core, @sv-sdk/cache, @sv-sdk/db-config, @sv-sdk/validators
-- @sv-sdk/permissions  # ← @sv-sdk/core, @sv-sdk/cache, @sv-sdk/db-config, @sv-sdk/auth
-- @sv-sdk/email        # ← @sv-sdk/core, @sv-sdk/cache, @sv-sdk/db-config
-- @sv-sdk/audit        # ← @sv-sdk/core, @sv-sdk/db-config
-- @sv-sdk/security     # ← @sv-sdk/core, @sv-sdk/cache
+- @big0290/auth         # ← @big0290/core, @big0290/cache, @big0290/db-config, @big0290/validators
+- @big0290/permissions  # ← @big0290/core, @big0290/cache, @big0290/db-config, @big0290/auth
+- @big0290/email        # ← @big0290/core, @big0290/cache, @big0290/db-config
+- @big0290/audit        # ← @big0290/core, @big0290/db-config
+- @big0290/security     # ← @big0290/core, @big0290/cache
 
 Utility Packages:
-- @sv-sdk/observability # ← @sv-sdk/core, @sv-sdk/cache, @sv-sdk/db-config
-- @sv-sdk/cli          # ← All packages
+- @big0290/observability # ← @big0290/core, @big0290/cache, @big0290/db-config
+- @big0290/cli          # ← All packages
 
 UI Package (Independent):
-- @sv-sdk/ui           # ← Only Svelte/Tailwind dependencies
+- @big0290/ui           # ← Only Svelte/Tailwind dependencies
 ```
 
 ## Core Components
 
-### 1. SDK Core (`@sv-sdk/core`)
+### 1. SDK Core (`@big0290/core`)
 
 The foundation of SV-SDK that provides:
 
@@ -129,7 +129,7 @@ The foundation of SV-SDK that provides:
 **Example:**
 
 ```typescript
-import { createSDK } from '@sv-sdk/core'
+import { createSDK } from '@big0290/core'
 
 const sdk = await createSDK({
   config: { name: 'my-app', version: '1.0.0' },
@@ -140,7 +140,7 @@ const sdk = await createSDK({
 const { db, redis, logger, eventBus } = sdk.context
 ```
 
-### 2. Database Layer (`@sv-sdk/db-config`)
+### 2. Database Layer (`@big0290/db-config`)
 
 PostgreSQL database management with Drizzle ORM:
 
@@ -175,7 +175,7 @@ audit schema:
 - audit_log_integrity
 ```
 
-### 3. Cache Layer (`@sv-sdk/cache`)
+### 3. Cache Layer (`@big0290/cache`)
 
 Redis-based caching and queue system:
 
@@ -193,7 +193,7 @@ Redis-based caching and queue system:
 - Job scheduling
 - Queue metrics
 
-### 4. Authentication (`@sv-sdk/auth`)
+### 4. Authentication (`@big0290/auth`)
 
 User authentication powered by BetterAuth:
 
@@ -214,7 +214,7 @@ const session = await auth.api.getSession({
 event.locals.user = session?.user || null
 ```
 
-### 5. Authorization (`@sv-sdk/permissions`)
+### 5. Authorization (`@big0290/permissions`)
 
 RBAC permission system:
 
@@ -236,7 +236,7 @@ Examples:
 - Middleware (route protection)
 - RBAC utilities
 
-### 6. Email System (`@sv-sdk/email`)
+### 6. Email System (`@big0290/email`)
 
 Comprehensive email solution:
 
@@ -266,7 +266,7 @@ Provider sends email
 Webhook updates status
 ```
 
-### 7. Audit Logging (`@sv-sdk/audit`)
+### 7. Audit Logging (`@big0290/audit`)
 
 Complete audit trail:
 
@@ -295,7 +295,7 @@ Complete audit trail:
 }
 ```
 
-### 8. UI Components (`@sv-sdk/ui`)
+### 8. UI Components (`@big0290/ui`)
 
 Svelte 5 component library:
 
@@ -446,7 +446,7 @@ Monitor system health:
 Create your own plugins:
 
 ```typescript
-import { createPlugin } from '@sv-sdk/core'
+import { createPlugin } from '@big0290/core'
 
 const myPlugin = createPlugin({
   name: 'my-plugin',
@@ -495,7 +495,7 @@ Build on top of UI components:
 
 ```svelte
 <script>
-  import { Card, Button } from '@sv-sdk/ui'
+  import { Card, Button } from '@big0290/ui'
 
   // Your custom component
 </script>

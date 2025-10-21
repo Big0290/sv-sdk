@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { getRoles, getUsersWithRole } from '@sv-sdk/permissions';
+import { getRoles, getUsersWithRole } from '@big0290/permissions';
 
 export const load: PageServerLoad = async () => {
 	const roles = await getRoles();

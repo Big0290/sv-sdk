@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { checkSystemHealth } from '@sv-sdk/core';
+import { checkSystemHealth } from '@big0290/core';
 
 export const GET: RequestHandler = async () => {
 	const health = await checkSystemHealth();

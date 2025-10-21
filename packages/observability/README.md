@@ -1,4 +1,4 @@
-# @sv-sdk/observability
+# @big0290/observability
 
 Observability and monitoring package for SV-SDK with metrics collection, health probes, and integrations.
 
@@ -13,7 +13,7 @@ Observability and monitoring package for SV-SDK with metrics collection, health 
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/observability
+pnpm add @big0290/observability
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ pnpm add @sv-sdk/observability
 ### Metrics
 
 ```typescript
-import { trackRequestLatency, trackError, trackEmailSend } from '@sv-sdk/observability'
+import { trackRequestLatency, trackError, trackEmailSend } from '@big0290/observability'
 
 // Track request latency
 await trackRequestLatency('/api/users', 45) // 45ms
@@ -36,7 +36,7 @@ await trackEmailSend('brevo', 'success')
 ### Health Probes
 
 ```typescript
-import { livenessProbe, readinessProbe, startupProbe } from '@sv-sdk/observability'
+import { livenessProbe, readinessProbe, startupProbe } from '@big0290/observability'
 
 // Liveness probe (is app running?)
 const liveness = livenessProbe()
@@ -55,7 +55,7 @@ const startup = await startupProbe()
 
 ```typescript
 // src/routes/health/live/+server.ts
-import { livenessProbe } from '@sv-sdk/observability'
+import { livenessProbe } from '@big0290/observability'
 
 export async function GET() {
   const result = livenessProbe()
@@ -66,7 +66,7 @@ export async function GET() {
 }
 
 // src/routes/health/ready/+server.ts
-import { readinessProbe } from '@sv-sdk/observability'
+import { readinessProbe } from '@big0290/observability'
 
 export async function GET() {
   const result = await readinessProbe()
@@ -80,7 +80,7 @@ export async function GET() {
 ### Metrics Reporter
 
 ```typescript
-import { createMetricsReporter } from '@sv-sdk/observability'
+import { createMetricsReporter } from '@big0290/observability'
 
 // Create reporter
 const reporter = createMetricsReporter({
@@ -102,17 +102,20 @@ reporter.stop()
 ## Available Metrics
 
 **Counters**:
+
 - `http_requests_total` - Total HTTP requests
 - `errors_total` - Total errors
 - `emails_sent_total` - Total emails sent
 - `cache_requests_total` - Total cache requests
 
 **Gauges**:
+
 - `queue_depth` - Current queue depth
 - `db_pool_active` - Active database connections
 - `db_pool_idle` - Idle database connections
 
 **Histograms**:
+
 - `http_request_duration_ms` - Request latency
 - `db_query_duration_ms` - Database query latency
 - `cache_operation_duration_ms` - Cache operation latency
@@ -156,17 +159,15 @@ spec:
 
 ```typescript
 // Export metrics in Prometheus format
-import { createMetricsReporter } from '@sv-sdk/observability'
+import { createMetricsReporter } from '@big0290/observability'
 
 const reporter = createMetricsReporter({
   reporter: async (metrics) => {
     // Format as Prometheus metrics
-    const formatted = metrics.map(m => 
-      `${m.name} ${m.value} ${m.timestamp.getTime()}`
-    ).join('\n')
-    
+    const formatted = metrics.map((m) => `${m.name} ${m.value} ${m.timestamp.getTime()}`).join('\n')
+
     // Expose on /metrics endpoint
-  }
+  },
 })
 ```
 
@@ -196,6 +197,7 @@ Sentry.init({
 ## Performance
 
 **Metric Collection**:
+
 - Latency: < 1ms
 - Memory: < 10MB for 10,000 metrics
 - Storage: Redis (persistent)
@@ -213,4 +215,3 @@ pnpm test:watch
 ## License
 
 MIT
-

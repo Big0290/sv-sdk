@@ -4,7 +4,7 @@
 
 import fs from 'fs/promises'
 import path from 'path'
-import { logger, ok, err, type Result } from '@sv-sdk/shared'
+import { logger, ok, err, type Result } from '@big0290/shared'
 import type { EmailProvider, EmailMessage, EmailResult, WebhookEvent, DeliveryStatus } from './types.js'
 
 /**

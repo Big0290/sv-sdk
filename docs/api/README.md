@@ -4,9 +4,10 @@ Complete API reference for SV-SDK packages.
 
 ## Package APIs
 
-### Authentication (@sv-sdk/auth)
+### Authentication (@big0290/auth)
 
 **User Management**:
+
 - `getUsers(filters, pagination)` - Get users with filtering
 - `getUserById(id)` - Get user by ID
 - `createUser(data)` - Create new user
@@ -14,25 +15,29 @@ Complete API reference for SV-SDK packages.
 - `deleteUser(id)` - Delete user (soft delete)
 
 **Authentication**:
+
 - `login(request, metadata)` - Authenticate user
 - `signup(request, metadata)` - Register new user
 - `logout(sessionToken)` - Logout user
 - `getSession(sessionToken)` - Get session data
 
 **Password**:
+
 - `requestPasswordReset(email)` - Request password reset
 - `verifyEmail(token)` - Verify email address
 - `enforcePasswordPolicy(password)` - Validate password strength
 
-### Permissions (@sv-sdk/permissions)
+### Permissions (@big0290/permissions)
 
 **Permission Checking**:
+
 - `can(userId, permission, context?)` - Check permission
 - `enforce(userId, permission, context?)` - Enforce permission (throws)
 - `canAny(userId, permissions, context?)` - Check any permission
 - `canAll(userId, permissions, context?)` - Check all permissions
 
 **Role Management**:
+
 - `getRoles()` - Get all roles
 - `createRole(data)` - Create new role
 - `updateRole(id, data)` - Update role
@@ -40,35 +45,41 @@ Complete API reference for SV-SDK packages.
 - `assignRole(userId, roleId)` - Assign role to user
 - `revokeRole(userId, roleId)` - Revoke role from user
 
-### Email (@sv-sdk/email)
+### Email (@big0290/email)
 
 **Sending**:
+
 - `sendEmail(template, to, variables)` - Send email (queued)
 - `sendEmailImmediate(template, to, variables)` - Send immediately
 
 **Templates**:
+
 - `renderTemplate(name, variables, locale)` - Render template
 - `validateTemplateMJML(mjml)` - Validate MJML
 - `previewTemplate(name, variables)` - Preview rendering
 
 **Monitoring**:
+
 - `getEmailHistory(filters, pagination)` - Get send history
 - `getEmailStats()` - Get statistics
 
-### Audit (@sv-sdk/audit)
+### Audit (@big0290/audit)
 
 **Logging**:
+
 - `logAudit(eventType, metadata, options?)` - Log event
 - `logAuditBulk(events)` - Log multiple events
 - `flushBatch()` - Flush batched logs
 
 **Querying**:
+
 - `fetchAuditLogs(filters, pagination, sort)` - Query logs
 - `searchAuditLogs(query, pagination)` - Search logs
 - `exportAuditLogsJSON(filters)` - Export to JSON
 - `exportAuditLogsCSV(filters)` - Export to CSV
 
 **Retention**:
+
 - `applyRetentionPolicy(policy)` - Apply retention
 - `getRetentionStats()` - Get statistics
 
@@ -79,6 +90,7 @@ Complete API reference for SV-SDK packages.
 ### Authentication Endpoints
 
 **POST /api/v1/auth/login**:
+
 ```json
 Request:
 {
@@ -97,6 +109,7 @@ Response:
 ```
 
 **POST /api/v1/auth/signup**:
+
 ```json
 Request:
 {
@@ -119,6 +132,7 @@ Response:
 ### User Management Endpoints
 
 **GET /api/v1/users**:
+
 ```
 Query Parameters:
 - page: number (default: 1)
@@ -139,6 +153,7 @@ Response:
 ```
 
 **GET /api/v1/users/:id**:
+
 ```json
 Response:
 {
@@ -162,8 +177,8 @@ For complete API reference, see package-specific documentation.
 ## SDK Function Reference
 
 See package READMEs:
-- [@sv-sdk/auth](../packages/auth/README.md)
-- [@sv-sdk/email](../packages/email/README.md)
-- [@sv-sdk/audit](../packages/audit/README.md)
-- [@sv-sdk/permissions](../packages/permissions/README.md)
 
+- [@big0290/auth](../packages/auth/README.md)
+- [@big0290/email](../packages/email/README.md)
+- [@big0290/audit](../packages/audit/README.md)
+- [@big0290/permissions](../packages/permissions/README.md)

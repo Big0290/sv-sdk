@@ -73,8 +73,8 @@ Get started in minutes with a fully-featured authentication system:
 ```typescript
 // hooks.server.ts - SvelteKit integration
 import type { Handle } from '@sveltejs/kit'
-import { auth } from '@sv-sdk/auth'
-import { checkRoutePermission } from '@sv-sdk/permissions'
+import { auth } from '@big0290/auth'
+import { checkRoutePermission } from '@big0290/permissions'
 
 export const handle: Handle = async ({ event, resolve }) => {
   // Get authenticated session
@@ -100,7 +100,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 ```svelte
 <!-- Login form with UI components -->
 <script>
-  import { Button, Input, Card, Alert } from '@sv-sdk/ui'
+  import { Button, Input, Card, Alert } from '@big0290/ui'
 
   let email = $state('')
   let password = $state('')
@@ -155,16 +155,16 @@ Used in production applications with:
 
 ## Packages Overview
 
-| Package                 | Purpose        | Key Features                          |
-| ----------------------- | -------------- | ------------------------------------- |
-| **@sv-sdk/core**        | SDK foundation | Plugin system, event bus, context     |
-| **@sv-sdk/auth**        | Authentication | BetterAuth, sessions, user management |
-| **@sv-sdk/permissions** | Authorization  | RBAC, resource-level permissions      |
-| **@sv-sdk/ui**          | Components     | 100+ Svelte 5 components              |
-| **@sv-sdk/email**       | Email          | MJML, queues, multi-provider          |
-| **@sv-sdk/audit**       | Logging        | Audit trail, retention, compliance    |
-| **@sv-sdk/cache**       | Performance    | Redis, BullMQ, caching utilities      |
-| **@sv-sdk/security**    | Security       | Rate limiting, CSRF, headers          |
+| Package                  | Purpose        | Key Features                          |
+| ------------------------ | -------------- | ------------------------------------- |
+| **@big0290/core**        | SDK foundation | Plugin system, event bus, context     |
+| **@big0290/auth**        | Authentication | BetterAuth, sessions, user management |
+| **@big0290/permissions** | Authorization  | RBAC, resource-level permissions      |
+| **@big0290/ui**          | Components     | 100+ Svelte 5 components              |
+| **@big0290/email**       | Email          | MJML, queues, multi-provider          |
+| **@big0290/audit**       | Logging        | Audit trail, retention, compliance    |
+| **@big0290/cache**       | Performance    | Redis, BullMQ, caching utilities      |
+| **@big0290/security**    | Security       | Rate limiting, CSRF, headers          |
 
 [View all packages →](/packages/core)
 

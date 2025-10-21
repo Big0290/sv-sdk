@@ -2,7 +2,7 @@
  * Secrets management and environment variable validation
  */
 
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 import crypto from 'crypto'
 
 /**

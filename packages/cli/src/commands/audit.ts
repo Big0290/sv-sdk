@@ -3,7 +3,7 @@
  */
 
 import { Command } from 'commander'
-import { fetchAuditLogs, exportAuditLogsJSON, exportAuditLogsCSV, applyRetentionPolicy } from '@sv-sdk/audit'
+import { fetchAuditLogs, exportAuditLogsJSON, exportAuditLogsCSV, applyRetentionPolicy } from '@big0290/audit'
 import chalk from 'chalk'
 import ora from 'ora'
 import fs from 'fs/promises'

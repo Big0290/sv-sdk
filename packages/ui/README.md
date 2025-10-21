@@ -1,4 +1,4 @@
-# @sv-sdk/ui
+# @big0290/ui
 
 UI component library built with Svelte 5 and Tailwind CSS for the SV-SDK platform.
 
@@ -15,7 +15,7 @@ UI component library built with Svelte 5 and Tailwind CSS for the SV-SDK platfor
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/ui
+pnpm add @big0290/ui
 ```
 
 ## Setup
@@ -26,7 +26,7 @@ In your app's root layout or `+layout.svelte`:
 
 ```svelte
 <script>
-  import '@sv-sdk/ui/styles'
+  import '@big0290/ui/styles'
 </script>
 ```
 
@@ -35,14 +35,11 @@ In your app's root layout or `+layout.svelte`:
 In your `tailwind.config.ts`:
 
 ```typescript
-import uiConfig from '@sv-sdk/ui/tailwind.config'
+import uiConfig from '@big0290/ui/tailwind.config'
 
 export default {
   ...uiConfig,
-  content: [
-    './src/**/*.{html,js,svelte,ts}',
-    './node_modules/@sv-sdk/ui/**/*.{html,js,svelte,ts}',
-  ],
+  content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/@big0290/ui/**/*.{html,js,svelte,ts}'],
 }
 ```
 
@@ -52,23 +49,18 @@ export default {
 
 ```svelte
 <script>
-  import { Button } from '@sv-sdk/ui'
+  import { Button } from '@big0290/ui'
 </script>
 
-<Button variant="primary" size="md" onclick={() => console.log('clicked')}>
-  Click Me
-</Button>
+<Button variant="primary" size="md" onclick={() => console.log('clicked')}>Click Me</Button>
 
-<Button variant="secondary" loading>
-  Processing...
-</Button>
+<Button variant="secondary" loading>Processing...</Button>
 
-<Button variant="outline" disabled>
-  Disabled
-</Button>
+<Button variant="outline" disabled>Disabled</Button>
 ```
 
 **Props**:
+
 - `variant`: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
 - `size`: 'sm' | 'md' | 'lg'
 - `loading`: boolean
@@ -79,23 +71,17 @@ export default {
 
 ```svelte
 <script>
-  import { Input } from '@sv-sdk/ui'
+  import { Input } from '@big0290/ui'
 
   let email = $state('')
   let error = $state('')
 </script>
 
-<Input
-  type="email"
-  label="Email Address"
-  bind:value={email}
-  placeholder="you@example.com"
-  {error}
-  required
-/>
+<Input type="email" label="Email Address" bind:value={email} placeholder="you@example.com" {error} required />
 ```
 
 **Props**:
+
 - `type`: 'text' | 'email' | 'password' | etc.
 - `label`: string
 - `error`: string
@@ -107,23 +93,20 @@ export default {
 
 ```svelte
 <script>
-  import { Alert } from '@sv-sdk/ui'
+  import { Alert } from '@big0290/ui'
 </script>
 
-<Alert variant="info" title="Information">
-  This is an informational message.
-</Alert>
+<Alert variant="info" title="Information">This is an informational message.</Alert>
 
 <Alert variant="success" dismissible onDismiss={() => console.log('dismissed')}>
   Operation completed successfully!
 </Alert>
 
-<Alert variant="error" title="Error Occurred">
-  Something went wrong. Please try again.
-</Alert>
+<Alert variant="error" title="Error Occurred">Something went wrong. Please try again.</Alert>
 ```
 
 **Props**:
+
 - `variant`: 'info' | 'success' | 'warning' | 'error'
 - `title`: string
 - `dismissible`: boolean
@@ -133,24 +116,25 @@ export default {
 
 ```svelte
 <script>
-  import { Modal, Button } from '@sv-sdk/ui'
+  import { Modal, Button } from '@big0290/ui'
 
   let showModal = $state(false)
 </script>
 
-<Button onclick={() => showModal = true}>Open Modal</Button>
+<Button onclick={() => (showModal = true)}>Open Modal</Button>
 
 <Modal bind:open={showModal} title="Confirm Action" size="md">
   <p>Are you sure you want to perform this action?</p>
 
   <div class="flex gap-2 mt-4">
     <Button variant="primary">Confirm</Button>
-    <Button variant="outline" onclick={() => showModal = false}>Cancel</Button>
+    <Button variant="outline" onclick={() => (showModal = false)}>Cancel</Button>
   </div>
 </Modal>
 ```
 
 **Props**:
+
 - `open`: boolean (bindable)
 - `title`: string
 - `size`: 'sm' | 'md' | 'lg' | 'xl'
@@ -162,7 +146,7 @@ export default {
 
 ```svelte
 <script>
-  import { Card } from '@sv-sdk/ui'
+  import { Card } from '@big0290/ui'
 </script>
 
 <Card>
@@ -175,7 +159,7 @@ export default {
 
 ```svelte
 <script>
-  import { Spinner } from '@sv-sdk/ui'
+  import { Spinner } from '@big0290/ui'
 </script>
 
 <Spinner size="md" />
@@ -184,7 +168,7 @@ export default {
 ## Design Tokens
 
 ```typescript
-import { colors, typography, spacing, shadows } from '@sv-sdk/ui/tokens'
+import { colors, typography, spacing, shadows } from '@big0290/ui/tokens'
 
 // Use in your components
 const primaryColor = colors.primary[500]
@@ -205,9 +189,7 @@ Toggle dark mode:
   }
 </script>
 
-<button onclick={toggleDarkMode}>
-  Toggle Dark Mode
-</button>
+<button onclick={toggleDarkMode}> Toggle Dark Mode </button>
 ```
 
 ## Accessibility
@@ -226,14 +208,13 @@ All components follow WCAG 2.1 Level AA guidelines:
 Override Tailwind classes:
 
 ```svelte
-<Button class="bg-purple-600 hover:bg-purple-700">
-  Custom Color
-</Button>
+<Button class="bg-purple-600 hover:bg-purple-700">Custom Color</Button>
 ```
 
 ## Component Roadmap
 
 **Current** (Phase 7):
+
 - ✅ Button
 - ✅ Input
 - ✅ Alert
@@ -242,6 +223,7 @@ Override Tailwind classes:
 - ✅ Spinner
 
 **Planned**:
+
 - TextArea
 - Select
 - Checkbox
@@ -280,4 +262,3 @@ pnpm test:watch
 ## License
 
 MIT
-

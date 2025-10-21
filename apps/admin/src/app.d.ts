@@ -1,6 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 
-import type { User, Session } from '@sv-sdk/auth';
+import type { User, Session } from '@big0290/auth';
 
 // for information about these interfaces
 declare global {

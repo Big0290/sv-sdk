@@ -4,8 +4,8 @@
 
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import { db } from '@sv-sdk/db-config'
-import { logger } from '@sv-sdk/shared'
+import { db } from '@big0290/db-config'
+import { logger } from '@big0290/shared'
 import { nanoid } from 'nanoid'
 
 // Type assertion needed for BetterAuth drizzle adapter
@@ -21,7 +21,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
     provider: 'pg',
     schema: {
       // BetterAuth will use the tables from our auth schema
-      // The tables are already defined in @sv-sdk/db-config
+      // The tables are already defined in @big0290/db-config
     },
   }),
 
@@ -74,6 +74,6 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
 // Export types
 export type Session = typeof auth.$Infer.Session.session
 // User type comes from database schema
-export type { User } from '@sv-sdk/db-config'
+export type { User } from '@big0290/db-config'
 
 logger.info('BetterAuth configured with Drizzle adapter')

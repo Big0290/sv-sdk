@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
-import { getUsers } from '@sv-sdk/auth';
-import { fetchAuditLogs } from '@sv-sdk/audit';
-import { getEmailStats } from '@sv-sdk/email';
+import { getUsers } from '@big0290/auth';
+import { fetchAuditLogs } from '@big0290/audit';
+import { getEmailStats } from '@big0290/email';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	// Get statistics

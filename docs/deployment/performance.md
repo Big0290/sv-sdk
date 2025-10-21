@@ -121,7 +121,7 @@ await cacheDelete(CACHE_KEYS.permissions(userId))
 ### Monitoring Cache Performance
 
 ```typescript
-import { trackCacheHit } from '@sv-sdk/observability'
+import { trackCacheHit } from '@big0290/observability'
 
 const cached = await cacheGet(key)
 trackCacheHit(!!cached)
@@ -343,7 +343,7 @@ getTTFB(console.log)
 ### Custom Metrics
 
 ```typescript
-import { trackRequestLatency } from '@sv-sdk/observability'
+import { trackRequestLatency } from '@big0290/observability'
 
 const start = Date.now()
 // ... operation ...

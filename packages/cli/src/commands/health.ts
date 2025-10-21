@@ -3,7 +3,7 @@
  */
 
 import { Command } from 'commander'
-import { checkSystemHealth } from '@sv-sdk/core'
+import { checkSystemHealth } from '@big0290/core'
 import chalk from 'chalk'
 import ora from 'ora'
 
@@ -73,4 +73,3 @@ export function createHealthCommand(): Command {
 
   return health
 }
-

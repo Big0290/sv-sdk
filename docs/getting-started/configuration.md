@@ -265,7 +265,7 @@ SENTRY_TRACES_SAMPLE_RATE=0.1
 ### Core SDK
 
 ```typescript
-import { createSDK } from '@sv-sdk/core'
+import { createSDK } from '@big0290/core'
 
 const sdk = await createSDK({
   config: {
@@ -284,7 +284,7 @@ const sdk = await createSDK({
 ### Authentication
 
 ```typescript
-import { configureAuth } from '@sv-sdk/auth'
+import { configureAuth } from '@big0290/auth'
 
 configureAuth({
   sessionTimeout: 7 * 24 * 60 * 60, // 7 days
@@ -301,7 +301,7 @@ configureAuth({
 ### Permissions
 
 ```typescript
-import { configurePermissions } from '@sv-sdk/permissions'
+import { configurePermissions } from '@big0290/permissions'
 
 configurePermissions({
   cacheTTL: 300, // 5 minutes
@@ -313,7 +313,7 @@ configurePermissions({
 ### Email
 
 ```typescript
-import { configureEmail } from '@sv-sdk/email'
+import { configureEmail } from '@big0290/email'
 
 configureEmail({
   provider: 'brevo',
@@ -414,7 +414,7 @@ SV-SDK automatically loads configuration from:
 ### Manual Loading
 
 ```typescript
-import { loadConfig } from '@sv-sdk/shared'
+import { loadConfig } from '@big0290/shared'
 
 const config = await loadConfig({
   configPath: './custom-config.json',
@@ -427,7 +427,7 @@ const config = await loadConfig({
 SV-SDK validates configuration on startup:
 
 ```typescript
-import { validateConfig } from '@sv-sdk/shared'
+import { validateConfig } from '@big0290/shared'
 
 try {
   validateConfig(config)
@@ -488,7 +488,7 @@ for (const key of required) {
 ### 4. Use Configuration Service
 
 ```typescript
-import { ConfigService } from '@sv-sdk/shared'
+import { ConfigService } from '@big0290/shared'
 
 const config = ConfigService.getInstance()
 

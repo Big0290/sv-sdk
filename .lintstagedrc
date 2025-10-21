@@ -1,6 +1,6 @@
 {
   "*.{ts,tsx,svelte}": [
-    "eslint --fix --ignore-pattern 'apps/**'",
+    "eslint --fix --ignore-pattern 'apps/**' --ignore-pattern 'test/**'",
     "prettier --write"
   ],
   "*.{json,md,yml,yaml}": [

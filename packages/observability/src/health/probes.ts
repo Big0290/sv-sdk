@@ -3,8 +3,8 @@
  * Kubernetes-style liveness and readiness probes
  */
 
-import { checkSystemHealth } from '@sv-sdk/core'
-import { logger } from '@sv-sdk/shared'
+import { checkSystemHealth } from '@big0290/core'
+import { logger } from '@big0290/shared'
 
 /**
  * Liveness probe
@@ -115,4 +115,3 @@ export function createProbeHandlers() {
     },
   }
 }
-

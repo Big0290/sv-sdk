@@ -1,13 +1,13 @@
 # SvelteKit Integration Guide
 
-This guide shows how to integrate @sv-sdk/auth with SvelteKit using hooks.
+This guide shows how to integrate @big0290/auth with SvelteKit using hooks.
 
 ## Server Hooks
 
 Create `src/hooks.server.ts` to handle authentication on the server:
 
 ```typescript
-import { auth } from '@sv-sdk/auth'
+import { auth } from '@big0290/auth'
 import type { Handle } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
 
@@ -96,13 +96,13 @@ Add types for `event.locals` in `src/app.d.ts`:
 declare global {
   namespace App {
     interface Locals {
-      user: import('@sv-sdk/auth').User | null
-      session: import('@sv-sdk/auth').Session | null
+      user: import('@big0290/auth').User | null
+      session: import('@big0290/auth').Session | null
     }
 
     interface PageData {
-      user?: import('@sv-sdk/auth').User
-      session?: import('@sv-sdk/auth').Session
+      user?: import('@big0290/auth').User
+      session?: import('@big0290/auth').Session
     }
   }
 }
@@ -199,7 +199,7 @@ Example API route at `src/routes/api/auth/login/+server.ts`:
 
 ```typescript
 import { json } from '@sveltejs/kit'
-import { login } from '@sv-sdk/auth'
+import { login } from '@big0290/auth'
 import type { RequestHandler } from './$types'
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
@@ -262,9 +262,7 @@ Example logout component:
   }
 </script>
 
-<button on:click={handleLogout}>
-  Logout
-</button>
+<button on:click={handleLogout}> Logout </button>
 ```
 
 ## Middleware Pattern

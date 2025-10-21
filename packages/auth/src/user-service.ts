@@ -3,12 +3,12 @@
  * CRUD operations for users with caching
  */
 
-import { db, users, type User, type NewUser } from '@sv-sdk/db-config'
-import { cacheGet, cacheSet, cacheDelete, CACHE_KEYS, CACHE_TTL } from '@sv-sdk/cache'
-import { eq, like, and, or, desc } from '@sv-sdk/db-config'
-import { NotFoundError, DatabaseError, logger } from '@sv-sdk/shared'
-import type { PaginationParams, PaginatedResponse } from '@sv-sdk/shared'
-import { calculatePaginationMeta, calculateOffset } from '@sv-sdk/shared'
+import { db, users, type User, type NewUser } from '@big0290/db-config'
+import { cacheGet, cacheSet, cacheDelete, CACHE_KEYS, CACHE_TTL } from '@big0290/cache'
+import { eq, like, and, or, desc } from '@big0290/db-config'
+import { NotFoundError, DatabaseError, logger } from '@big0290/shared'
+import type { PaginationParams, PaginatedResponse } from '@big0290/shared'
+import { calculatePaginationMeta, calculateOffset } from '@big0290/shared'
 
 /**
  * User filters

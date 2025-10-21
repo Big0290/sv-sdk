@@ -22,7 +22,7 @@ Unlike generic authentication libraries, SV-SDK is designed from the ground up f
 
 ```svelte
 <script>
-  import { Button, Input } from '@sv-sdk/ui'
+  import { Button, Input } from '@big0290/ui'
 
   // Native Svelte 5 runes
   let email = $state('')
@@ -39,11 +39,11 @@ Stop piecing together multiple libraries. SV-SDK includes everything:
 
 ```typescript
 // One SDK, everything you need
-import { auth } from '@sv-sdk/auth'
-import { can, enforce } from '@sv-sdk/permissions'
-import { sendEmail } from '@sv-sdk/email'
-import { logAudit } from '@sv-sdk/audit'
-import { Button, Input, Card } from '@sv-sdk/ui'
+import { auth } from '@big0290/auth'
+import { can, enforce } from '@big0290/permissions'
+import { sendEmail } from '@big0290/email'
+import { logAudit } from '@big0290/audit'
+import { Button, Input, Card } from '@big0290/ui'
 ```
 
 ### Production Ready

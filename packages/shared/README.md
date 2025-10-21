@@ -1,4 +1,4 @@
-# @sv-sdk/shared
+# @big0290/shared
 
 Shared utilities, types, and constants for the SV-SDK platform.
 
@@ -12,7 +12,7 @@ Shared utilities, types, and constants for the SV-SDK platform.
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/shared
+pnpm add @big0290/shared
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ pnpm add @sv-sdk/shared
 ### Errors
 
 ```typescript
-import { ValidationError, AuthenticationError, NotFoundError } from '@sv-sdk/shared'
+import { ValidationError, AuthenticationError, NotFoundError } from '@big0290/shared'
 
 // Validation error
 throw new ValidationError('Invalid email format', {
@@ -41,7 +41,7 @@ throw new NotFoundError('User not found', {
 ### Logging
 
 ```typescript
-import { logger, createLogger } from '@sv-sdk/shared'
+import { logger, createLogger } from '@big0290/shared'
 
 // Use default logger
 logger.info('User logged in', { userId: '123', ip: '127.0.0.1' })
@@ -64,7 +64,7 @@ const requestLogger = logger.child({
 ### Result Type
 
 ```typescript
-import { ok, err, type Result } from '@sv-sdk/shared'
+import { ok, err, type Result } from '@big0290/shared'
 
 function divide(a: number, b: number): Result<number, Error> {
   if (b === 0) {
@@ -84,7 +84,7 @@ if (result.success) {
 ### Pagination
 
 ```typescript
-import { calculatePaginationMeta, calculateOffset } from '@sv-sdk/shared'
+import { calculatePaginationMeta, calculateOffset } from '@big0290/shared'
 
 const params = { page: 2, pageSize: 20 }
 const totalCount = 100
@@ -99,7 +99,7 @@ const offset = calculateOffset(params)
 ### Constants
 
 ```typescript
-import { HTTP_STATUS, EVENTS, PERMISSION_ACTION } from '@sv-sdk/shared'
+import { HTTP_STATUS, EVENTS, PERMISSION_ACTION } from '@big0290/shared'
 
 // HTTP status codes
 res.status(HTTP_STATUS.NOT_FOUND).json({ error: 'Not found' })

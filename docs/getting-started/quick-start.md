@@ -30,7 +30,7 @@ pnpm install
 
 ```bash
 # Install core packages
-pnpm add @sv-sdk/auth @sv-sdk/permissions @sv-sdk/ui @sv-sdk/shared
+pnpm add @big0290/auth @big0290/permissions @big0290/ui @big0290/shared
 
 # Install peer dependencies
 pnpm add better-auth drizzle-orm postgres
@@ -76,8 +76,8 @@ Create `src/hooks.server.ts`:
 
 ```typescript
 import type { Handle } from '@sveltejs/kit'
-import { auth } from '@sv-sdk/auth'
-import { checkRoutePermission } from '@sv-sdk/permissions'
+import { auth } from '@big0290/auth'
+import { checkRoutePermission } from '@big0290/permissions'
 
 export const handle: Handle = async ({ event, resolve }) => {
   const { pathname } = event.url
@@ -120,7 +120,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 Create `src/app.d.ts` for TypeScript types:
 
 ```typescript
-import type { User, Session } from '@sv-sdk/auth'
+import type { User, Session } from '@big0290/auth'
 
 declare global {
   namespace App {
@@ -140,7 +140,7 @@ Create `src/routes/login/+page.svelte`:
 
 ```svelte
 <script lang="ts">
-  import { Button, Input, Card, Alert } from '@sv-sdk/ui'
+  import { Button, Input, Card, Alert } from '@big0290/ui'
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
 
@@ -217,7 +217,7 @@ Create `src/routes/api/auth/login/+server.ts`:
 
 ```typescript
 import { json } from '@sveltejs/kit'
-import { login } from '@sv-sdk/auth'
+import { login } from '@big0290/auth'
 import type { RequestHandler } from './$types'
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
@@ -245,7 +245,7 @@ Create `src/routes/dashboard/+page.svelte`:
 
 ```svelte
 <script lang="ts">
-  import { Button, Card } from '@sv-sdk/ui'
+  import { Button, Card } from '@big0290/ui'
   import type { PageData } from './$types'
 
   let { data }: { data: PageData } = $props()
@@ -299,7 +299,7 @@ Create `src/routes/api/auth/logout/+server.ts`:
 
 ```typescript
 import { json } from '@sveltejs/kit'
-import { logout } from '@sv-sdk/auth'
+import { logout } from '@big0290/auth'
 import type { RequestHandler } from './$types'
 
 export const POST: RequestHandler = async ({ locals }) => {
@@ -317,7 +317,7 @@ Import UI styles in `src/routes/+layout.svelte`:
 
 ```svelte
 <script>
-  import '@sv-sdk/ui/styles'
+  import '@big0290/ui/styles'
 </script>
 
 <slot />
@@ -327,11 +327,11 @@ Configure Tailwind in `tailwind.config.ts`:
 
 ```typescript
 import type { Config } from 'tailwindcss'
-import uiConfig from '@sv-sdk/ui/tailwind.config'
+import uiConfig from '@big0290/ui/tailwind.config'
 
 export default {
   ...uiConfig,
-  content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/@sv-sdk/ui/**/*.{html,js,svelte,ts}'],
+  content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/@big0290/ui/**/*.{html,js,svelte,ts}'],
 } satisfies Config
 ```
 
@@ -351,7 +351,7 @@ Create `src/routes/signup/+page.svelte` (similar to login):
 
 ```svelte
 <script lang="ts">
-  import { Button, Input, Card, Alert } from '@sv-sdk/ui'
+  import { Button, Input, Card, Alert } from '@big0290/ui'
   import { goto } from '$app/navigation'
 
   let email = $state('')
@@ -432,7 +432,7 @@ Create signup endpoint `src/routes/api/auth/signup/+server.ts`:
 
 ```typescript
 import { json } from '@sveltejs/kit'
-import { signup } from '@sv-sdk/auth'
+import { signup } from '@big0290/auth'
 import type { RequestHandler } from './$types'
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
@@ -465,7 +465,7 @@ Congratulations! You now have:
 - ✅ User authentication with email/password
 - ✅ Session management with BetterAuth
 - ✅ Protected routes with middleware
-- ✅ Beautiful UI with @sv-sdk/ui components
+- ✅ Beautiful UI with @big0290/ui components
 - ✅ Login and signup flows
 - ✅ Dashboard with user info
 
@@ -476,7 +476,7 @@ Now that you have the basics working, explore more features:
 ### Add Permissions
 
 ```typescript
-import { can } from '@sv-sdk/permissions'
+import { can } from '@big0290/permissions'
 
 // Check if user has permission
 const canEditUsers = await can(locals.user.id, 'update:any:user')
@@ -487,7 +487,7 @@ const canEditUsers = await can(locals.user.id, 'update:any:user')
 ### Send Emails
 
 ```typescript
-import { sendEmail } from '@sv-sdk/email'
+import { sendEmail } from '@big0290/email'
 
 await sendEmail('verification_email', user.email, {
   userName: user.name,
@@ -500,7 +500,7 @@ await sendEmail('verification_email', user.email, {
 ### Add Audit Logging
 
 ```typescript
-import { logAudit } from '@sv-sdk/audit'
+import { logAudit } from '@big0290/audit'
 
 await logAudit('user.login', {
   userId: user.id,
@@ -513,7 +513,7 @@ await logAudit('user.login', {
 ### Explore UI Components
 
 ```svelte
-import {(Button, Input, Card, Alert, Modal, Table, Dropdown, Badge, Toast)} from '@sv-sdk/ui'
+import {(Button, Input, Card, Alert, Modal, Table, Dropdown, Badge, Toast)} from '@big0290/ui'
 ```
 
 [Browse all components →](/packages/ui)
@@ -544,8 +544,8 @@ Verify BETTER_AUTH_SECRET is set and at least 32 characters long.
 
 Make sure you've:
 
-1. Imported `@sv-sdk/ui/styles` in your layout
-2. Configured Tailwind to include `@sv-sdk/ui` in content paths
+1. Imported `@big0290/ui/styles` in your layout
+2. Configured Tailwind to include `@big0290/ui` in content paths
 
 ## Get Help
 

@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
-import { signup } from '@sv-sdk/auth'
+import { signup } from '@big0290/auth'
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
   try {

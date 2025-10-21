@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
-import { exportAuditLogsJSON, exportAuditLogsCSV } from '@sv-sdk/audit';
-import { enforce } from '@sv-sdk/permissions';
+import { exportAuditLogsJSON, exportAuditLogsCSV } from '@big0290/audit';
+import { enforce } from '@big0290/permissions';
 
 export const GET: RequestHandler = async ({ locals, url }) => {
 	// Enforce permission

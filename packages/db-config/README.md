@@ -1,4 +1,4 @@
-# @sv-sdk/db-config
+# @big0290/db-config
 
 Database configuration and schemas using Drizzle ORM for the SV-SDK platform.
 
@@ -41,7 +41,7 @@ Why single database? See [DATABASE_DECISION.md](../../DATABASE_DECISION.md)
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/db-config
+pnpm add @big0290/db-config
 ```
 
 ## Configuration
@@ -58,8 +58,8 @@ DB_POOL_SIZE=20  # Optional, defaults to 20
 ### Database Client
 
 ```typescript
-import { db, sql } from '@sv-sdk/db-config'
-import { users } from '@sv-sdk/db-config/schemas/auth'
+import { db, sql } from '@big0290/db-config'
+import { users } from '@big0290/db-config/schemas/auth'
 import { eq } from 'drizzle-orm'
 
 // Query users
@@ -85,7 +85,7 @@ await db.delete(users).where(eq(users.id, 'user-123'))
 ### Health Checks
 
 ```typescript
-import { checkConnection, checkSchemas } from '@sv-sdk/db-config'
+import { checkConnection, checkSchemas } from '@big0290/db-config'
 
 // Check database connection
 const health = await checkConnection()
@@ -99,7 +99,7 @@ const schemas = await checkSchemas()
 ### Schemas and Types
 
 ```typescript
-import type { User, NewUser } from '@sv-sdk/db-config'
+import type { User, NewUser } from '@big0290/db-config'
 
 // Use generated types
 const user: User = {
@@ -125,7 +125,7 @@ const newUser: NewUser = {
 ### Validation with Zod
 
 ```typescript
-import { insertUserSchema, selectUserSchema } from '@sv-sdk/db-config'
+import { insertUserSchema, selectUserSchema } from '@big0290/db-config'
 
 // Validate insert data
 const result = insertUserSchema.safeParse({
@@ -194,7 +194,7 @@ pnpm db:restore <backup-file>
 BetterAuth-compatible schema with custom extensions.
 
 ```typescript
-import { users, sessions } from '@sv-sdk/db-config/schemas/auth'
+import { users, sessions } from '@big0290/db-config/schemas/auth'
 ```
 
 ### Email Schema
@@ -204,7 +204,7 @@ import { users, sessions } from '@sv-sdk/db-config/schemas/auth'
 Manages email templates (MJML), sending history, webhooks, and user preferences.
 
 ```typescript
-import { emailTemplates, emailSends } from '@sv-sdk/db-config/schemas/email'
+import { emailTemplates, emailSends } from '@big0290/db-config/schemas/email'
 ```
 
 ### Audit Schema
@@ -214,7 +214,7 @@ import { emailTemplates, emailSends } from '@sv-sdk/db-config/schemas/email'
 Append-only audit log with indexing for fast queries. Supports PII masking and tamper detection.
 
 ```typescript
-import { auditLogs } from '@sv-sdk/db-config/schemas/audit'
+import { auditLogs } from '@big0290/db-config/schemas/audit'
 ```
 
 ### Permissions Schema
@@ -224,7 +224,7 @@ import { auditLogs } from '@sv-sdk/db-config/schemas/audit'
 RBAC system with role management and permission caching.
 
 ```typescript
-import { roles, userRoles, permissionCache } from '@sv-sdk/db-config/schemas/permissions'
+import { roles, userRoles, permissionCache } from '@big0290/db-config/schemas/permissions'
 ```
 
 ## Indexes

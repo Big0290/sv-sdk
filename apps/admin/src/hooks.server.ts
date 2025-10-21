@@ -4,11 +4,11 @@
  */
 
 import type { Handle } from '@sveltejs/kit';
-import { auth } from '@sv-sdk/auth';
-import { checkRoutePermission } from '@sv-sdk/permissions';
-import { rateLimiter } from '@sv-sdk/security';
-import { logAudit } from '@sv-sdk/audit';
-import { logger } from '@sv-sdk/shared';
+import { auth } from '@big0290/auth';
+import { checkRoutePermission } from '@big0290/permissions';
+import { rateLimiter } from '@big0290/security';
+import { logAudit } from '@big0290/audit';
+import { logger } from '@big0290/shared';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const { pathname } = event.url;

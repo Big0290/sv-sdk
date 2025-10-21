@@ -4,7 +4,7 @@
 
 import * as brevo from '@getbrevo/brevo'
 import crypto from 'crypto'
-import { logger, ExternalServiceError, ok, err, type Result } from '@sv-sdk/shared'
+import { logger, ExternalServiceError, ok, err, type Result } from '@big0290/shared'
 import type { EmailProvider, EmailMessage, EmailResult, WebhookEvent, DeliveryStatus } from './types.js'
 
 /**

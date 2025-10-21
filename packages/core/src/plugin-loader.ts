@@ -2,7 +2,7 @@
  * Plugin loader with dependency resolution
  */
 
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 import type { Plugin, PluginMetadata } from './plugin.js'
 import { validatePlugin } from './plugin.js'
 import type { SDKContext } from './sdk-context.js'

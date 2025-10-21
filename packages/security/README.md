@@ -1,4 +1,4 @@
-# @sv-sdk/security
+# @big0290/security
 
 Security utilities for the SV-SDK platform, including rate limiting, CSRF protection, input sanitization, and more.
 
@@ -14,7 +14,7 @@ Security utilities for the SV-SDK platform, including rate limiting, CSRF protec
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/security
+pnpm add @big0290/security
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ pnpm add @sv-sdk/security
 ### Rate Limiting
 
 ```typescript
-import { checkRateLimit, enforceRateLimit, RATE_LIMITS } from '@sv-sdk/security'
+import { checkRateLimit, enforceRateLimit, RATE_LIMITS } from '@big0290/security'
 
 // Check rate limit
 const result = await checkRateLimit({
@@ -54,7 +54,7 @@ res.set(headers)
 ### CSRF Protection
 
 ```typescript
-import { generateCSRFToken, verifyCSRFToken, enforceCSRF } from '@sv-sdk/security'
+import { generateCSRFToken, verifyCSRFToken, enforceCSRF } from '@big0290/security'
 
 // Generate token (e.g., when rendering form)
 const csrfToken = await generateCSRFToken({
@@ -75,7 +75,7 @@ await enforceCSRF(req.body.csrfToken, session.id)
 ### Input Sanitization
 
 ```typescript
-import { sanitizeHtml, sanitizeUserInput, detectXSS, sanitizeUrl } from '@sv-sdk/security'
+import { sanitizeHtml, sanitizeUserInput, detectXSS, sanitizeUrl } from '@big0290/security'
 
 // Sanitize HTML
 const safe = sanitizeHtml(userInput)
@@ -97,7 +97,7 @@ const safeUrl = sanitizeUrl(userInput, ['http', 'https'])
 ### Security Headers
 
 ```typescript
-import { getSecurityHeaders, getCORSHeaders } from '@sv-sdk/security'
+import { getSecurityHeaders, getCORSHeaders } from '@big0290/security'
 
 // Get all security headers
 const headers = getSecurityHeaders({
@@ -126,7 +126,7 @@ const corsHeaders = getCORSHeaders({
 ### Secrets Management
 
 ```typescript
-import { validateRequiredEnvVars, redactSecret, encrypt, decrypt } from '@sv-sdk/security'
+import { validateRequiredEnvVars, redactSecret, encrypt, decrypt } from '@big0290/security'
 
 // Validate environment variables on startup
 const validation = validateRequiredEnvVars()
@@ -151,7 +151,7 @@ const decrypted = decrypt(record.encryptedField)
 ### Security Audit Logging
 
 ```typescript
-import { logSecurityEvent, logFailedLogin, logSuspiciousActivity } from '@sv-sdk/security'
+import { logSecurityEvent, logFailedLogin, logSuspiciousActivity } from '@big0290/security'
 
 // Log failed login
 await logFailedLogin({
@@ -180,7 +180,7 @@ await logSecurityEvent({
 ## Pre-configured Rate Limits
 
 ```typescript
-import { RATE_LIMITS } from '@sv-sdk/security'
+import { RATE_LIMITS } from '@big0290/security'
 
 RATE_LIMITS.LOGIN // 5 attempts per 15 minutes
 RATE_LIMITS.PASSWORD_RESET // 3 attempts per hour
@@ -206,9 +206,9 @@ RATE_LIMITS.EMAIL_SEND // 10 emails per minute
 
 Works with:
 
-- `@sv-sdk/cache` - Redis for rate limiting and CSRF tokens
-- `@sv-sdk/shared` - Error classes and logging
-- `@sv-sdk/audit` - Security event logging (integration pending)
+- `@big0290/cache` - Redis for rate limiting and CSRF tokens
+- `@big0290/shared` - Error classes and logging
+- `@big0290/audit` - Security event logging (integration pending)
 
 ## Testing
 

@@ -3,7 +3,7 @@
  * Tracks security-related events for monitoring and compliance
  */
 
-import { SECURITY_EVENTS, logger } from '@sv-sdk/shared'
+import { SECURITY_EVENTS, logger } from '@big0290/shared'
 
 /**
  * Security event data
@@ -20,7 +20,7 @@ export interface SecurityEvent {
 
 /**
  * Log security event
- * Note: This will be integrated with @sv-sdk/audit package
+ * Note: This will be integrated with @big0290/audit package
  */
 export async function logSecurityEvent(event: SecurityEvent): Promise<void> {
   // Log to application logger immediately
@@ -44,7 +44,7 @@ export async function logSecurityEvent(event: SecurityEvent): Promise<void> {
     })
   }
 
-  // TODO: Integration with @sv-sdk/audit package when available
+  // TODO: Integration with @big0290/audit package when available
   // await logAudit(event.type, {
   //   severity: event.severity,
   //   userId: event.userId,

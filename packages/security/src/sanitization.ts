@@ -3,7 +3,7 @@
  * Prevents XSS, SQL injection, path traversal, etc.
  */
 
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * Sanitize HTML to prevent XSS

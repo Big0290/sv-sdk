@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import { Alert, Button, Spinner } from '@sv-sdk/ui'
+  import { Alert, Button, Spinner } from '@big0290/ui'
   import { onMount } from 'svelte'
 
   let status = $state<'verifying' | 'success' | 'error'>('verifying')

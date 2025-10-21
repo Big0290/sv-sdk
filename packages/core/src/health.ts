@@ -3,9 +3,9 @@
  * Aggregates health status from all services
  */
 
-import { checkConnection, checkSchemas } from '@sv-sdk/db-config'
-import { checkRedisHealth } from '@sv-sdk/cache'
-import { logger } from '@sv-sdk/shared'
+import { checkConnection, checkSchemas } from '@big0290/db-config'
+import { checkRedisHealth } from '@big0290/cache'
+import { logger } from '@big0290/shared'
 
 /**
  * Service health status

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Input, Alert } from '@sv-sdk/ui';
+	import { Button, Input, Alert } from '@big0290/ui';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 

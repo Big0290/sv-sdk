@@ -1,5 +1,5 @@
 {
-  "name": "@sv-sdk/core",
+  "name": "@big0290/core",
   "version": "0.0.1",
   "type": "module",
   "repository": {
@@ -36,9 +36,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sv-sdk/cache": "workspace:*",
-    "@sv-sdk/db-config": "workspace:*",
-    "@sv-sdk/shared": "workspace:*"
+    "@big0290/cache": "workspace:*",
+    "@big0290/db-config": "workspace:*",
+    "@big0290/shared": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

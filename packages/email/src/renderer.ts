@@ -6,10 +6,10 @@
 import mjml2html from 'mjml'
 import Handlebars from 'handlebars'
 import { convert } from 'html-to-text'
-import { db, emailTemplates } from '@sv-sdk/db-config'
-import { eq, and } from '@sv-sdk/db-config'
-import { cacheGet, cacheSet, CACHE_KEYS, CACHE_TTL } from '@sv-sdk/cache'
-import { ValidationError, NotFoundError, logger } from '@sv-sdk/shared'
+import { db, emailTemplates } from '@big0290/db-config'
+import { eq, and } from '@big0290/db-config'
+import { cacheGet, cacheSet, CACHE_KEYS, CACHE_TTL } from '@big0290/cache'
+import { ValidationError, NotFoundError, logger } from '@big0290/shared'
 import { z } from 'zod'
 
 /**

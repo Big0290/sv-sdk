@@ -1,5 +1,5 @@
 import type { Handle } from '@sveltejs/kit'
-import { auth } from '@sv-sdk/auth'
+import { auth } from '@big0290/auth'
 
 export const handle: Handle = async ({ event, resolve }) => {
   // Get session from BetterAuth

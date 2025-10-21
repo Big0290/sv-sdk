@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { logout } from '@sv-sdk/auth';
-import { logAudit } from '@sv-sdk/audit';
+import { logout } from '@big0290/auth';
+import { logAudit } from '@big0290/audit';
 
 export const POST: RequestHandler = async ({ locals }) => {
 	if (locals.session) {

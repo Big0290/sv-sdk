@@ -2,7 +2,7 @@
  * Permission constants and helpers
  */
 
-import { PERMISSION_ACTION, PERMISSION_RESOURCE, PERMISSION_SCOPE, buildPermission } from '@sv-sdk/shared'
+import { PERMISSION_ACTION, PERMISSION_RESOURCE, PERMISSION_SCOPE, buildPermission } from '@big0290/shared'
 
 /**
  * All available permissions
@@ -83,7 +83,12 @@ export const PERMISSION_GROUPS = {
     PERMISSIONS.USER_UPDATE_OWN,
     PERMISSIONS.USER_DELETE_ANY,
   ],
-  role: [PERMISSIONS.ROLE_READ_ANY, PERMISSIONS.ROLE_CREATE_ANY, PERMISSIONS.ROLE_UPDATE_ANY, PERMISSIONS.ROLE_DELETE_ANY],
+  role: [
+    PERMISSIONS.ROLE_READ_ANY,
+    PERMISSIONS.ROLE_CREATE_ANY,
+    PERMISSIONS.ROLE_UPDATE_ANY,
+    PERMISSIONS.ROLE_DELETE_ANY,
+  ],
   email: [PERMISSIONS.EMAIL_READ_ANY, PERMISSIONS.EMAIL_CREATE_ANY],
   template: [
     PERMISSIONS.TEMPLATE_READ_ANY,
@@ -106,4 +111,3 @@ export const WILDCARD_PERMISSION = '*:*:*'
 export function isWildcardPermission(permission: string): boolean {
   return permission === WILDCARD_PERMISSION
 }
-

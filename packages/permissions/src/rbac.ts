@@ -3,9 +3,9 @@
  */
 
 import { getUserPermissions } from './cache.js'
-import { parsePermission } from '@sv-sdk/shared'
-import { logAudit } from '@sv-sdk/audit'
-import { logger, PermissionError } from '@sv-sdk/shared'
+import { parsePermission } from '@big0290/shared'
+import { logAudit } from '@big0290/audit'
+import { logger, PermissionError } from '@big0290/shared'
 
 /**
  * Permission context for ABAC (Attribute-Based Access Control)
@@ -141,8 +141,8 @@ export async function getUserPermissionsList(userId: string): Promise<string[]> 
  */
 export async function hasRole(userId: string, roleName: string): Promise<boolean> {
   try {
-    const { db, userRoles, roles } = await import('@sv-sdk/db-config')
-    const { eq } = await import('@sv-sdk/db-config')
+    const { db, userRoles, roles } = await import('@big0290/db-config')
+    const { eq } = await import('@big0290/db-config')
 
     const result = await db
       .select()

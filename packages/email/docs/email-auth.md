@@ -129,16 +129,20 @@ Value: v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com; pct=100; adkim=s
 Start with `none`, then move to stricter policies:
 
 1. **Monitoring Mode** (`p=none`):
+
    ```
    v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com
    ```
+
    - Collect reports without affecting delivery
    - Recommended for first 1-2 weeks
 
 2. **Quarantine Mode** (`p=quarantine`):
+
    ```
    v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com; pct=10
    ```
+
    - Start with 10% of emails
    - Gradually increase to 100%
 
@@ -146,6 +150,7 @@ Start with `none`, then move to stricter policies:
    ```
    v=DMARC1; p=reject; rua=mailto:dmarc@yourdomain.com
    ```
+
    - Only after monitoring shows 100% compliance
    - Highest security level
 
@@ -186,7 +191,7 @@ Value: v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com; pct=100
 ### 1. Send Test Email
 
 ```typescript
-import { testTemplate } from '@sv-sdk/email'
+import { testTemplate } from '@big0290/email'
 
 await testTemplate('notification', 'your-email@gmail.com', {
   subject: 'Test Email',
@@ -207,16 +212,19 @@ DKIM-Signature: v=1; ...
 ### 3. Use Testing Tools
 
 **Mail Tester**: https://www.mail-tester.com/
+
 - Sends you a unique email address
 - Forward your test email there
 - Get a score out of 10
 
 **MXToolbox**: https://mxtoolbox.com/
+
 - Check SPF, DKIM, DMARC records
 - Verify DNS propagation
 - Test blacklist status
 
 **Google Postmaster Tools**: https://postmaster.google.com/
+
 - Monitor Gmail deliverability
 - Track spam rate
 - See domain reputation
@@ -228,6 +236,7 @@ DKIM-Signature: v=1; ...
 ### Emails Going to Spam
 
 **Solutions**:
+
 - ✅ Configure SPF, DKIM, DMARC
 - ✅ Warm up your domain (start with low volume)
 - ✅ Avoid spam trigger words
@@ -238,6 +247,7 @@ DKIM-Signature: v=1; ...
 ### SPF Record Not Found
 
 **Check**:
+
 - DNS propagation (can take 24-48 hours)
 - Correct record name (@)
 - No typos in value
@@ -246,6 +256,7 @@ DKIM-Signature: v=1; ...
 ### DKIM Not Verifying
 
 **Check**:
+
 - DNS records added correctly
 - Wait for DNS propagation
 - Verify in provider dashboard
@@ -254,6 +265,7 @@ DKIM-Signature: v=1; ...
 ### DMARC Reports Not Received
 
 **Check**:
+
 - Email address in `rua` is valid
 - DNS record correct
 - Give it time (reports sent daily)
@@ -295,6 +307,7 @@ Value: v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com
 ```
 
 Update `EMAIL_FROM`:
+
 ```bash
 EMAIL_FROM=noreply@mail.yourdomain.com
 ```
@@ -345,4 +358,3 @@ if (bounceRate > 2) {
 - [ ] Monitoring set up for bounce rate
 - [ ] Unsubscribe links included
 - [ ] From address uses your domain
-

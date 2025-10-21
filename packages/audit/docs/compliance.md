@@ -34,7 +34,7 @@ Audit logging compliance considerations for GDPR, SOC2, and other regulations.
 **Automatic PII Masking**:
 
 ```typescript
-import { logAudit } from '@sv-sdk/audit'
+import { logAudit } from '@big0290/audit'
 
 // PII is automatically masked
 await logAudit('user.updated', {
@@ -60,7 +60,7 @@ await logAudit(
 **GDPR Recommendation**: Retain logs for legitimate business purposes only
 
 ```typescript
-import { applyRetentionPolicy } from '@sv-sdk/audit'
+import { applyRetentionPolicy } from '@big0290/audit'
 
 // Standard retention: 1 year
 await applyRetentionPolicy({
@@ -107,7 +107,7 @@ await applyRetentionPolicy({
 **Tamper Detection**:
 
 ```typescript
-import { verifyHashChain } from '@sv-sdk/audit'
+import { verifyHashChain } from '@big0290/audit'
 
 // Verify log integrity
 const verification = await verifyHashChain(logs)

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Card } from '@sv-sdk/ui'
+  import { Button, Card } from '@big0290/ui'
 
   const features = [
     {
@@ -81,9 +81,9 @@
     <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-gray-100 mb-8">Simple to Use</h2>
 
     <div class="code-block">
-      <pre>{`import { login, signup } from '@sv-sdk/auth'
-import { can, enforce } from '@sv-sdk/permissions'
-import { sendEmail } from '@sv-sdk/email'
+      <pre>{`import { login, signup } from '@big0290/auth'
+import { can, enforce } from '@big0290/permissions'
+import { sendEmail } from '@big0290/email'
 
 // Authenticate user
 const result = await login({

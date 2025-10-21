@@ -4,7 +4,7 @@
  */
 
 import { metricsCollector, type Metric } from './collector.js'
-import { logger } from '@sv-sdk/shared'
+import { logger } from '@big0290/shared'
 
 /**
  * Reporter configuration

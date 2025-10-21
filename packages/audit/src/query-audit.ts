@@ -2,10 +2,15 @@
  * Query audit logs with filters and pagination
  */
 
-import { db, auditLogs, type AuditLog } from '@sv-sdk/db-config'
-import { eq, and, gte, lte, desc, asc } from '@sv-sdk/db-config'
-import { calculatePaginationMeta, calculateOffset, type PaginatedResponse, type PaginationParams } from '@sv-sdk/shared'
-import { logger, DatabaseError } from '@sv-sdk/shared'
+import { db, auditLogs, type AuditLog } from '@big0290/db-config'
+import { eq, and, gte, lte, desc, asc } from '@big0290/db-config'
+import {
+  calculatePaginationMeta,
+  calculateOffset,
+  type PaginatedResponse,
+  type PaginationParams,
+} from '@big0290/shared'
+import { logger, DatabaseError } from '@big0290/shared'
 
 /**
  * Audit log filters

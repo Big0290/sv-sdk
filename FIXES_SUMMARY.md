@@ -18,11 +18,11 @@
 
 **Fixed** - Resolved all TypeScript linting errors in publishable packages:
 
-- `@sv-sdk/observability` - Fixed `any` type in metrics reporter
-- `@sv-sdk/audit` - Fixed `any` types in integrity functions
-- `@sv-sdk/permissions` - Fixed `any` types and import PermissionContext
-- `@sv-sdk/email` - Fixed `any` types in queue
-- `@sv-sdk/cli` - Fixed `any` types and removed unused error variables
+- `@big0290/observability` - Fixed `any` type in metrics reporter
+- `@big0290/audit` - Fixed `any` types in integrity functions
+- `@big0290/permissions` - Fixed `any` types and import PermissionContext
+- `@big0290/email` - Fixed `any` types in queue
+- `@big0290/cli` - Fixed `any` types and removed unused error variables
 
 ### 5. ESLint Ignore Patterns ✅
 
@@ -79,19 +79,19 @@ pnpm build
 
 All 13 packages are now ready to publish to GitHub Packages:
 
-1. @sv-sdk/core
-2. @sv-sdk/auth
-3. @sv-sdk/ui
-4. @sv-sdk/permissions
-5. @sv-sdk/email
-6. @sv-sdk/audit
-7. @sv-sdk/cache
-8. @sv-sdk/security
-9. @sv-sdk/db-config
-10. @sv-sdk/observability
-11. @sv-sdk/cli
-12. @sv-sdk/validators
-13. @sv-sdk/shared
+1. @big0290/core
+2. @big0290/auth
+3. @big0290/ui
+4. @big0290/permissions
+5. @big0290/email
+6. @big0290/audit
+7. @big0290/cache
+8. @big0290/security
+9. @big0290/db-config
+10. @big0290/observability
+11. @big0290/cli
+12. @big0290/validators
+13. @big0290/shared
 
 ## Next Steps
 

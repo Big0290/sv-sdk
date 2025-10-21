@@ -5,7 +5,7 @@ The foundation of SV-SDK providing plugin system, event bus, and SDK initializat
 ## Installation
 
 ```bash
-pnpm add @sv-sdk/core
+pnpm add @big0290/core
 ```
 
 ## Features
@@ -22,7 +22,7 @@ pnpm add @sv-sdk/core
 ### Initialize SDK
 
 ```typescript
-import { createSDK } from '@sv-sdk/core'
+import { createSDK } from '@big0290/core'
 
 const sdk = await createSDK({
   config: {
@@ -42,10 +42,10 @@ const { db, redis, logger, eventBus } = sdk.context
 ### With Plugins
 
 ```typescript
-import { createSDK } from '@sv-sdk/core'
-import { authPlugin } from '@sv-sdk/auth'
-import { emailPlugin } from '@sv-sdk/email'
-import { auditPlugin } from '@sv-sdk/audit'
+import { createSDK } from '@big0290/core'
+import { authPlugin } from '@big0290/auth'
+import { emailPlugin } from '@big0290/email'
+import { auditPlugin } from '@big0290/audit'
 
 const sdk = await createSDK({
   config: {
@@ -112,7 +112,7 @@ interface SDKContext {
 ### Basic Plugin
 
 ```typescript
-import { createPlugin } from '@sv-sdk/core'
+import { createPlugin } from '@big0290/core'
 
 const myPlugin = createPlugin({
   name: 'my-plugin',
@@ -195,7 +195,7 @@ if (healthy) {
 ### Individual Service Health
 
 ```typescript
-import { checkDatabaseHealth, checkRedisHealth } from '@sv-sdk/core'
+import { checkDatabaseHealth, checkRedisHealth } from '@big0290/core'
 
 // Check database
 const dbHealth = await checkDatabaseHealth(sdk.context.db)
@@ -309,9 +309,9 @@ const sdk = await createSDK({
 ### Complete Application
 
 ```typescript
-import { createSDK } from '@sv-sdk/core'
-import { authPlugin } from '@sv-sdk/auth'
-import { emailPlugin } from '@sv-sdk/email'
+import { createSDK } from '@big0290/core'
+import { authPlugin } from '@big0290/auth'
+import { emailPlugin } from '@big0290/email'
 
 async function main() {
   // Initialize SDK
@@ -361,7 +361,7 @@ See [Plugin System Guide →](/core-concepts/plugin-system)
 ## TypeScript Types
 
 ```typescript
-import type { SDK, SDKContext, SDKConfig, Plugin, PluginMetadata, EventBus } from '@sv-sdk/core'
+import type { SDK, SDKContext, SDKConfig, Plugin, PluginMetadata, EventBus } from '@big0290/core'
 ```
 
 ## Related Documentation

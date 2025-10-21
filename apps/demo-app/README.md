@@ -25,11 +25,11 @@ pnpm --filter demo-app dev
 
 This app demonstrates:
 
-1. **@sv-sdk/auth** integration in hooks.server.ts
-2. **@sv-sdk/ui** components throughout the app
-3. **@sv-sdk/email** for verification emails
-4. **@sv-sdk/security** for rate limiting
-5. **@sv-sdk/permissions** for protected routes
+1. **@big0290/auth** integration in hooks.server.ts
+2. **@big0290/ui** components throughout the app
+3. **@big0290/email** for verification emails
+4. **@big0290/security** for rate limiting
+5. **@big0290/permissions** for protected routes
 
 ## Routes
 
@@ -47,4 +47,3 @@ This app demonstrates:
 # E2E tests
 pnpm --filter demo-app test:e2e
 ```
-

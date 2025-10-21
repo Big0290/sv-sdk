@@ -3,8 +3,8 @@
  * Tracks application metrics for monitoring
  */
 
-import { redis } from '@sv-sdk/cache'
-import { logger } from '@sv-sdk/shared'
+import { redis } from '@big0290/cache'
+import { logger } from '@big0290/shared'
 
 /**
  * Metric types
@@ -215,4 +215,3 @@ export async function trackDatabasePool(active: number, idle: number): Promise<v
 export async function trackCacheHit(hit: boolean): Promise<void> {
   await metricsCollector.incrementCounter('cache_requests_total', 1, { result: hit ? 'hit' : 'miss' })
 }
-

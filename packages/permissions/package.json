@@ -1,5 +1,5 @@
 {
-  "name": "@sv-sdk/permissions",
+  "name": "@big0290/permissions",
   "version": "0.0.1",
   "type": "module",
   "repository": {
@@ -35,10 +35,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sv-sdk/audit": "workspace:*",
-    "@sv-sdk/cache": "workspace:*",
-    "@sv-sdk/db-config": "workspace:*",
-    "@sv-sdk/shared": "workspace:*",
+    "@big0290/audit": "workspace:*",
+    "@big0290/cache": "workspace:*",
+    "@big0290/db-config": "workspace:*",
+    "@big0290/shared": "workspace:*",
     "nanoid": "^5.0.9"
   },
   "devDependencies": {

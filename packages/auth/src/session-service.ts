@@ -2,10 +2,10 @@
  * Session management service
  */
 
-import { db, sessions, type Session } from '@sv-sdk/db-config'
-import { eq, lt, and } from '@sv-sdk/db-config'
-import { cacheDelete, CACHE_KEYS } from '@sv-sdk/cache'
-import { logger } from '@sv-sdk/shared'
+import { db, sessions, type Session } from '@big0290/db-config'
+import { eq, lt, and } from '@big0290/db-config'
+import { cacheDelete, CACHE_KEYS } from '@big0290/cache'
+import { logger } from '@big0290/shared'
 
 /**
  * Get all sessions for user
