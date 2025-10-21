@@ -8,10 +8,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	compilerOptions: {
-		runes: true,
-		compatibility: {
-			componentApi: 4 // Allow Svelte 4 components like lucide-svelte
-		}
+		runes: false, // Disable runes for admin-app to avoid lucide-svelte compatibility issues
 	},
 
 	kit: {
