@@ -72,9 +72,7 @@
 <div class="min-h-screen flex items-center justify-center px-4">
   <div class="w-full max-w-md">
     <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">
-        Reset Password
-      </h1>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Reset Password</h1>
       <p class="mt-2 text-gray-600 dark:text-gray-400">
         {step === 'request' ? 'Enter your email to receive reset instructions' : 'Create a new password'}
       </p>
@@ -86,7 +84,7 @@
           {step === 'request' ? 'Reset instructions sent to your email!' : 'Password reset successfully!'}
         </Alert>
         {#if step === 'reset'}
-          <Button variant="primary" fullWidth onclick={() => window.location.href = '/login'}>
+          <Button variant="primary" fullWidth onclick={() => (window.location.href = '/login')}>
             Continue to Login
           </Button>
         {/if}
@@ -99,13 +97,7 @@
 
         {#if step === 'request'}
           <form onsubmit={handleRequestReset} class="space-y-4">
-            <Input
-              type="email"
-              label="Email"
-              bind:value={email}
-              placeholder="you@example.com"
-              required
-            />
+            <Input type="email" label="Email" bind:value={email} placeholder="you@example.com" required />
 
             <Button type="submit" variant="primary" fullWidth {loading}>
               {loading ? 'Sending...' : 'Send Reset Instructions'}
@@ -113,13 +105,7 @@
           </form>
         {:else}
           <form onsubmit={handleResetPassword} class="space-y-4">
-            <Input
-              type="password"
-              label="New Password"
-              bind:value={password}
-              placeholder="••••••••"
-              required
-            />
+            <Input type="password" label="New Password" bind:value={password} placeholder="••••••••" required />
 
             <Input
               type="password"
@@ -136,12 +122,9 @@
         {/if}
 
         <div class="mt-6 text-center">
-          <a href="/login" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">
-            Back to Login
-          </a>
+          <a href="/login" class="text-sm text-primary-600 dark:text-primary-400 hover:underline"> Back to Login </a>
         </div>
       {/if}
     </div>
   </div>
 </div>
-

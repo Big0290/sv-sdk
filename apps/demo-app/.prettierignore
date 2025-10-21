@@ -1,0 +1,12 @@
+.svelte-kit/
+node_modules/
+dist/
+build/
+.turbo/
+*.log
+pnpm-lock.yaml
+README.md
+src/app.css
+src/app.html
+postcss.config.js
+

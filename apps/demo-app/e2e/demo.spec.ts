@@ -37,4 +37,3 @@ test.describe('Demo App E2E', () => {
     await expect(page.locator('h1')).toContainText('Platform Features')
   })
 })
-

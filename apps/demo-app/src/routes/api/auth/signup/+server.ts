@@ -19,10 +19,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
       user: result.data.user,
     })
   } catch (error) {
-    return json(
-      { error: 'An error occurred during signup' },
-      { status: 500 }
-    )
+    return json({ error: 'An error occurred during signup' }, { status: 500 })
   }
 }
-

@@ -90,7 +90,7 @@ export async function verifyHashChain(
  * Generate signature for audit log export
  * Prevents tampering of exported logs
  */
-export function generateExportSignature(logs: any[], secret: string): string {
+export function generateExportSignature(logs: Record<string, unknown>[], secret: string): string {
   const data = JSON.stringify(logs)
   const hmac = crypto.createHmac('sha256', secret)
   hmac.update(data)
@@ -100,7 +100,7 @@ export function generateExportSignature(logs: any[], secret: string): string {
 /**
  * Verify export signature
  */
-export function verifyExportSignature(logs: any[], signature: string, secret: string): boolean {
+export function verifyExportSignature(logs: Record<string, unknown>[], signature: string, secret: string): boolean {
   const expectedSignature = generateExportSignature(logs, secret)
   return signature === expectedSignature
 }

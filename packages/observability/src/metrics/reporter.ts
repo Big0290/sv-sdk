@@ -3,7 +3,7 @@
  * Periodically reports metrics to monitoring systems
  */
 
-import { metricsCollector } from './collector.js'
+import { metricsCollector, type Metric } from './collector.js'
 import { logger } from '@sv-sdk/shared'
 
 /**
@@ -23,7 +23,7 @@ export interface ReporterConfig {
   /**
    * Custom reporter function
    */
-  reporter?: (metrics: any[]) => Promise<void>
+  reporter?: (metrics: Metric[]) => Promise<void>
 }
 
 /**
@@ -80,7 +80,11 @@ export class MetricsReporter {
         logger.info('Metrics Report', { count: metrics.length })
 
         metrics.forEach((metric) => {
-          const labels = metric.labels ? ` {${Object.entries(metric.labels).map(([k, v]) => `${k}="${v}"`).join(',')}}` : ''
+          const labels = metric.labels
+            ? ` {${Object.entries(metric.labels)
+                .map(([k, v]) => `${k}="${v}"`)
+                .join(',')}}`
+            : ''
 
           logger.info(`  ${metric.name}${labels}: ${metric.value}`)
         })
@@ -111,4 +115,3 @@ export function createMetricsReporter(config: Partial<ReporterConfig> = {}): Met
  * Default metrics reporter
  */
 export const defaultReporter = createMetricsReporter()
-

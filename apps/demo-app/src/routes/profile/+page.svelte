@@ -33,14 +33,10 @@
 </svelte:head>
 
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-  <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-    My Profile
-  </h1>
+  <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">My Profile</h1>
 
   {#if success}
-    <Alert variant="success" class="mb-6" dismissible>
-      Profile updated successfully!
-    </Alert>
+    <Alert variant="success" class="mb-6" dismissible>Profile updated successfully!</Alert>
   {/if}
 
   {#if error}
@@ -57,20 +53,14 @@
         <div class="space-y-4">
           <Input label="Email" value={data.user?.email} disabled />
           <Input label="Name" bind:value={name} />
-          <Button variant="primary" onclick={updateProfile}>
-            Save Changes
-          </Button>
+          <Button variant="primary" onclick={updateProfile}>Save Changes</Button>
         </div>
       </Card>
 
       <Card>
         <h2 class="text-lg font-semibold mb-4">Security</h2>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          Keep your account secure
-        </p>
-        <Button variant="outline">
-          Change Password
-        </Button>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Keep your account secure</p>
+        <Button variant="outline">Change Password</Button>
       </Card>
     </div>
 
@@ -82,7 +72,9 @@
           <div>
             <dt class="text-sm font-medium text-gray-600 dark:text-gray-400">Role</dt>
             <dd class="mt-1">
-              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200">
+              <span
+                class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200"
+              >
                 {data.user?.role}
               </span>
             </dd>
@@ -108,4 +100,3 @@
     </div>
   </div>
 </div>
-

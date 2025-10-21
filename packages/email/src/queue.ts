@@ -16,7 +16,7 @@ import { nanoid } from 'nanoid'
 export interface EmailJob {
   templateName: string
   to: string
-  variables: Record<string, any>
+  variables: Record<string, unknown>
   locale?: string
   metadata?: Record<string, unknown>
 }
@@ -48,7 +48,7 @@ export const emailQueue = createQueue<EmailJob>(QUEUE_NAMES.EMAIL, {
 export async function enqueueEmail(
   templateName: string,
   to: string,
-  variables: Record<string, any>,
+  variables: Record<string, unknown>,
   options: {
     priority?: number
     delay?: number
@@ -178,4 +178,3 @@ export const emailWorker = createWorker<EmailJob>(QUEUE_NAMES.EMAIL, async (job:
 })
 
 logger.info('Email queue worker started')
-

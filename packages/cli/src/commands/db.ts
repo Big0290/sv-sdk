@@ -20,7 +20,7 @@ export function createDbCommand(): Command {
       try {
         execSync('pnpm --filter @sv-sdk/db-config db:migrate', { stdio: 'inherit' })
         spinner.succeed('Migrations completed!')
-      } catch (error) {
+      } catch {
         spinner.fail('Migration failed')
         process.exit(1)
       }
@@ -35,7 +35,7 @@ export function createDbCommand(): Command {
       try {
         execSync('pnpm --filter @sv-sdk/db-config db:seed', { stdio: 'inherit' })
         spinner.succeed('Database seeded!')
-      } catch (error) {
+      } catch {
         spinner.fail('Seeding failed')
         process.exit(1)
       }
@@ -86,7 +86,7 @@ export function createDbCommand(): Command {
         process.env.BACKUP_DIR = options.output
         execSync('tsx packages/db-config/scripts/backup.ts', { stdio: 'inherit' })
         spinner.succeed('Backup created!')
-      } catch (error) {
+      } catch {
         spinner.fail('Backup failed')
         process.exit(1)
       }
@@ -94,4 +94,3 @@ export function createDbCommand(): Command {
 
   return db
 }
-

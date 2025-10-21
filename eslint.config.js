@@ -28,6 +28,7 @@ export default ts.config(
       'dist/',
       'build/',
       '.svelte-kit/',
+      '**/.svelte-kit/**',
       'node_modules/',
       '**/*.config.js',
       '**/*.config.ts',
@@ -37,4 +38,3 @@ export default ts.config(
     ],
   }
 )
-

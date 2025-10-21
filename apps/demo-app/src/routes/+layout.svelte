@@ -17,9 +17,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center gap-8">
-          <a href="/" class="text-xl font-bold text-primary-600 dark:text-primary-400">
-            SV-SDK Demo
-          </a>
+          <a href="/" class="text-xl font-bold text-primary-600 dark:text-primary-400"> SV-SDK Demo </a>
           <div class="hidden md:flex gap-4">
             {#each navigation as item}
               <a
@@ -39,7 +37,10 @@
               {data.user.email}
             </span>
             <form method="POST" action="/logout">
-              <button type="submit" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+              <button
+                type="submit"
+                class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+              >
                 Logout
               </button>
             </form>
@@ -47,7 +48,10 @@
             <a href="/login" class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline">
               Login
             </a>
-            <a href="/signup" class="text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md">
+            <a
+              href="/signup"
+              class="text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md"
+            >
               Sign Up
             </a>
           {/if}
@@ -64,10 +68,7 @@
   <!-- Footer -->
   <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <p class="text-center text-gray-600 dark:text-gray-400 text-sm">
-        Built with SV-SDK © 2024
-      </p>
+      <p class="text-center text-gray-600 dark:text-gray-400 text-sm">Built with SV-SDK © 2024</p>
     </div>
   </footer>
 </div>
-

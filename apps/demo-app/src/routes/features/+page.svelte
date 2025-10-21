@@ -41,9 +41,7 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="text-center mb-12">
-    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100">
-      Platform Features
-    </h1>
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100">Platform Features</h1>
     <p class="mt-4 text-xl text-gray-600 dark:text-gray-400">
       Everything you need to build production-ready applications
     </p>
@@ -72,9 +70,7 @@
 
   <!-- Tech Stack -->
   <div class="mt-16">
-    <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-8">
-      Built With Modern Tech Stack
-    </h2>
+    <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-8">Built With Modern Tech Stack</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
       {#each ['Svelte 5', 'SvelteKit', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Redis', 'Drizzle ORM', 'BetterAuth'] as tech}
         <div class="p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800">
@@ -84,4 +80,3 @@
     </div>
   </div>
 </div>
-

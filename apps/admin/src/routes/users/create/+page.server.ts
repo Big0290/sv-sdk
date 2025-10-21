@@ -1,11 +1,10 @@
-import type { PageServerLoad } from './$types'
-import { getRoles } from '@sv-sdk/permissions'
+import type { PageServerLoad } from './$types';
+import { getRoles } from '@sv-sdk/permissions';
 
 export const load: PageServerLoad = async () => {
-  const roles = await getRoles()
+	const roles = await getRoles();
 
-  return {
-    roles,
-  }
-}
-
+	return {
+		roles
+	};
+};

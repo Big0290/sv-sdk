@@ -11,4 +11,3 @@ export const load: PageServerLoad = async ({ locals }) => {
     user: locals.user,
   }
 }
-

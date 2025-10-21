@@ -19,6 +19,11 @@
     "pnpm": ">=8.0.0"
   },
   "packageManager": "pnpm@8.15.0",
+  "pnpm": {
+    "overrides": {
+      "eslint": "^9.37.0"
+    }
+  },
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build --filter='!admin' --filter='!demo-app'",

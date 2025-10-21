@@ -22,7 +22,7 @@ export function createDevCommand(): Command {
         // Run dev setup script
         execSync('bash ./scripts/dev-setup.sh', { stdio: 'inherit' })
         spinner.succeed('Development environment ready!')
-      } catch (error) {
+      } catch {
         spinner.fail('Setup failed')
         process.exit(1)
       }
@@ -85,4 +85,3 @@ export function createDevCommand(): Command {
 
   return dev
 }
-

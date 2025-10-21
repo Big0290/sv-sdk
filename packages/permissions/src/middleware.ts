@@ -2,7 +2,7 @@
  * Permission middleware for SvelteKit
  */
 
-import { can, enforce } from './rbac.js'
+import { can, enforce, type PermissionContext } from './rbac.js'
 import { logger } from '@sv-sdk/shared'
 
 /**
@@ -10,7 +10,7 @@ import { logger } from '@sv-sdk/shared'
  * Returns function compatible with SvelteKit hooks
  */
 export function createPermissionCheck(requiredPermission: string) {
-  return async (userId: string | undefined, context?: any) => {
+  return async (userId: string | undefined, context?: PermissionContext) => {
     if (!userId) {
       return {
         allowed: false,
@@ -82,8 +82,8 @@ export async function checkRoutePermission(
  * Decorator-style function for route handlers
  */
 export function requirePermission(permission: string) {
-  return (handler: (userId: string, ...args: any[]) => Promise<any>) => {
-    return async (userId: string | undefined, ...args: any[]) => {
+  return <T>(handler: (userId: string, ...args: unknown[]) => Promise<T>) => {
+    return async (userId: string | undefined, ...args: unknown[]): Promise<T> => {
       if (!userId) {
         throw new Error('User not authenticated')
       }
@@ -94,4 +94,3 @@ export function requirePermission(permission: string) {
     }
   }
 }
-

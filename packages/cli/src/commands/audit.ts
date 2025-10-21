@@ -23,7 +23,7 @@ export function createAuditCommand(): Command {
       const spinner = ora('Exporting audit logs...').start()
 
       try {
-        const filters: any = {}
+        const filters: Record<string, Date | string | undefined> = {}
 
         if (options.from) {
           filters.dateFrom = new Date(options.from)
@@ -129,4 +129,3 @@ export function createAuditCommand(): Command {
 
   return audit
 }
-
