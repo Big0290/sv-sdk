@@ -16,7 +16,7 @@ const dbAny = db as any
  * BetterAuth instance
  * Configured with Drizzle adapter and custom settings
  */
-export const auth = betterAuth({
+export const auth: ReturnType<typeof betterAuth> = betterAuth({
   database: drizzleAdapter(dbAny, {
     provider: 'pg',
     schema: {
