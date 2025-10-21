@@ -106,14 +106,19 @@ export async function getSessionById(sessionId: string): Promise<Session | null>
       return null
     }
 
+    const session = result[0]
+    if (!session) {
+      return null
+    }
+
     // Check if expired
-    if (result[0].expiresAt < new Date()) {
+    if (session.expiresAt < new Date()) {
       logger.debug('Session expired', { sessionId })
       await revokeSession(sessionId)
       return null
     }
 
-    return result[0]
+    return session
   } catch (error) {
     logger.error('Failed to get session', error as Error, { sessionId })
     return null
@@ -126,7 +131,7 @@ export async function getSessionById(sessionId: string): Promise<Session | null>
 export async function countActiveSessions(): Promise<number> {
   try {
     const now = new Date()
-    const result = await db.select().from(sessions).where(lt(now, sessions.expiresAt))
+    const result = await db.select().from(sessions).where(lt(sessions.expiresAt, now))
 
     return result.length
   } catch (error) {

@@ -21,8 +21,10 @@ export async function login(
 ): Promise<
   Result<
     {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       user: any
-      session: any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      token: any
     },
     Error
   >
@@ -70,7 +72,7 @@ export async function login(
 
     return ok({
       user: result.user,
-      session: result.session,
+      token: result.token,
     })
   } catch (error) {
     logger.error('Login error', error as Error)
@@ -88,8 +90,10 @@ export async function signup(
 ): Promise<
   Result<
     {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       user: any
-      session: any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      token: any
     },
     Error
   >
@@ -118,12 +122,12 @@ export async function signup(
       body: {
         email,
         password,
-        name: name || undefined,
+        ...(name && { name }),
       },
     })
 
     if (!result || !result.user) {
-      logger.error('Signup failed', { email })
+      logger.error('Signup failed', undefined, { email: email || undefined })
       return err(new Error('Failed to create user'))
     }
 
@@ -137,7 +141,7 @@ export async function signup(
 
     return ok({
       user: result.user,
-      session: result.session,
+      token: result.token,
     })
   } catch (error) {
     logger.error('Signup error', error as Error)
@@ -174,7 +178,9 @@ export async function logout(sessionToken: string): Promise<Result<void, Error>>
 export async function getSession(sessionToken: string): Promise<
   Result<
     {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       user: any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       session: any
     } | null,
     Error
@@ -245,7 +251,7 @@ export async function requestPasswordReset(
 export async function verifyEmail(token: string): Promise<Result<void, Error>> {
   try {
     await auth.api.verifyEmail({
-      body: {
+      query: {
         token,
       },
     })

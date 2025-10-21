@@ -6,8 +6,10 @@ import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { db } from '@sv-sdk/db-config'
 import { logger } from '@sv-sdk/shared'
+import { nanoid } from 'nanoid'
 
 // Type assertion needed for BetterAuth drizzle adapter
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dbAny = db as any
 
 /**
@@ -53,7 +55,6 @@ export const auth = betterAuth({
   advanced: {
     generateId: () => {
       // Use nanoid for generating IDs
-      const { nanoid } = require('nanoid')
       return nanoid()
     },
     cookieSameSite: 'lax',
@@ -71,7 +72,8 @@ export const auth = betterAuth({
 })
 
 // Export types
-export type Session = typeof auth.$Infer.Session
-export type User = typeof auth.$Infer.User
+export type Session = typeof auth.$Infer.Session.session
+// User type comes from database schema
+export type { User } from '@sv-sdk/db-config'
 
 logger.info('BetterAuth configured with Drizzle adapter')

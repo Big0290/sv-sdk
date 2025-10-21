@@ -105,7 +105,7 @@ export async function getUserById(id: string, useCache: boolean = true): Promise
 
     logger.debug('User fetched from database', { userId: id })
 
-    return user
+    return user || null
   } catch (error) {
     logger.error('Failed to get user by ID', error as Error, { userId: id })
     throw new DatabaseError('Failed to fetch user', { cause: error as Error })
@@ -123,7 +123,7 @@ export async function getUserByEmail(email: string): Promise<User | null> {
       return null
     }
 
-    return result[0]
+    return result[0] || null
   } catch (error) {
     logger.error('Failed to get user by email', error as Error, { email })
     throw new DatabaseError('Failed to fetch user', { cause: error as Error })
@@ -144,6 +144,10 @@ export async function createUser(data: Omit<NewUser, 'id' | 'createdAt' | 'updat
     }
 
     const [user] = await db.insert(users).values(newUser).returning()
+
+    if (!user) {
+      throw new DatabaseError('Failed to create user - no user returned')
+    }
 
     logger.info('User created', { userId: user.id, email: user.email })
 
