@@ -5,8 +5,6 @@
 
 // ==================== THEME SYSTEM ====================
 export * from './theme'
-export * from './theme/store'
-export * from './theme/utils'
 
 // ==================== DESIGN TOKENS ====================
 export * from './tokens'

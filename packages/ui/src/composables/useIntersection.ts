@@ -9,7 +9,9 @@ export function useIntersection(options?: IntersectionObserverInit) {
 
   function observe(node: HTMLElement) {
     const observer = new IntersectionObserver((entries) => {
-      isIntersecting.set(entries[0].isIntersecting)
+      if (entries[0]) {
+        isIntersecting.set(entries[0].isIntersecting)
+      }
     }, options)
 
     observer.observe(node)

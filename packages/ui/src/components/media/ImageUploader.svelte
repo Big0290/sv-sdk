@@ -68,7 +68,7 @@
     ondrop={(e) => {
       e.preventDefault()
       isDragging = false
-      handleFiles(e.dataTransfer?.files)
+      handleFiles(e.dataTransfer?.files ?? null)
     }}
     role="button"
     tabindex="0"

@@ -30,7 +30,7 @@
   <video bind:this={videoElement} autoplay playsinline class="w-full rounded-lg">
     <track kind="captions" />
   </video>
-  {#if !cameraState.isActive}
+  {#if !$cameraState.isActive}
     <button onclick={handleStart} class="absolute inset-0 flex items-center justify-center">
       <div class="btn btn-primary">Start Scanner</div>
     </button>

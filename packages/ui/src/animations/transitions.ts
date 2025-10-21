@@ -6,7 +6,7 @@ import type { TransitionConfig } from 'svelte/transition'
 import { cubicOut } from 'svelte/easing'
 
 export function glassScale(
-  node: Element,
+  _node: Element,
   { delay = 0, duration = 200, start = 0.95 }: { delay?: number; duration?: number; start?: number } = {}
 ): TransitionConfig {
   return {
@@ -21,7 +21,7 @@ export function glassScale(
 }
 
 export function glassFade(
-  node: Element,
+  _node: Element,
   { delay = 0, duration = 200 }: { delay?: number; duration?: number } = {}
 ): TransitionConfig {
   return {
@@ -32,7 +32,7 @@ export function glassFade(
 }
 
 export function liquidSlide(
-  node: Element,
+  _node: Element,
   { delay = 0, duration = 300, axis = 'y' }: { delay?: number; duration?: number; axis?: 'x' | 'y' } = {}
 ): TransitionConfig {
   return {

@@ -30,9 +30,10 @@
   const sortedData = $derived(() => {
     if (!sortKey) return data
 
+    const key = sortKey
     return [...data].sort((a, b) => {
-      const aVal = a[sortKey]
-      const bVal = b[sortKey]
+      const aVal = a[key] as string | number
+      const bVal = b[key] as string | number
 
       if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1
       if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1

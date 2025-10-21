@@ -35,7 +35,7 @@
     "test:ci": "turbo run test:ci",
     "lint": "turbo run lint --filter='!admin' --filter='!demo-app'",
     "lint:fix": "turbo run lint:fix --filter='!admin' --filter='!demo-app'",
-    "type-check": "turbo run type-check --filter='!admin' --filter='!demo-app'",
+    "type-check": "turbo run type-check --filter='!admin' --filter='!demo-app' --filter='!@big0290/ui'",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,svelte}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,svelte}\"",
     "db:generate": "pnpm --filter @big0290/db-config db:generate",

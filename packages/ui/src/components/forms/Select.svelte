@@ -95,12 +95,11 @@
   }
 
   $effect(() => {
-    if (typeof window !== 'undefined') {
-      if (isOpen) {
-        window.addEventListener('click', handleClickOutside)
-        return () => window.removeEventListener('click', handleClickOutside)
-      }
+    if (typeof window !== 'undefined' && isOpen) {
+      window.addEventListener('click', handleClickOutside)
+      return () => window.removeEventListener('click', handleClickOutside)
     }
+    return undefined
   })
 </script>
 

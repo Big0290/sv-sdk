@@ -2,9 +2,7 @@
  * Type definitions for iOS 26 Glassmorphism UI Components
  */
 
-export type Theme = 'light' | 'dark' | 'system'
-export type ResolvedTheme = 'light' | 'dark'
-
+// Theme types are exported from './theme/store'
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 export type Variant = 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'gray'
 export type Status = 'online' | 'offline' | 'away' | 'busy'

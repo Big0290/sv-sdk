@@ -120,6 +120,7 @@ function createThemeStore(): Writable<Theme> & {
   return {
     subscribe,
     set,
+    update,
     /**
      * Toggle between light and dark (ignores system)
      */

@@ -145,6 +145,7 @@ export const glass = {
       sm: '0 0 10px rgba(108, 76, 243, 0.3)',
       md: '0 0 20px rgba(108, 76, 243, 0.4)',
       lg: '0 0 30px rgba(108, 76, 243, 0.5)',
+      xl: '0 0 40px rgba(108, 76, 243, 0.6)',
     },
   },
 } as const

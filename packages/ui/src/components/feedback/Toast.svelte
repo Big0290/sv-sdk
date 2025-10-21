@@ -67,6 +67,7 @@
       const timer = setTimeout(dismiss, duration)
       return () => clearTimeout(timer)
     }
+    return undefined
   })
 </script>
 

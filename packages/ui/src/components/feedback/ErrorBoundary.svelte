@@ -22,6 +22,7 @@
       window.addEventListener('error', handleError)
       return () => window.removeEventListener('error', handleError)
     }
+    return undefined
   })
 </script>
 

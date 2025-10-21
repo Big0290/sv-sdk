@@ -18,9 +18,11 @@
     portalNode = document.createElement('div')
     portalNode.className = 'portal-root'
 
-    targetNode = typeof target === 'string' ? document.querySelector(target) || document.body : target
+    targetNode = typeof target === 'string' ? (document.querySelector(target) as HTMLElement) || document.body : target
 
-    targetNode.appendChild(portalNode)
+    if (targetNode) {
+      targetNode.appendChild(portalNode)
+    }
 
     return () => {
       if (portalNode && targetNode?.contains(portalNode)) {

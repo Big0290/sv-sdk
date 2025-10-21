@@ -40,7 +40,7 @@
     <track kind="captions" />
   </video>
 
-  {#if cameraState.isActive}
+  {#if $cameraState.isActive}
     <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
       <button onclick={capture} class="btn btn-glass btn-lg rounded-full">
         <Camera class="h-6 w-6" />

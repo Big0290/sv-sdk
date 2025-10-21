@@ -19,7 +19,7 @@
 
   let editorContainer: HTMLDivElement
 
-  onMount(async () => {
+  onMount(() => {
     // Dynamically import Monaco to avoid SSR issues
     // Note: In production, you would npm install monaco-editor
     // and configure with vite-plugin-monaco-editor
