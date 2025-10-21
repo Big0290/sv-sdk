@@ -5,7 +5,7 @@
 
 import { db, users, type User, type NewUser } from '@sv-sdk/db-config'
 import { cacheGet, cacheSet, cacheDelete, CACHE_KEYS, CACHE_TTL } from '@sv-sdk/cache'
-import { eq, like, and, or, desc, asc } from 'drizzle-orm'
+import { eq, like, and, or, desc } from '@sv-sdk/db-config'
 import { NotFoundError, DatabaseError, logger } from '@sv-sdk/shared'
 import type { PaginationParams, PaginatedResponse } from '@sv-sdk/shared'
 import { calculatePaginationMeta, calculateOffset } from '@sv-sdk/shared'
@@ -50,6 +50,7 @@ export async function getUsers(
     let query = db.select().from(users)
 
     if (conditions.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       query = query.where(and(...conditions)) as any
     }
 
@@ -284,6 +285,7 @@ export async function countUsers(filters: UserFilters = {}): Promise<number> {
     let query = db.select().from(users)
 
     if (conditions.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       query = query.where(and(...conditions)) as any
     }
 

@@ -3,9 +3,8 @@
  */
 
 import { db, auditLogs } from '@sv-sdk/db-config'
-import { lt } from 'drizzle-orm'
+import { lt } from '@sv-sdk/db-config'
 import { logger } from '@sv-sdk/shared'
-import { exportAuditLogsJSON } from './query-audit.js'
 import fs from 'fs/promises'
 import path from 'path'
 

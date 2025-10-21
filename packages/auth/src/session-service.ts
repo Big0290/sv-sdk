@@ -3,7 +3,7 @@
  */
 
 import { db, sessions, type Session } from '@sv-sdk/db-config'
-import { eq, lt, and } from 'drizzle-orm'
+import { eq, lt, and } from '@sv-sdk/db-config'
 import { cacheDelete, CACHE_KEYS } from '@sv-sdk/cache'
 import { logger } from '@sv-sdk/shared'
 

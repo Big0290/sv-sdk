@@ -3,7 +3,7 @@
  */
 
 import { db, auditLogs, type AuditLog } from '@sv-sdk/db-config'
-import { eq, and, gte, lte, like, desc, asc } from 'drizzle-orm'
+import { eq, and, gte, lte, desc, asc } from '@sv-sdk/db-config'
 import { calculatePaginationMeta, calculateOffset, type PaginatedResponse, type PaginationParams } from '@sv-sdk/shared'
 import { logger, DatabaseError } from '@sv-sdk/shared'
 
@@ -67,6 +67,7 @@ export async function fetchAuditLogs(
     let query = db.select().from(auditLogs)
 
     if (conditions.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       query = query.where(and(...conditions)) as any
     }
 
@@ -82,6 +83,7 @@ export async function fetchAuditLogs(
           ? auditLogs.eventType
           : auditLogs.userId
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     query = (sort.order === 'asc' ? query.orderBy(asc(sortColumn)) : query.orderBy(desc(sortColumn))) as any
 
     // Apply pagination
