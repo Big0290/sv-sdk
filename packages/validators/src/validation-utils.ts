@@ -182,6 +182,7 @@ export function createEnumValidator<T extends string>(values: readonly T[]) {
  * Apply different validation based on condition
  */
 export function conditionalValidator<T>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   condition: (data: any) => boolean,
   trueSchema: ZodSchema<T>,
   falseSchema: ZodSchema<T>

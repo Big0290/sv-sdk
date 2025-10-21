@@ -8,6 +8,7 @@ import { logger } from '@sv-sdk/shared'
 /**
  * Event listener function
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type EventListener<T = any> = (data: T) => void | Promise<void>
 
 /**
@@ -50,6 +51,7 @@ export class EventBus {
   /**
    * Subscribe to event
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   on<T = any>(event: string, listener: EventListener<T>, priority: number = 5): void {
     this.addEventListener(event, listener, priority, false)
   }
@@ -57,6 +59,7 @@ export class EventBus {
   /**
    * Subscribe to event (fires once then unsubscribes)
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   once<T = any>(event: string, listener: EventListener<T>, priority: number = 5): void {
     this.addEventListener(event, listener, priority, true)
   }
@@ -64,6 +67,7 @@ export class EventBus {
   /**
    * Unsubscribe from event
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   off<T = any>(event: string, listener: EventListener<T>): void {
     const listeners = this.listeners.get(event)
 
@@ -85,6 +89,7 @@ export class EventBus {
   /**
    * Emit event to all listeners
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async emit<T = any>(event: string, data?: T): Promise<void> {
     const listeners = this.listeners.get(event)
 
@@ -137,6 +142,7 @@ export class EventBus {
   /**
    * Emit event synchronously (does not wait for async listeners)
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   emitSync<T = any>(event: string, data?: T): void {
     const listeners = this.listeners.get(event)
 

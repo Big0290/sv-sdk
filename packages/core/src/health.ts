@@ -126,7 +126,7 @@ export async function readinessProbe(): Promise<{ ready: boolean; services: stri
   const health = await checkSystemHealth()
 
   const healthyServices = Object.entries(health.services)
-    .filter(([_, service]) => service.healthy)
+    .filter(([, service]) => service.healthy)
     .map(([name]) => name)
 
   return {
