@@ -29,7 +29,7 @@
 		"@sv-sdk/shared": "workspace:*",
 		"@sv-sdk/ui": "workspace:*",
 		"@sv-sdk/validators": "workspace:*",
-		"better-auth": "^1.4.0",
+		"better-auth": "^1.3.28",
 		"nanoid": "^5.0.9"
 	},
 	"devDependencies": {

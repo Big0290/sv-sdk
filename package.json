@@ -38,19 +38,28 @@
     "db:studio": "pnpm --filter @sv-sdk/db-config db:studio",
     "clean": "rm -rf node_modules packages/*/node_modules apps/*/node_modules packages/*/dist apps/*/dist .turbo",
     "setup": "./scripts/dev-setup.sh",
-    "prepare": "husky install"
+    "docs:api": "typedoc",
+    "docs:dev": "cd docs && pnpm install && pnpm dev",
+    "docs:build": "pnpm docs:api && cd docs && pnpm install && pnpm build",
+    "docs:preview": "cd docs && pnpm preview"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
+    "@eslint/js": "^9.17.0",
     "@vitest/ui": "^3.2.4",
     "drizzle-kit": "^0.31.5",
     "eslint": "^9.37.0",
+    "eslint-plugin-svelte": "^2.46.1",
+    "globals": "^15.13.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.11",
     "prettier": "^3.6.2",
     "prettier-plugin-svelte": "^3.3.2",
     "turbo": "^2.5.8",
+    "typedoc": "^0.25.0",
+    "typedoc-plugin-markdown": "^3.17.0",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.19.1",
     "vitest": "^3.2.4"
   }
 }

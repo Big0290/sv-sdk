@@ -6,3 +6,4 @@
 export * from './test-helpers.js'
 export * from './mock-factories.js'
 export * from './db-factory.js'
+export * from './faker-factory.js'

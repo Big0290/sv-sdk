@@ -1,402 +1,662 @@
-# SV-SDK - Svelte 5 SDK Platform
+# SV-SDK
 
-A comprehensive, production-ready SDK platform built with Svelte 5, featuring authentication, permissions, audit logging, email management, and more.
+> A comprehensive full-stack authentication, authorization, and platform SDK for Svelte 5 applications
 
-**Status**: ✅ 100% Complete | 🚀 Production Ready | 📦 12 Packages | 🎯 2 Apps | 📚 Full Documentation
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
+[![pnpm](https://img.shields.io/badge/pnpm-%3E%3D8.0.0-orange.svg)](https://pnpm.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 
-[📖 View Implementation Status](./IMPLEMENTATION_COMPLETE.md) | [🏗️ Architecture](./ARCHITECTURE.md) | [🚀 Deployment Guide](./docs/deployment/)
+## What is SV-SDK?
 
----
+SV-SDK is a production-ready, enterprise-grade SDK platform built specifically for **Svelte 5** and **SvelteKit** applications. It provides everything you need to build secure, scalable web applications with authentication, authorization, email, audit logging, and more—all in a unified, type-safe package.
 
-## 🎯 Project Highlights
+Built with modern technologies including **BetterAuth**, **Drizzle ORM**, **Redis**, **BullMQ**, and **PostgreSQL**, SV-SDK offers a complete solution for building SaaS applications, admin dashboards, and complex web platforms.
 
-✨ **Production-Ready Core** - Authentication, permissions, email, audit, security packages fully implemented  
-📦 **12 Functional Packages** - Ready to use in your Svelte 5 applications today  
-🔐 **Enterprise Security** - Rate limiting, CSRF, XSS prevention, audit logging, GDPR compliance  
-📧 **Complete Email System** - MJML templates, multi-provider (Brevo/SES), queue processing, webhooks  
-🎨 **UI Component Library** - Accessible Svelte 5 components with Tailwind CSS and dark mode  
-🔧 **CLI Tools** - Complete admin tooling for users, email, permissions, database operations  
-📚 **Comprehensive Docs** - Architecture, API reference, deployment guides, operational runbooks  
-🐳 **Docker Ready** - Complete Docker setup with PostgreSQL and Redis  
+### Why SV-SDK?
 
-See [PROJECT_STATUS.md](./PROJECT_STATUS.md) for detailed implementation status.
+- **🔐 Battle-Tested Authentication** - Secure user auth with BetterAuth, Argon2 hashing, and session management
+- **🛡️ Granular Permissions** - Flexible RBAC system with resource-level permissions and caching
+- **📧 Reliable Email** - MJML templates, multi-provider support, queue processing, and webhook tracking
+- **📊 Comprehensive Audit** - Complete audit trail with PII masking, retention policies, and compliance features
+- **🎨 Beautiful UI Components** - 100+ Svelte 5 components with dark mode, accessibility, and i18n
+- **⚡ High Performance** - Redis caching, BullMQ queues, connection pooling, and optimized queries
+- **🔒 Security First** - Rate limiting, CSRF protection, security headers, input sanitization
+- **🔌 Plugin Architecture** - Extensible plugin system with event bus and dependency resolution
+- **🛠️ Developer Experience** - Comprehensive CLI, TypeScript types, extensive documentation
+- **📦 Monorepo Ready** - Built with Turborepo for optimal build performance
 
----
+## Key Features
 
-## 🚀 Quick Start
+### 📦 Packages
 
-### Prerequisites
+| Package                                           | Description                                     | Version |
+| ------------------------------------------------- | ----------------------------------------------- | ------- |
+| [@sv-sdk/core](./packages/core)                   | SDK initialization, plugin system, event bus    | 0.0.1   |
+| [@sv-sdk/auth](./packages/auth)                   | Authentication with BetterAuth, user management | 0.0.1   |
+| [@sv-sdk/permissions](./packages/permissions)     | RBAC permissions system with caching            | 0.0.1   |
+| [@sv-sdk/ui](./packages/ui)                       | Svelte 5 component library with 100+ components | 0.0.1   |
+| [@sv-sdk/email](./packages/email)                 | Email system with MJML, queues, webhooks        | 0.0.1   |
+| [@sv-sdk/audit](./packages/audit)                 | Audit logging, retention, compliance            | 0.0.1   |
+| [@sv-sdk/cache](./packages/cache)                 | Redis caching and BullMQ queue system           | 0.0.1   |
+| [@sv-sdk/security](./packages/security)           | Rate limiting, CSRF, security headers           | 0.0.1   |
+| [@sv-sdk/db-config](./packages/db-config)         | Database configuration with Drizzle ORM         | 0.0.1   |
+| [@sv-sdk/observability](./packages/observability) | Health checks, metrics, monitoring              | 0.0.1   |
+| [@sv-sdk/cli](./packages/cli)                     | Command-line interface for SDK management       | 0.0.1   |
+| [@sv-sdk/validators](./packages/validators)       | Zod schemas and validation utilities            | 0.0.1   |
+| [@sv-sdk/shared](./packages/shared)               | Shared utilities, types, constants              | 0.0.1   |
 
-- **Node.js** 18+ ([Download](https://nodejs.org/))
-- **pnpm** 8+ (`npm install -g pnpm`)
-- **Docker** & **Docker Compose** ([Download](https://www.docker.com/products/docker-desktop))
+## Architecture Overview
 
-### Automated Setup
-
-```bash
-# Clone the repository
-git clone <repository-url>
-cd sv-sdk
-
-# Run automated setup script
-./scripts/dev-setup.sh
-```
-
-The setup script will:
-
-1. ✅ Check prerequisites
-2. ✅ Create `.env` from `.env.example`
-3. ✅ Install all dependencies
-4. ✅ Start Docker services (PostgreSQL + Redis)
-5. ✅ Run database migrations
-6. ✅ Seed initial data
-7. ✅ Build all packages
-
-### Manual Setup
-
-If you prefer manual setup:
-
-```bash
-# 1. Install dependencies
-pnpm install
-
-# 2. Copy environment file
-cp .env.example .env
-# Edit .env with your configuration
-
-# 3. Start services
-docker-compose up -d
-
-# 4. Generate database types and run migrations
-pnpm db:generate
-pnpm db:migrate
-
-# 5. Seed database with initial data
-pnpm db:seed
-
-# 6. Start development servers
-pnpm dev
-```
-
-### Access Applications
-
-- **Admin Panel**: http://localhost:5173
-- **Demo App**: http://localhost:5174
-
-**Default Credentials**:
-
-- Email: `admin@example.com`
-- Password: `Admin123!`
-
----
-
-## 📦 Project Structure
+SV-SDK is built as a **Turborepo monorepo** with a modular architecture:
 
 ```
 sv-sdk/
-├── apps/
-│   ├── admin/          # Admin dashboard (SvelteKit)
-│   └── demo-app/       # Demo application (SvelteKit)
-├── packages/
-│   ├── shared/         # Shared utilities and types
-│   ├── db-config/      # Database configuration (Drizzle ORM)
-│   ├── validators/     # Validation schemas (Zod)
-│   ├── cache/          # Redis caching (ioredis + BullMQ)
-│   ├── core/           # Core SDK & plugin system
-│   ├── security/       # Security utilities (rate limiting, CSRF)
-│   ├── auth/           # Authentication (BetterAuth)
-│   ├── audit/          # Audit logging
-│   ├── email/          # Email system (templates, queue, providers)
-│   ├── permissions/    # RBAC permissions
-│   ├── ui/             # UI component library (Svelte 5 + Tailwind)
-│   ├── cli/            # CLI tools
-│   └── observability/  # Monitoring and metrics
-├── scripts/            # Development and deployment scripts
-├── test/               # Shared test utilities
-└── docs/               # Documentation
+├── packages/           # Core SDK packages
+│   ├── core/          # Plugin system & SDK initialization
+│   ├── auth/          # Authentication (BetterAuth)
+│   ├── permissions/   # RBAC system
+│   ├── ui/            # Svelte 5 components
+│   ├── email/         # Email service
+│   ├── audit/         # Audit logging
+│   ├── cache/         # Redis & BullMQ
+│   ├── security/      # Security utilities
+│   └── ...
+├── apps/              # Example applications
+│   ├── admin/         # Admin dashboard
+│   └── demo-app/      # Demo application
+├── docs/              # Documentation site
+└── deploy/            # Deployment configs
 ```
 
----
+### Core Architecture
 
-## 🛠️ Development
+```
+┌─────────────────────────────────────────────────┐
+│                   SV-SDK Core                    │
+│  (Plugin System, Event Bus, SDK Context)         │
+└────────────┬────────────────────────────────────┘
+             │
+     ┌───────┴───────┐
+     │   Plugins     │
+     └───────┬───────┘
+             │
+    ┌────────┼────────┐
+    │        │        │
+┌───▼───┐ ┌──▼──┐ ┌──▼───┐
+│ Auth  │ │Email│ │Audit │
+│Plugin │ │Plug │ │Plugin│
+└───┬───┘ └──┬──┘ └──┬───┘
+    │        │       │
+    └────────┼───────┘
+          ┌──▼──┐
+          │Cache│
+          │Redis│
+          └─────┘
+```
 
-### Common Commands
+**Key Concepts:**
+
+- **Plugin System**: Modular architecture with dependency resolution
+- **Event Bus**: Type-safe communication between plugins
+- **SDK Context**: Unified access to services (db, redis, logger, eventBus)
+- **Graceful Shutdown**: Proper cleanup and connection closing
+
+## Quick Start
+
+### Prerequisites
+
+- **Node.js** >= 18.0.0
+- **pnpm** >= 8.0.0
+- **PostgreSQL** >= 14
+- **Redis** >= 6
+
+### 1. Installation
 
 ```bash
-# Development
-pnpm dev                    # Start all dev servers
-pnpm dev --filter admin     # Start specific app
+# Clone the repository
+git clone https://github.com/your-org/sv-sdk.git
+cd sv-sdk
 
-# Building
-pnpm build                  # Build all packages
-pnpm build --filter @sv-sdk/auth  # Build specific package
+# Install dependencies
+pnpm install
 
-# Testing
-pnpm test                   # Run all tests
-pnpm test:unit              # Unit tests only
-pnpm test:integration       # Integration tests
-pnpm test:coverage          # Generate coverage report
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+```
 
-# Code Quality
-pnpm lint                   # Lint all packages
-pnpm lint:fix               # Auto-fix linting issues
-pnpm format                 # Format code with Prettier
-pnpm type-check             # TypeScript type checking
+### 2. Configuration
 
+Create your configuration file:
+
+```json
+{
+  "database": {
+    "url": "postgresql://sv_sdk_user:password@localhost:5432/sv_sdk",
+    "pool": {
+      "max": 20,
+      "min": 5
+    }
+  },
+  "redis": {
+    "url": "redis://localhost:6379"
+  },
+  "auth": {
+    "sessionTimeout": 43200,
+    "maxLoginAttempts": 5,
+    "passwordPolicy": {
+      "minLength": 12,
+      "requireNumbers": true,
+      "requireSpecialChars": true,
+      "requireUppercase": true
+    }
+  },
+  "email": {
+    "provider": "brevo",
+    "from": "noreply@example.com",
+    "queue": {
+      "concurrency": 5,
+      "retries": 3
+    }
+  }
+}
+```
+
+**Environment Variables:**
+
+```bash
 # Database
-pnpm db:generate            # Generate Drizzle schema
-pnpm db:migrate             # Run migrations
-pnpm db:seed                # Seed database
-pnpm db:studio              # Open Drizzle Studio
+DATABASE_URL=postgresql://sv_sdk_user:password@localhost:5432/sv_sdk
 
-# Services
-docker-compose up -d        # Start services
-docker-compose down         # Stop services
-docker-compose logs -f      # View logs
+# Redis
+REDIS_URL=redis://localhost:6379
+
+# Authentication
+BETTER_AUTH_SECRET=your_secret_key_min_32_chars_long_random_string
+BETTER_AUTH_URL=http://localhost:5173
+
+# Email (Brevo)
+EMAIL_PROVIDER=brevo
+EMAIL_FROM=noreply@yourdomain.com
+BREVO_API_KEY=your_brevo_api_key
 ```
 
-### Development Workflow
+### 3. Database Setup
 
-See [DEVELOPMENT_WORKFLOW.md](./DEVELOPMENT_WORKFLOW.md) for detailed daily development guide.
+```bash
+# Generate migrations
+pnpm db:generate
 
----
+# Run migrations
+pnpm db:migrate
 
-## 🏗️ Architecture
-
-### Technology Stack
-
-- **Frontend**: Svelte 5, SvelteKit, Tailwind CSS
-- **Authentication**: BetterAuth with Drizzle adapter
-- **Database**: PostgreSQL with multiple schemas (auth, email, audit, permissions)
-- **ORM**: Drizzle ORM
-- **Caching**: Redis with ioredis
-- **Queue**: BullMQ
-- **Email**: MJML templates with Brevo/AWS SES providers
-- **Validation**: Zod
-- **Testing**: Vitest, Playwright
-- **Monorepo**: pnpm workspaces + Turborepo
-
-### Database Architecture
-
-Single PostgreSQL database with 4 logical schemas:
-
-```
-Database: sv_sdk
-├── auth (users, sessions, accounts)
-├── email (templates, sends, webhooks)
-├── audit (audit_logs)
-└── permissions (roles, user_roles)
+# Seed initial data (creates default roles, templates, etc.)
+pnpm db:seed
 ```
 
-**Why single database?** See [DATABASE_DECISION.md](./DATABASE_DECISION.md) for detailed rationale.
+### 4. Start Development
 
----
+```bash
+# Start all apps in development mode
+pnpm dev
 
-## 📚 Documentation
+# Or start specific apps
+pnpm --filter @sv-sdk/admin dev
+pnpm --filter demo-app dev
+```
 
-- [**Implementation Plan**](./IMPLEMENTATION_PLAN.md) - Complete development roadmap
-- [**Development Workflow**](./DEVELOPMENT_WORKFLOW.md) - Daily development guide
-- [**Phase Dependencies**](./PHASE_DEPENDENCIES.md) - Implementation order and dependencies
-- [**Database Decision**](./DATABASE_DECISION.md) - Database architecture rationale
-- [**Versioning Strategy**](./VERSIONING.md) - Package versioning and release process
+### 5. Your First Application
 
-### Package Documentation
+Create a SvelteKit app and integrate SV-SDK:
 
-Each package has its own README with API documentation and usage examples:
+**Install packages:**
 
-- [@sv-sdk/auth](./packages/auth/README.md) - Authentication
-- [@sv-sdk/email](./packages/email/README.md) - Email system
-- [@sv-sdk/permissions](./packages/permissions/README.md) - RBAC permissions
-- [@sv-sdk/ui](./packages/ui/README.md) - UI components
-- [More packages...](./packages/)
+```bash
+pnpm add @sv-sdk/auth @sv-sdk/permissions @sv-sdk/ui
+```
 
----
+**Configure hooks (`src/hooks.server.ts`):**
 
-## 🔒 Security
+```typescript
+import type { Handle } from '@sveltejs/kit'
+import { auth } from '@sv-sdk/auth'
+import { checkRoutePermission } from '@sv-sdk/permissions'
+import { rateLimiter } from '@sv-sdk/security'
+import { logAudit } from '@sv-sdk/audit'
 
-- ✅ Rate limiting on all endpoints
-- ✅ CSRF protection
-- ✅ Input sanitization
-- ✅ Secure password hashing (Argon2)
-- ✅ Session management with secure cookies
-- ✅ Security headers (CSP, HSTS, etc.)
-- ✅ Audit logging for security events
-- ✅ PII masking in logs
+export const handle: Handle = async ({ event, resolve }) => {
+  const { pathname } = event.url
+  const ipAddress = event.getClientAddress()
 
-See [SECURITY.md](./SECURITY.md) for vulnerability reporting.
+  // Get session from BetterAuth
+  const session = await auth.api.getSession({
+    headers: event.request.headers,
+  })
 
----
+  // Attach user to event.locals
+  event.locals.user = session?.user || null
+  event.locals.session = session || null
 
-## ✅ Features
+  // Rate limiting on API endpoints
+  if (pathname.startsWith('/api/')) {
+    const rateLimitKey = session?.user?.id || ipAddress
+    const rateLimitResult = await rateLimiter.checkLimit(rateLimitKey, {
+      max: 100,
+      windowMs: 15 * 60 * 1000,
+    })
 
-### Authentication
+    if (!rateLimitResult.allowed) {
+      return new Response('Too many requests', { status: 429 })
+    }
+  }
 
-- Email/password authentication
-- Email verification
-- Password reset flow
-- Session management
-- Rate limiting on auth endpoints
-- Password strength enforcement
+  // Public routes
+  const publicRoutes = ['/login', '/signup', '/health']
+  if (publicRoutes.some((route) => pathname.startsWith(route))) {
+    return resolve(event)
+  }
 
-### Permissions
+  // Require authentication
+  if (!session?.user) {
+    return new Response(null, {
+      status: 302,
+      headers: {
+        location: `/login?redirect=${encodeURIComponent(pathname)}`,
+      },
+    })
+  }
 
-- Role-based access control (RBAC)
-- Resource-level permissions
-- Permission caching with Redis
-- Default roles (super_admin, admin, manager, user)
+  // Check permissions
+  const routeCheck = await checkRoutePermission(session.user.id, pathname)
+  if (!routeCheck.allowed) {
+    await logAudit('unauthorized_access', {
+      userId: session.user.id,
+      pathname,
+      ipAddress,
+    })
+    return new Response('Forbidden', { status: 403 })
+  }
+
+  return resolve(event)
+}
+```
+
+**Use UI components:**
+
+```svelte
+<script>
+  import { Button, Input, Card, Alert } from '@sv-sdk/ui'
+
+  let email = $state('')
+  let password = $state('')
+  let error = $state('')
+
+  async function handleLogin() {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    })
+
+    if (response.ok) {
+      window.location.href = '/dashboard'
+    } else {
+      error = 'Invalid credentials'
+    }
+  }
+</script>
+
+<Card>
+  <h2>Login</h2>
+
+  {#if error}
+    <Alert variant="error" dismissible bind:visible={error}>
+      {error}
+    </Alert>
+  {/if}
+
+  <Input type="email" label="Email" bind:value={email} required />
+
+  <Input type="password" label="Password" bind:value={password} required />
+
+  <Button variant="primary" onclick={handleLogin} fullWidth>Sign In</Button>
+</Card>
+```
+
+## Usage Examples
+
+### Authentication Flow
+
+```typescript
+import { login, signup, logout } from '@sv-sdk/auth'
+
+// User signup
+const signupResult = await signup(
+  {
+    email: 'user@example.com',
+    password: 'SecurePassword123!',
+    confirmPassword: 'SecurePassword123!',
+    name: 'John Doe',
+  },
+  {
+    ipAddress: '127.0.0.1',
+  }
+)
+
+if (signupResult.success) {
+  const { user, session } = signupResult.data
+  console.log('User created:', user.id)
+}
+
+// User login
+const loginResult = await login(
+  {
+    email: 'user@example.com',
+    password: 'SecurePassword123!',
+  },
+  {
+    ipAddress: '127.0.0.1',
+    userAgent: 'Mozilla/5.0...',
+  }
+)
+
+// Logout
+await logout(sessionToken)
+```
+
+### Permission Checking
+
+```typescript
+import { can, enforce, assignRole } from '@sv-sdk/permissions'
+
+// Check permission
+const canEdit = await can('user-123', 'update:any:user')
+
+if (canEdit) {
+  // User can edit
+}
+
+// Enforce permission (throws if denied)
+await enforce('user-123', 'delete:any:email')
+
+// Assign role to user
+await assignRole('user-123', 'admin-role-id', 'assigner-id')
+```
+
+### Email Sending
+
+```typescript
+import { sendEmail, sendEmailImmediate } from '@sv-sdk/email'
+
+// Send via queue (recommended)
+const result = await sendEmail('verification_email', 'user@example.com', {
+  userName: 'John Doe',
+  verificationUrl: 'https://app.com/verify?token=abc123',
+})
+
+// Send immediately (critical emails)
+await sendEmailImmediate('password_reset', 'user@example.com', {
+  userName: 'John Doe',
+  resetUrl: 'https://app.com/reset?token=xyz789',
+  expiresIn: '1 hour',
+})
+```
 
 ### Audit Logging
 
-- Append-only audit logs
-- PII masking
-- Configurable retention policies
-- Full-text search
-- Export to CSV/JSON
+```typescript
+import { logAudit, queryAuditLogs } from '@sv-sdk/audit'
 
-### Email System
+// Log an event
+await logAudit('user.login', {
+  userId: 'user-123',
+  ipAddress: '127.0.0.1',
+  userAgent: 'Mozilla/5.0...',
+  success: true,
+})
 
-- MJML template engine
-- Multi-provider support (Brevo, AWS SES, Mock)
-- Queue-based sending with BullMQ
-- Webhook handling (delivery status, bounces)
-- Email preferences and unsubscribe
-- Localization support
-
-### UI Components
-
-- 30+ accessible Svelte 5 components
-- Dark mode support
-- Tailwind CSS integration
-- WCAG 2.1 Level AA compliant
-- Full keyboard navigation
-
----
-
-## 🧪 Testing
-
-### Test Coverage
-
-Target: 80%+ for critical packages
-
-```bash
-# Run tests with coverage
-pnpm test:coverage
-
-# View coverage report
-open coverage/index.html
+// Query audit logs
+const logs = await queryAuditLogs(
+  {
+    event: 'user.login',
+    userId: 'user-123',
+    startDate: new Date('2024-01-01'),
+    endDate: new Date(),
+  },
+  {
+    page: 1,
+    pageSize: 50,
+  }
+)
 ```
 
-### Test Types
+### Rate Limiting
 
-- **Unit Tests**: Fast, isolated tests for individual functions
-- **Integration Tests**: Tests across multiple packages
-- **E2E Tests**: Full user workflows with Playwright
-- **Performance Tests**: Benchmarking critical paths
-- **Accessibility Tests**: Automated a11y testing with axe-core
+```typescript
+import { rateLimiter } from '@sv-sdk/security'
 
----
+// Check rate limit
+const result = await rateLimiter.checkLimit('user-123', {
+  max: 10,
+  windowMs: 60000, // 1 minute
+})
 
-## 🚢 Deployment
-
-See deployment documentation in `docs/deployment/`:
-
-- [Production Architecture](./docs/deployment/architecture.md)
-- [Environment Variables](./docs/deployment/environment.md)
-- [Docker Deployment](./docs/deployment/docker.md)
-- [Kubernetes Deployment](./docs/deployment/k8s.md)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
-
-### Development Process
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Write tests
-5. Run linting and tests (`pnpm lint && pnpm test`)
-6. Commit with conventional commit messages (`git commit -m "feat(auth): add MFA support"`)
-7. Push to your branch (`git push origin feature/amazing-feature`)
-8. Open a Pull Request
-
----
-
-## 📝 License
-
-MIT License - see [LICENSE](./LICENSE) for details.
-
----
-
-## 🆘 Troubleshooting
-
-### Port Already in Use
-
-```bash
-# Check what's using the port
-lsof -i :5432  # PostgreSQL
-lsof -i :6379  # Redis
-
-# Kill the process
-kill -9 <PID>
+if (!result.allowed) {
+  console.log(`Rate limit exceeded. Reset in ${result.resetIn}ms`)
+}
 ```
 
-### Database Connection Failed
+## Documentation
+
+📚 **[Full Documentation](./docs)** - Comprehensive guides and API reference
+
+- [Getting Started](./docs/getting-started/introduction.md)
+- [Architecture](./docs/core-concepts/architecture.md)
+- [Authentication Guide](./docs/guides/authentication.md)
+- [API Reference](./docs/api)
+- [Examples](./docs/examples)
+
+### Package Documentation
+
+Each package has detailed documentation:
+
+- [Core SDK](./packages/core/README.md) - SDK initialization and plugins
+- [Authentication](./packages/auth/README.md) - User auth and sessions
+- [Permissions](./packages/permissions/README.md) - RBAC system
+- [UI Components](./packages/ui/README.md) - Component library
+- [Email](./packages/email/README.md) - Email service
+- [Audit](./packages/audit/README.md) - Audit logging
+- [Cache](./packages/cache/README.md) - Redis and queues
+- [Security](./packages/security/README.md) - Security utilities
+- [CLI](./packages/cli/README.md) - Command-line tools
+
+## Development
+
+### Project Structure
 
 ```bash
-# Check if PostgreSQL is running
-docker-compose ps postgres
+# Install dependencies
+pnpm install
+
+# Start development servers
+pnpm dev
+
+# Run tests
+pnpm test
+
+# Run linting
+pnpm lint
+
+# Type checking
+pnpm type-check
+
+# Build all packages
+pnpm build
+
+# Database operations
+pnpm db:migrate    # Run migrations
+pnpm db:seed       # Seed database
+pnpm db:studio     # Open Drizzle Studio
+```
+
+### Scripts
+
+| Script                  | Description                        |
+| ----------------------- | ---------------------------------- |
+| `pnpm dev`              | Start all apps in development mode |
+| `pnpm build`            | Build all packages and apps        |
+| `pnpm test`             | Run all tests                      |
+| `pnpm test:unit`        | Run unit tests                     |
+| `pnpm test:integration` | Run integration tests              |
+| `pnpm test:coverage`    | Generate coverage report           |
+| `pnpm lint`             | Run ESLint                         |
+| `pnpm lint:fix`         | Fix linting issues                 |
+| `pnpm format`           | Format code with Prettier          |
+| `pnpm type-check`       | TypeScript type checking           |
+| `pnpm db:generate`      | Generate database migrations       |
+| `pnpm db:migrate`       | Run database migrations            |
+| `pnpm db:seed`          | Seed database with initial data    |
+| `pnpm db:studio`        | Open Drizzle Studio                |
+
+### Using the CLI
+
+```bash
+# List users
+pnpm sdk auth list --role admin
+
+# Create user
+pnpm sdk auth create --email user@example.com --name "John Doe"
+
+# Send test email
+pnpm sdk email test --template verification_email --recipient test@example.com
+
+# Export audit logs
+pnpm sdk audit export --from 2024-01-01 --to 2024-12-31 --format csv
+
+# Check system health
+pnpm sdk health
+
+# Database operations
+pnpm sdk db migrate
+pnpm sdk db seed
+```
+
+## Deployment
+
+### Docker
+
+```bash
+# Build Docker images
+docker-compose build
+
+# Start services
+docker-compose up -d
 
 # View logs
-docker-compose logs postgres
-
-# Restart services
-docker-compose restart postgres
+docker-compose logs -f
 ```
 
-### Redis Connection Failed
+See [Docker Deployment Guide](./docs/deployment/docker-deployment.md)
+
+### Kubernetes
 
 ```bash
-# Test Redis connection
-docker-compose exec redis redis-cli -a ${REDIS_PASSWORD} ping
+# Apply configurations
+kubectl apply -f deploy/k8s/
 
-# Should return: PONG
+# Check status
+kubectl get pods -n sv-sdk
 ```
 
-### Build Failures
+See [Kubernetes Deployment Guide](./docs/deployment/k8s-deployment.md)
 
-```bash
-# Clean everything and rebuild
-pnpm clean
-pnpm install --force
-pnpm build
-```
+### Production Checklist
 
-For more troubleshooting, see [DEVELOPMENT_WORKFLOW.md](./DEVELOPMENT_WORKFLOW.md#troubleshooting).
+Before deploying to production:
+
+- ✅ Change `BETTER_AUTH_SECRET` to a strong random string (min 32 chars)
+- ✅ Use production database with connection pooling
+- ✅ Configure Redis for persistence
+- ✅ Set up email provider (Brevo, AWS SES)
+- ✅ Configure domain authentication (SPF, DKIM, DMARC)
+- ✅ Enable rate limiting and CSRF protection
+- ✅ Set up monitoring and alerts
+- ✅ Configure backup strategy
+- ✅ Review security headers
+- ✅ Enable audit logging
+- ✅ Set appropriate session timeouts
+- ✅ Configure HTTPS/TLS
+
+See [Production Checklist](./docs/deployment/production-checklist.md)
+
+## Technology Stack
+
+- **Framework**: Svelte 5, SvelteKit
+- **Language**: TypeScript 5.9
+- **Authentication**: BetterAuth
+- **Database**: PostgreSQL 14+ with Drizzle ORM
+- **Cache/Queue**: Redis, BullMQ
+- **Email**: MJML, Brevo/AWS SES
+- **Build**: Turborepo, Vite
+- **Testing**: Vitest, Playwright
+- **Styling**: Tailwind CSS
+- **CLI**: Commander.js
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
+
+### Development Setup
+
+1. Fork the repository
+2. Clone your fork: `git clone https://github.com/your-username/sv-sdk.git`
+3. Create a branch: `git checkout -b feature/your-feature`
+4. Make your changes
+5. Run tests: `pnpm test`
+6. Commit: `git commit -m "feat: add your feature"`
+7. Push: `git push origin feature/your-feature`
+8. Open a Pull Request
+
+## Roadmap
+
+### Planned Features
+
+- [ ] Multi-Factor Authentication (MFA) - TOTP, SMS, Email OTP
+- [ ] Social Login - Google, GitHub, Microsoft
+- [ ] Magic Links - Passwordless authentication
+- [ ] Passkeys - WebAuthn support
+- [ ] Advanced ABAC - Attribute-based access control
+- [ ] GraphQL API - Alternative to REST
+- [ ] Real-time features - WebSocket support
+- [ ] File upload/storage - S3 integration
+- [ ] Payment integration - Stripe helpers
+- [ ] Multi-tenancy - Tenant isolation
+
+## License
+
+MIT © [Your Name/Organization]
+
+See [LICENSE](./LICENSE) for details.
+
+## Support
+
+- 📖 [Documentation](./docs)
+- 💬 [Discord Community](https://discord.gg/your-server)
+- 🐛 [Issue Tracker](https://github.com/your-org/sv-sdk/issues)
+- 📧 Email: support@yourdomain.com
+- 🐦 Twitter: [@your_handle](https://twitter.com/your_handle)
+
+## Acknowledgments
+
+Built with excellent open-source projects:
+
+- [Svelte](https://svelte.dev/) - The incredible reactive framework
+- [BetterAuth](https://www.better-auth.com/) - Modern authentication
+- [Drizzle ORM](https://orm.drizzle.team/) - TypeScript ORM
+- [Turborepo](https://turbo.build/) - High-performance monorepo
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
 
 ---
 
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/your-org/sv-sdk/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/sv-sdk/discussions)
-- **Documentation**: [docs/](./docs/)
-
----
-
-## 🙏 Acknowledgments
-
-Built with:
-
-- [Svelte](https://svelte.dev/) & [SvelteKit](https://kit.svelte.dev/)
-- [BetterAuth](https://www.better-auth.com/)
-- [Drizzle ORM](https://orm.drizzle.team/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Turborepo](https://turbo.build/)
-- And many other amazing open-source projects
-
----
-
-**Happy coding! 🎉**
+**Made with ❤️ for the Svelte community**

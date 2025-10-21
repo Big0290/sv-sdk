@@ -15,17 +15,9 @@
     onchange?: (value: string) => void
   }
 
-  let {
-    value = $bindable(''),
-    language = 'html',
-    theme = 'vs-dark',
-    height = '600px',
-    readOnly = false,
-    onchange,
-  }: Props = $props()
+  let { value = $bindable(''), height = '600px', readOnly = false, onchange }: Props = $props()
 
   let editorContainer: HTMLDivElement
-  let editor: any
 
   onMount(async () => {
     // Dynamically import Monaco to avoid SSR issues
@@ -70,4 +62,3 @@
 <div class="mt-2 text-xs text-gray-500 dark:text-gray-400">
   Note: Full Monaco Editor integration requires additional setup. See package README.
 </div>
-

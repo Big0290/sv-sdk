@@ -22,7 +22,7 @@
     "@sv-sdk/security": "workspace:*",
     "@sv-sdk/shared": "workspace:*",
     "@sv-sdk/ui": "workspace:*",
-    "better-auth": "^1.4.0"
+    "better-auth": "^1.3.28"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.1",
@@ -46,4 +46,3 @@
     "vitest": "^3.2.4"
   }
 }
-

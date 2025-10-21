@@ -2,51 +2,17 @@
  * Internationalization hooks for UI components
  */
 
-import { writable, derived } from 'svelte/store'
+import { writable } from 'svelte/store'
+import { translations, type Locale, isRTL } from './translations.js'
 
-export type Locale = 'en' | 'es' | 'fr' | 'de'
-
-interface Translations {
-  [key: string]: {
-    [locale in Locale]: string
-  }
-}
-
-const translations: Translations = {
-  'button.loading': {
-    en: 'Loading...',
-    es: 'Cargando...',
-    fr: 'Chargement...',
-    de: 'Wird geladen...',
-  },
-  'button.submit': {
-    en: 'Submit',
-    es: 'Enviar',
-    fr: 'Soumettre',
-    de: 'Absenden',
-  },
-  'button.cancel': {
-    en: 'Cancel',
-    es: 'Cancelar',
-    fr: 'Annuler',
-    de: 'Abbrechen',
-  },
-  'input.required': {
-    en: 'Required',
-    es: 'Requerido',
-    fr: 'Requis',
-    de: 'Erforderlich',
-  },
-  'modal.close': {
-    en: 'Close',
-    es: 'Cerrar',
-    fr: 'Fermer',
-    de: 'Schließen',
-  },
-}
+export type { Locale } from './translations.js'
+export { translations, isRTL } from './translations.js'
 
 export const currentLocale = writable<Locale>('en')
 
+/**
+ * Translate a key
+ */
 export function t(key: string, locale?: Locale): string {
   let currentLoc: Locale = 'en'
 
@@ -59,7 +25,16 @@ export function t(key: string, locale?: Locale): string {
   return translations[key]?.[currentLoc] || key
 }
 
+/**
+ * Set current locale
+ */
 export function setLocale(locale: Locale) {
   currentLocale.set(locale)
-}
 
+  // Apply RTL if needed
+  if (isRTL(locale)) {
+    document.documentElement.dir = 'rtl'
+  } else {
+    document.documentElement.dir = 'ltr'
+  }
+}
