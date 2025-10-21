@@ -1,17 +1,8 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "./dist",
-        "rootDir": "./src"
-    },
-    "include": [
-        "src/**/*",
-        "scripts/**/*",
-        "drizzle.config.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist",
-        "migrations"
-    ]
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*", "scripts/**/*", "drizzle.config.ts"],
+  "exclude": ["node_modules", "dist", "migrations"]
 }
