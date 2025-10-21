@@ -1,0 +1,50 @@
+{
+  "name": "create-big0290-app",
+  "version": "0.0.1",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Big0290/sv-sdk.git",
+    "directory": "packages/create-app"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "description": "Scaffold SvelteKit applications with the Big0290 SDK",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "create-big0290-app": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^12.4.0",
+    "ora": "^8.1.2",
+    "validate-npm-package-name": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.11.0",
+    "@types/validate-npm-package-name": "^4.0.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

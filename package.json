@@ -47,7 +47,10 @@
     "docs:api": "typedoc",
     "docs:dev": "cd docs && pnpm install && pnpm dev",
     "docs:build": "pnpm docs:api && cd docs && pnpm install && pnpm build",
-    "docs:preview": "cd docs && pnpm preview"
+    "docs:preview": "cd docs && pnpm preview",
+    "create:dev": "pnpm --filter create-big0290-app dev",
+    "create:build": "pnpm --filter create-big0290-app build",
+    "create:link": "cd packages/create-app && pnpm link --global"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
