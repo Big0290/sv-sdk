@@ -2,7 +2,7 @@
  * Tests for rate limiter
  */
 
-import { describe, it, expect, beforeEach, afterEach } from 'vitest'
+import { describe, it, expect, afterEach } from 'vitest'
 import { rateLimiter } from '../rate-limiter.js'
 
 describe('RateLimiter', () => {
@@ -65,4 +65,3 @@ describe('RateLimiter', () => {
     expect(result.remaining).toBe(0)
   })
 })
-

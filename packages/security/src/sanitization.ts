@@ -40,7 +40,7 @@ export function sanitizePath(input: string): string {
 
   return input
     .replace(/\.\./g, '')
-    .replace(/[\/\\]+/g, '/')
+    .replace(/[/\\]+/g, '/')
     .replace(/^\/+/, '')
 }
 
@@ -53,7 +53,7 @@ export function sanitizeFilename(input: string): string {
 
   return input
     .replace(/\.\./g, '')
-    .replace(/[\/\\]/g, '')
+    .replace(/[/\\]/g, '')
     .replace(/[^a-zA-Z0-9._-]/g, '_')
     .substring(0, 255) // Max filename length
 }
