@@ -6,7 +6,7 @@
 import type { Database } from '@sv-sdk/db-config'
 import type { Logger } from '@sv-sdk/shared'
 import type { EventBus } from './event-bus.js'
-import type { Redis } from 'ioredis'
+import type { Redis } from '@sv-sdk/cache'
 
 /**
  * SDK Configuration

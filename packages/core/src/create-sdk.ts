@@ -5,7 +5,7 @@
 
 import { db } from '@sv-sdk/db-config'
 import { redis } from '@sv-sdk/cache'
-import { createLogger } from '@sv-sdk/shared'
+import { createLogger, LogLevel } from '@sv-sdk/shared'
 import { createEventBus } from './event-bus.js'
 import { createSDKContext, type SDKConfig } from './sdk-context.js'
 import { loadPlugins, unloadPlugins } from './plugin-loader.js'
@@ -64,10 +64,14 @@ export async function createSDK(options: CreateSDKOptions): Promise<SDK> {
   const { plugins = [], config: userConfig, debug = false } = options
 
   // Merge default config with user config
+  const nodeEnv = process.env.NODE_ENV
+  const env: 'development' | 'production' | 'test' =
+    nodeEnv === 'production' || nodeEnv === 'test' ? nodeEnv : 'development'
+
   const config: SDKConfig = {
     name: 'sv-sdk',
     version: '0.0.1',
-    env: (process.env.NODE_ENV as any) || 'development',
+    env,
     baseUrl: process.env.BETTER_AUTH_URL || 'http://localhost:5173',
     debug: debug || process.env.DEBUG === 'true',
     ...userConfig,
@@ -75,7 +79,7 @@ export async function createSDK(options: CreateSDKOptions): Promise<SDK> {
 
   // Create logger
   const sdkLogger = createLogger({
-    level: config.debug ? 'debug' : 'info',
+    level: config.debug ? LogLevel.DEBUG : LogLevel.INFO,
     pretty: config.env === 'development',
   })
 

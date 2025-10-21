@@ -5,6 +5,7 @@
 
 // Redis client
 export { redis, closeRedisConnection, getRedisStatus } from './client.js'
+export type { Redis } from 'ioredis'
 
 // Cache utilities
 export {
