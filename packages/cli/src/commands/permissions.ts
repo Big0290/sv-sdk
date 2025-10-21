@@ -3,7 +3,7 @@
  */
 
 import { Command } from 'commander'
-import { getRoles, assignRole, revokeRole, getUserRoles, can } from '@sv-sdk/permissions'
+import { getRoles, assignRole, can } from '@sv-sdk/permissions'
 import { getUserByEmail } from '@sv-sdk/auth'
 import chalk from 'chalk'
 import inquirer from 'inquirer'
@@ -144,4 +144,3 @@ export function createPermissionsCommand(): Command {
 
   return permissions
 }
-
