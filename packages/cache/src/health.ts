@@ -84,7 +84,7 @@ export async function checkRedisHealth(): Promise<RedisHealthResult> {
       ...(memory && { memory }),
       ...(connectedClients !== undefined && { connectedClients }),
     }
-  } catch {
+  } catch (error) {
     logger.error('Redis health check failed', error as Error)
 
     return {
@@ -173,7 +173,7 @@ export async function checkRedisHealthDetailed(): Promise<{
     } catch {
       // Non-critical
     }
-  } catch {
+  } catch (error) {
     errors.push(error instanceof Error ? error.message : 'Unknown error')
   }
 
