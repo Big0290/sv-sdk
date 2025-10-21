@@ -1,5 +1,5 @@
 {
-  "name": "create-big0290-app",
+  "name": "@big0290/create-app",
   "version": "0.0.1",
   "type": "module",
   "repository": {
@@ -15,7 +15,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "create-big0290-app": "./dist/index.js"
+    "create-app": "./dist/index.js"
   },
   "files": [
     "dist",

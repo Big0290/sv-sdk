@@ -1,4 +1,4 @@
-# create-big0290-app
+# @big0290/create-app
 
 Scaffold SvelteKit applications with the Big0290 SDK pre-configured.
 
