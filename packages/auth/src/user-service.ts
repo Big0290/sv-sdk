@@ -277,7 +277,8 @@ export async function updateLastLogin(userId: string): Promise<void> {
  */
 export async function countUsers(filters: UserFilters = {}): Promise<number> {
   try {
-    const conditions = []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const conditions: any[] = []
 
     if (filters.role) {
       conditions.push(eq(users.role, filters.role))
