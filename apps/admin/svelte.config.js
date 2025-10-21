@@ -10,8 +10,8 @@ const config = {
 	compilerOptions: {
 		runes: true,
 		compatibility: {
-			componentApi: 4, // Allow Svelte 4 components like lucide-svelte
-		},
+			componentApi: 4 // Allow Svelte 4 components like lucide-svelte
+		}
 	},
 
 	kit: {
