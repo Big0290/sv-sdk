@@ -11,6 +11,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "files": [
+    "src"
+  ],
   "description": "Database configuration and schemas using Drizzle ORM",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

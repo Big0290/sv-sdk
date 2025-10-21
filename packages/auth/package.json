@@ -11,6 +11,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "files": [
+    "src"
+  ],
   "description": "Authentication package using BetterAuth with Drizzle adapter",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

@@ -11,6 +11,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "files": [
+    "src"
+  ],
   "description": "Security utilities for SV-SDK (rate limiting, CSRF, sanitization)",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

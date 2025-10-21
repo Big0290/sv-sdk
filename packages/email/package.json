@@ -11,6 +11,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "files": [
+    "src"
+  ],
   "description": "Email system with MJML templates and queue processing",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

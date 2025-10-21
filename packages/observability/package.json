@@ -11,6 +11,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "files": [
+    "src"
+  ],
   "description": "Observability and monitoring for SV-SDK",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

@@ -11,6 +11,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "files": [
+    "src"
+  ],
   "description": "RBAC permissions system with caching",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

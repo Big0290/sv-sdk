@@ -11,6 +11,9 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "files": [
+    "src"
+  ],
   "description": "Audit logging package with PII handling and retention policies",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
