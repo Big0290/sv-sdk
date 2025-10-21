@@ -122,7 +122,7 @@ export async function signup(
       body: {
         email,
         password,
-        ...(name && { name }),
+        name: name || 'User',
       },
     })
 
