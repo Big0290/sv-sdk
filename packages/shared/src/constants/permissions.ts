@@ -59,5 +59,8 @@ export function parsePermission(permission: string): {
     return null
   }
   const [action, scope, resource] = parts
+  if (!action || !scope || !resource) {
+    return null
+  }
   return { action, scope, resource }
 }

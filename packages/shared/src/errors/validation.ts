@@ -5,8 +5,8 @@ import { SDKError } from './base.js'
  * Used for input validation, schema validation, etc.
  */
 export class ValidationError extends SDKError {
-  public readonly field?: string
-  public readonly errors?: Array<{ field: string; message: string }>
+  public readonly field: string | undefined
+  public readonly errors: Array<{ field: string; message: string }> | undefined
 
   constructor(
     message: string,
@@ -20,8 +20,8 @@ export class ValidationError extends SDKError {
     super(message, {
       code: 'VALIDATION_ERROR',
       statusCode: 400,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.field = options.field

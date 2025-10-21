@@ -15,8 +15,8 @@ export class AuthenticationError extends SDKError {
     super(message, {
       code: 'AUTHENTICATION_ERROR',
       statusCode: 401,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
   }
 }
@@ -35,8 +35,8 @@ export class SessionError extends SDKError {
     super(message, {
       code: 'SESSION_ERROR',
       statusCode: 401,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
   }
 }
@@ -45,7 +45,7 @@ export class SessionError extends SDKError {
  * Error thrown when account is locked or disabled
  */
 export class AccountLockedError extends SDKError {
-  public readonly lockedUntil?: Date
+  public readonly lockedUntil: Date | undefined
 
   constructor(
     message: string,
@@ -58,8 +58,8 @@ export class AccountLockedError extends SDKError {
     super(message, {
       code: 'ACCOUNT_LOCKED',
       statusCode: 403,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.lockedUntil = options.lockedUntil

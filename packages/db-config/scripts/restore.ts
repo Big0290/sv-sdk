@@ -21,7 +21,7 @@ async function restore(backupFile: string) {
     // Check if backup file exists
     try {
       await fs.access(backupFile)
-    } catch (error) {
+    } catch {
       console.error(`❌ Backup file not found: ${backupFile}`)
       process.exit(1)
     }
@@ -29,7 +29,7 @@ async function restore(backupFile: string) {
     // Warning prompt
     console.log('⚠️  WARNING: This will overwrite the current database!')
     console.log(`📍 Backup file: ${backupFile}`)
-    console.log(`🗄️  Database: ${DATABASE_URL.split('@')[1]}\n`)
+    console.log(`🗄️  Database: ${DATABASE_URL?.split('@')[1] || 'unknown'}\n`)
 
     // Confirmation prompt
     const rl = createInterface({
@@ -70,7 +70,7 @@ async function restore(backupFile: string) {
     }
 
     console.log('🎉 Restore completed successfully!')
-  } catch (error) {
+  } catch {
     console.error('\n❌ Restore failed:', error)
     process.exit(1)
   }

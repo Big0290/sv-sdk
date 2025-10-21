@@ -140,7 +140,7 @@ export function getCORSHeaders(
   // Handle origin
   if (Array.isArray(origin)) {
     // Multiple origins - must be handled dynamically per request
-    corsHeaders['Access-Control-Allow-Origin'] = origin[0]
+    corsHeaders['Access-Control-Allow-Origin'] = origin[0] || '*'
   } else {
     corsHeaders['Access-Control-Allow-Origin'] = origin
   }

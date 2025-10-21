@@ -2,7 +2,7 @@
  * Audit schema - Audit logs (append-only)
  */
 
-import { pgTable, text, timestamp, boolean, json, pgSchema, index } from 'drizzle-orm/pg-core'
+import { text, timestamp, boolean, json, pgSchema, index } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { relations } from 'drizzle-orm'
 import { users } from './auth.schema.js'

@@ -98,9 +98,7 @@ export async function enforceCSRF(token: string, sessionId?: string): Promise<vo
   const isValid = await verifyCSRFToken(token, sessionId)
 
   if (!isValid) {
-    throw new AuthenticationError('Invalid or expired CSRF token', {
-      code: 'CSRF_TOKEN_INVALID',
-    })
+    throw new AuthenticationError('Invalid or expired CSRF token')
   }
 }
 

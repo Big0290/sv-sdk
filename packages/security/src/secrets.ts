@@ -43,7 +43,7 @@ export function validateRequiredEnvVars(): {
   }
 
   if (missing.length > 0) {
-    logger.error('Missing required environment variables', { missing })
+    logger.error('Missing required environment variables', undefined, { missing: missing.join(', ') })
   }
 
   return {

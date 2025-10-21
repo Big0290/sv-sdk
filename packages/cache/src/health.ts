@@ -72,19 +72,19 @@ export async function checkRedisHealth(): Promise<RedisHealthResult> {
       if (clients) {
         connectedClients = parseInt(clients, 10)
       }
-    } catch (error) {
+    } catch {
       // Info parsing failed, but Redis is still healthy
-      logger.warn('Failed to parse Redis info', error as Error)
+      logger.warn('Failed to parse Redis info')
     }
 
     return {
       healthy: true,
       status: status.status,
-      latency,
-      memory,
-      connectedClients,
+      ...(latency !== undefined && { latency }),
+      ...(memory && { memory }),
+      ...(connectedClients !== undefined && { connectedClients }),
     }
-  } catch (error) {
+  } catch {
     logger.error('Redis health check failed', error as Error)
 
     return {
@@ -159,7 +159,7 @@ export async function checkRedisHealthDetailed(): Promise<{
         metrics.memoryPeak = peakMemory
         checks.memory = true
       }
-    } catch (error) {
+    } catch {
       errors.push('Failed to retrieve memory info')
     }
 
@@ -170,10 +170,10 @@ export async function checkRedisHealthDetailed(): Promise<{
       if (clients) {
         metrics.connectedClients = parseInt(clients, 10)
       }
-    } catch (error) {
+    } catch {
       // Non-critical
     }
-  } catch (error) {
+  } catch {
     errors.push(error instanceof Error ? error.message : 'Unknown error')
   }
 

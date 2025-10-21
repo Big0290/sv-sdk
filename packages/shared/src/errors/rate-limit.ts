@@ -4,9 +4,9 @@ import { SDKError } from './base.js'
  * Error thrown when rate limit is exceeded
  */
 export class RateLimitError extends SDKError {
-  public readonly limit?: number
-  public readonly window?: number
-  public readonly retryAfter?: number
+  public readonly limit: number | undefined
+  public readonly window: number | undefined
+  public readonly retryAfter: number | undefined
 
   constructor(
     message: string,
@@ -21,8 +21,8 @@ export class RateLimitError extends SDKError {
     super(message, {
       code: 'RATE_LIMIT_EXCEEDED',
       statusCode: 429,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.limit = options.limit

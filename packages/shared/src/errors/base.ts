@@ -5,7 +5,7 @@
 export class SDKError extends Error {
   public readonly code: string
   public readonly statusCode: number
-  public readonly details?: Record<string, unknown>
+  public readonly details: Record<string, unknown> | undefined
   public readonly timestamp: Date
 
   constructor(
@@ -17,7 +17,7 @@ export class SDKError extends Error {
       cause?: Error
     } = {}
   ) {
-    super(message, { cause: options.cause })
+    super(message, options.cause ? { cause: options.cause } : undefined)
 
     this.name = this.constructor.name
     this.code = options.code || 'SDK_ERROR'

@@ -5,8 +5,8 @@ import { SDKError } from './base.js'
  * Used for authorization failures
  */
 export class PermissionError extends SDKError {
-  public readonly requiredPermission?: string
-  public readonly resource?: string
+  public readonly requiredPermission: string | undefined
+  public readonly resource: string | undefined
 
   constructor(
     message: string,
@@ -20,8 +20,8 @@ export class PermissionError extends SDKError {
     super(message, {
       code: 'PERMISSION_DENIED',
       statusCode: 403,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.requiredPermission = options.requiredPermission
@@ -51,8 +51,8 @@ export class RoleError extends SDKError {
     super(message, {
       code: 'ROLE_ERROR',
       statusCode: 400,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
   }
 }

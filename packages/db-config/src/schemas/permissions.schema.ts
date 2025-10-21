@@ -2,7 +2,7 @@
  * Permissions schema - Roles, User Roles, Permission Cache
  */
 
-import { pgTable, text, timestamp, boolean, json, pgSchema, primaryKey, index, unique } from 'drizzle-orm/pg-core'
+import { text, timestamp, boolean, json, pgSchema, primaryKey, index } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { relations } from 'drizzle-orm'
 import { users } from './auth.schema.js'

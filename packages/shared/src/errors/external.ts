@@ -5,8 +5,8 @@ import { SDKError } from './base.js'
  * Used for email providers, payment gateways, third-party APIs, etc.
  */
 export class ExternalServiceError extends SDKError {
-  public readonly service?: string
-  public readonly serviceStatusCode?: number
+  public readonly service: string | undefined
+  public readonly serviceStatusCode: number | undefined
 
   constructor(
     message: string,
@@ -20,8 +20,8 @@ export class ExternalServiceError extends SDKError {
     super(message, {
       code: 'EXTERNAL_SERVICE_ERROR',
       statusCode: 502,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.service = options.service
@@ -41,7 +41,7 @@ export class ExternalServiceError extends SDKError {
  * Error thrown when external service times out
  */
 export class TimeoutError extends SDKError {
-  public readonly timeout?: number
+  public readonly timeout: number | undefined
 
   constructor(
     message: string,
@@ -54,8 +54,8 @@ export class TimeoutError extends SDKError {
     super(message, {
       code: 'TIMEOUT_ERROR',
       statusCode: 504,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.timeout = options.timeout

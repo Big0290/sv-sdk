@@ -2,7 +2,7 @@
  * Email schema - Templates, Sends, Webhooks, Preferences
  */
 
-import { pgTable, text, timestamp, boolean, integer, json, pgSchema } from 'drizzle-orm/pg-core'
+import { text, timestamp, boolean, integer, json, pgSchema } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { relations } from 'drizzle-orm'
 import { users } from './auth.schema.js'

@@ -11,17 +11,17 @@ import { logger } from '@sv-sdk/shared'
  */
 function getRedisConnection() {
   return {
-    host: redis.options.host,
-    port: redis.options.port,
-    password: redis.options.password,
-    db: redis.options.db,
+    ...(redis.options.host && { host: redis.options.host }),
+    ...(redis.options.port && { port: redis.options.port }),
+    ...(redis.options.password && { password: redis.options.password }),
+    ...(redis.options.db !== undefined && { db: redis.options.db }),
   }
 }
 
 /**
  * Create a new BullMQ queue
  */
-export function createQueue<T = any>(name: string, options?: Partial<QueueOptions>): Queue<T> {
+export function createQueue<T = unknown>(name: string, options?: Partial<QueueOptions>): Queue<T> {
   const queue = new Queue<T>(name, {
     connection: getRedisConnection(),
     defaultJobOptions: {
@@ -54,9 +54,9 @@ export function createQueue<T = any>(name: string, options?: Partial<QueueOption
 /**
  * Create a new BullMQ worker
  */
-export function createWorker<T = any>(
+export function createWorker<T = unknown>(
   name: string,
-  processor: (job: Job<T>) => Promise<any>,
+  processor: (job: Job<T>) => Promise<unknown>,
   options?: Partial<WorkerOptions>
 ): Worker<T> {
   const worker = new Worker<T>(name, processor, {

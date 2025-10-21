@@ -37,14 +37,14 @@
     "type-check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "svelte": "^5.15.1",
     "@floating-ui/dom": "^1.6.3",
     "@livekit/components-core": "^0.12.0",
     "@zxing/browser": "^0.1.5",
     "@zxing/library": "^0.21.0",
     "clsx": "^2.1.0",
     "hls.js": "^1.5.7",
-    "lucide-svelte": "^0.445.0",
+    "lucide-svelte": "^0.546.0",
+    "svelte": "^5.15.1",
     "wavesurfer.js": "^7.8.2"
   },
   "devDependencies": {

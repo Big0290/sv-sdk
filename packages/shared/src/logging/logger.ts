@@ -50,7 +50,7 @@ export interface LogEntry {
 export interface LoggerConfig {
   level: LogLevel
   pretty: boolean // Pretty print for development
-  redactKeys?: string[] // Keys to redact from logs (e.g., 'password', 'token')
+  redactKeys: string[] | undefined // Keys to redact from logs (e.g., 'password', 'token')
 }
 
 /**

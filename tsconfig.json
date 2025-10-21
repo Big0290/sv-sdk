@@ -1,123 +1,59 @@
 {
-    "compilerOptions": {
-        "target": "ES2022",
-        "module": "ESNext",
-        "lib": [
-            "ES2022"
-        ],
-        "moduleResolution": "bundler",
-        "resolveJsonModule": true,
-        "allowJs": true,
-        "checkJs": false,
-        "strict": true,
-        "noEmit": true,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "forceConsistentCasingInFileNames": true,
-        "isolatedModules": true,
-        "declaration": true,
-        "declarationMap": true,
-        "sourceMap": true,
-        /* Strict Type Checking */
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "noUncheckedIndexedAccess": true,
-        "exactOptionalPropertyTypes": true,
-        /* Path Aliases */
-        "baseUrl": ".",
-        "paths": {
-            "@sv-sdk/shared": [
-                "./packages/shared/src/index.ts"
-            ],
-            "@sv-sdk/shared/*": [
-                "./packages/shared/src/*"
-            ],
-            "@sv-sdk/db-config": [
-                "./packages/db-config/src/index.ts"
-            ],
-            "@sv-sdk/db-config/*": [
-                "./packages/db-config/src/*"
-            ],
-            "@sv-sdk/validators": [
-                "./packages/validators/src/index.ts"
-            ],
-            "@sv-sdk/validators/*": [
-                "./packages/validators/src/*"
-            ],
-            "@sv-sdk/cache": [
-                "./packages/cache/src/index.ts"
-            ],
-            "@sv-sdk/cache/*": [
-                "./packages/cache/src/*"
-            ],
-            "@sv-sdk/core": [
-                "./packages/core/src/index.ts"
-            ],
-            "@sv-sdk/core/*": [
-                "./packages/core/src/*"
-            ],
-            "@sv-sdk/security": [
-                "./packages/security/src/index.ts"
-            ],
-            "@sv-sdk/security/*": [
-                "./packages/security/src/*"
-            ],
-            "@sv-sdk/auth": [
-                "./packages/auth/src/index.ts"
-            ],
-            "@sv-sdk/auth/*": [
-                "./packages/auth/src/*"
-            ],
-            "@sv-sdk/audit": [
-                "./packages/audit/src/index.ts"
-            ],
-            "@sv-sdk/audit/*": [
-                "./packages/audit/src/*"
-            ],
-            "@sv-sdk/email": [
-                "./packages/email/src/index.ts"
-            ],
-            "@sv-sdk/email/*": [
-                "./packages/email/src/*"
-            ],
-            "@sv-sdk/permissions": [
-                "./packages/permissions/src/index.ts"
-            ],
-            "@sv-sdk/permissions/*": [
-                "./packages/permissions/src/*"
-            ],
-            "@sv-sdk/ui": [
-                "./packages/ui/src/index.ts"
-            ],
-            "@sv-sdk/ui/*": [
-                "./packages/ui/src/*"
-            ],
-            "@sv-sdk/cli": [
-                "./packages/cli/src/index.ts"
-            ],
-            "@sv-sdk/cli/*": [
-                "./packages/cli/src/*"
-            ],
-            "@sv-sdk/observability": [
-                "./packages/observability/src/index.ts"
-            ],
-            "@sv-sdk/observability/*": [
-                "./packages/observability/src/*"
-            ]
-        }
-    },
-    "include": [
-        "packages/*/src/**/*",
-        "apps/*/src/**/*",
-        "test/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist",
-        "build",
-        ".svelte-kit"
-    ]
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2022"],
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    /* Strict Type Checking */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@sv-sdk/shared": ["./packages/shared/src/index.ts"],
+      "@sv-sdk/shared/*": ["./packages/shared/src/*"],
+      "@sv-sdk/db-config": ["./packages/db-config/src/index.ts"],
+      "@sv-sdk/db-config/*": ["./packages/db-config/src/*"],
+      "@sv-sdk/validators": ["./packages/validators/src/index.ts"],
+      "@sv-sdk/validators/*": ["./packages/validators/src/*"],
+      "@sv-sdk/cache": ["./packages/cache/src/index.ts"],
+      "@sv-sdk/cache/*": ["./packages/cache/src/*"],
+      "@sv-sdk/core": ["./packages/core/src/index.ts"],
+      "@sv-sdk/core/*": ["./packages/core/src/*"],
+      "@sv-sdk/security": ["./packages/security/src/index.ts"],
+      "@sv-sdk/security/*": ["./packages/security/src/*"],
+      "@sv-sdk/auth": ["./packages/auth/src/index.ts"],
+      "@sv-sdk/auth/*": ["./packages/auth/src/*"],
+      "@sv-sdk/audit": ["./packages/audit/src/index.ts"],
+      "@sv-sdk/audit/*": ["./packages/audit/src/*"],
+      "@sv-sdk/email": ["./packages/email/src/index.ts"],
+      "@sv-sdk/email/*": ["./packages/email/src/*"],
+      "@sv-sdk/permissions": ["./packages/permissions/src/index.ts"],
+      "@sv-sdk/permissions/*": ["./packages/permissions/src/*"],
+      "@sv-sdk/ui": ["./packages/ui/src/index.ts"],
+      "@sv-sdk/ui/*": ["./packages/ui/src/*"],
+      "@sv-sdk/cli": ["./packages/cli/src/index.ts"],
+      "@sv-sdk/cli/*": ["./packages/cli/src/*"],
+      "@sv-sdk/observability": ["./packages/observability/src/index.ts"],
+      "@sv-sdk/observability/*": ["./packages/observability/src/*"]
+    }
+  },
+  "include": ["packages/*/src/**/*", "apps/*/src/**/*", "test/**/*"],
+  "exclude": ["node_modules", "dist", "build", ".svelte-kit"]
 }

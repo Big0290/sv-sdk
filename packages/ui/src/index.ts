@@ -161,13 +161,11 @@ import VisuallyHidden from './components/utilities/VisuallyHidden.svelte'
 export { Backdrop, Portal, VisuallyHidden }
 
 // ==================== BACKWARD COMPATIBILITY ====================
-// Legacy components are re-exported from their new locations
-import ThemeToggle from './components/ThemeToggle.svelte'
-import Dropdown from './components/Dropdown.svelte'
+// Legacy components
 import TemplateEditor from './components/TemplateEditor.svelte'
 import TemplatePreview from './components/TemplatePreview.svelte'
 
-export { ThemeToggle, Dropdown, TemplateEditor, TemplatePreview }
+export { TemplateEditor, TemplatePreview }
 
 // ==================== COMPOSABLES (HOOKS) ====================
 export * from './composables/useMediaQuery'

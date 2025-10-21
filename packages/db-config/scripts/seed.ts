@@ -104,7 +104,7 @@ async function seed() {
       console.log(`   ✅ Created admin user: ${adminEmail}`)
       console.log(`   ⚠️  Note: Set password via BetterAuth (default: Admin123!)`)
     } else {
-      adminUserId = existingAdmin[0].id
+      adminUserId = existingAdmin[0]!.id
       console.log(`   ⏭️  Admin user already exists: ${adminEmail}`)
     }
 
@@ -118,7 +118,7 @@ async function seed() {
     if (superAdminRole.length > 0) {
       const existingAssignment = await db.select().from(userRoles).where(eq(userRoles.userId, adminUserId))
 
-      if (existingAssignment.length === 0) {
+      if (existingAssignment.length === 0 && superAdminRole[0]) {
         await db.insert(userRoles).values({
           userId: adminUserId,
           roleId: superAdminRole[0].id,

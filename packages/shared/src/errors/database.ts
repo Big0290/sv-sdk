@@ -4,8 +4,8 @@ import { SDKError } from './base.js'
  * Error thrown when database operations fail
  */
 export class DatabaseError extends SDKError {
-  public readonly query?: string
-  public readonly table?: string
+  public readonly query: string | undefined
+  public readonly table: string | undefined
 
   constructor(
     message: string,
@@ -19,8 +19,8 @@ export class DatabaseError extends SDKError {
     super(message, {
       code: 'DATABASE_ERROR',
       statusCode: 500,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.query = options.query
@@ -40,8 +40,8 @@ export class DatabaseError extends SDKError {
  * Error thrown when record is not found
  */
 export class NotFoundError extends SDKError {
-  public readonly resource?: string
-  public readonly resourceId?: string
+  public readonly resource: string | undefined
+  public readonly resourceId: string | undefined
 
   constructor(
     message: string,
@@ -55,8 +55,8 @@ export class NotFoundError extends SDKError {
     super(message, {
       code: 'NOT_FOUND',
       statusCode: 404,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.resource = options.resource
@@ -76,7 +76,7 @@ export class NotFoundError extends SDKError {
  * Error thrown when constraint violation occurs
  */
 export class ConstraintError extends SDKError {
-  public readonly constraint?: string
+  public readonly constraint: string | undefined
 
   constructor(
     message: string,
@@ -89,8 +89,8 @@ export class ConstraintError extends SDKError {
     super(message, {
       code: 'CONSTRAINT_VIOLATION',
       statusCode: 409,
-      details: options.details,
-      cause: options.cause,
+      ...(options.details && { details: options.details }),
+      ...(options.cause && { cause: options.cause }),
     })
 
     this.constraint = options.constraint

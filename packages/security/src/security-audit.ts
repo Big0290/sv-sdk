@@ -26,13 +26,23 @@ export async function logSecurityEvent(event: SecurityEvent): Promise<void> {
   // Log to application logger immediately
   const logLevel = event.severity === 'critical' || event.severity === 'high' ? 'error' : 'warn'
 
-  logger[logLevel](`Security event: ${event.type}`, {
-    severity: event.severity,
-    userId: event.userId,
-    ipAddress: event.ipAddress,
-    resource: event.resource,
-    details: event.details,
-  })
+  if (logLevel === 'error') {
+    logger.error(`Security event: ${event.type}`, undefined, {
+      severity: event.severity,
+      userId: event.userId || 'unknown',
+      ipAddress: event.ipAddress || 'unknown',
+      resource: event.resource || 'unknown',
+      ...event.details,
+    })
+  } else {
+    logger.warn(`Security event: ${event.type}`, {
+      severity: event.severity,
+      userId: event.userId || 'unknown',
+      ipAddress: event.ipAddress || 'unknown',
+      resource: event.resource || 'unknown',
+      ...event.details,
+    })
+  }
 
   // TODO: Integration with @sv-sdk/audit package when available
   // await logAudit(event.type, {
