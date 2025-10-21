@@ -87,14 +87,17 @@ function createThemeStore(): Writable<Theme> & {
   const initialTheme = getStoredTheme()
   const { subscribe, set, update } = writable<Theme>(initialTheme)
 
-  // Track system theme changes
-  let systemTheme = $state(getSystemTheme())
+  // Track system theme changes using writable store
+  const systemThemeStore = writable<ResolvedTheme>(getSystemTheme())
+  let systemTheme = getSystemTheme()
 
   // Listen for system theme changes
   if (typeof window !== 'undefined') {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
-      systemTheme = e.matches ? 'dark' : 'light'
+      const newTheme = e.matches ? 'dark' : 'light'
+      systemTheme = newTheme
+      systemThemeStore.set(newTheme)
     }
 
     // Modern browsers
