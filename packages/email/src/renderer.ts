@@ -7,10 +7,10 @@ import mjml2html from 'mjml'
 import Handlebars from 'handlebars'
 import { convert } from 'html-to-text'
 import { db, emailTemplates } from '@sv-sdk/db-config'
-import { eq, and } from 'drizzle-orm'
+import { eq, and } from '@sv-sdk/db-config'
 import { cacheGet, cacheSet, CACHE_KEYS, CACHE_TTL } from '@sv-sdk/cache'
 import { ValidationError, NotFoundError, logger } from '@sv-sdk/shared'
-import { z } from 'zod'
+import { z } from '@sv-sdk/validators'
 
 /**
  * Rendered email result
@@ -69,7 +69,10 @@ export function getTemplateSchema(templateName: string): z.ZodSchema | null {
 /**
  * Fetch template from database (with caching)
  */
-async function fetchTemplate(name: string, locale: string = 'en'): Promise<{
+async function fetchTemplate(
+  name: string,
+  locale: string = 'en'
+): Promise<{
   subject: string
   mjml: string
   variables: string[]
@@ -101,10 +104,15 @@ async function fetchTemplate(name: string, locale: string = 'en'): Promise<{
       return null
     }
 
+    const templateData = result[0]
+    if (!templateData) {
+      return null
+    }
+
     const template = {
-      subject: result[0].subject,
-      mjml: result[0].mjml,
-      variables: result[0].variables as string[],
+      subject: templateData.subject,
+      mjml: templateData.mjml,
+      variables: templateData.variables as string[],
     }
 
     // Cache template
@@ -122,7 +130,12 @@ async function fetchTemplate(name: string, locale: string = 'en'): Promise<{
 /**
  * Render email template
  */
-export async function renderTemplate(templateName: string, variables: Record<string, any>, locale: string = 'en'): Promise<RenderedEmail> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function renderTemplate(
+  templateName: string,
+  variables: Record<string, any>,
+  locale: string = 'en'
+): Promise<RenderedEmail> {
   try {
     // 1. Fetch template
     const template = await fetchTemplate(templateName, locale)
@@ -142,7 +155,7 @@ export async function renderTemplate(templateName: string, variables: Record<str
 
       if (!validation.success) {
         throw new ValidationError('Invalid template variables', {
-          errors: validation.error.errors.map((err) => ({
+          errors: validation.error.errors.map((err: { path: (string | number)[]; message: string }) => ({
             field: err.path.join('.'),
             message: err.message,
           })),
@@ -165,7 +178,7 @@ export async function renderTemplate(templateName: string, variables: Record<str
     })
 
     if (mjmlResult.errors.length > 0) {
-      logger.error('MJML compilation errors', { errors: mjmlResult.errors })
+      logger.error('MJML compilation errors', undefined, { errors: mjmlResult.errors })
 
       throw new ValidationError('MJML compilation failed', {
         details: { errors: mjmlResult.errors },
@@ -202,6 +215,7 @@ export async function renderTemplate(templateName: string, variables: Record<str
  */
 export function validateTemplateMJML(mjml: string): {
   valid: boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors: any[]
 } {
   try {
@@ -224,7 +238,11 @@ export function validateTemplateMJML(mjml: string): {
 /**
  * Preview template with sample variables
  */
-export async function previewTemplate(templateName: string, sampleVariables: Record<string, any>): Promise<RenderedEmail> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function previewTemplate(
+  templateName: string,
+  sampleVariables: Record<string, any>
+): Promise<RenderedEmail> {
   return renderTemplate(templateName, sampleVariables)
 }
 
@@ -233,7 +251,7 @@ export async function previewTemplate(templateName: string, sampleVariables: Rec
  */
 export function registerTemplateHelpers(): void {
   // Date formatting
-  Handlebars.registerHelper('formatDate', (date: Date, format?: string) => {
+  Handlebars.registerHelper('formatDate', (date: Date) => {
     return new Date(date).toLocaleDateString()
   })
 
@@ -258,4 +276,3 @@ export function registerTemplateHelpers(): void {
 
 // Register helpers on module load
 registerTemplateHelpers()
-

@@ -3,6 +3,9 @@
  * Export all validation schemas, DTOs, and utilities
  */
 
+// Re-export zod
+export { z } from 'zod'
+
 // Auth DTOs
 export * from './auth-dtos.js'
 

@@ -4,7 +4,7 @@
 
 import fs from 'fs/promises'
 import path from 'path'
-import { logger, ok, type Result } from '@sv-sdk/shared'
+import { logger, ok, err, type Result } from '@sv-sdk/shared'
 import type { EmailProvider, EmailMessage, EmailResult, WebhookEvent, DeliveryStatus } from './types.js'
 
 /**
@@ -100,8 +100,9 @@ export class MockProvider implements EmailProvider {
   /**
    * Verify webhook (mock implementation)
    */
-  verifyWebhook(payload: unknown, signature: string): WebhookEvent {
+  verifyWebhook(payload: unknown): WebhookEvent {
     // Mock provider doesn't validate signatures
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const event = payload as any
 
     return {

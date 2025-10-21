@@ -4,7 +4,7 @@
  */
 
 import { db, emailSends } from '@sv-sdk/db-config'
-import { eq, and, gte, lte } from 'drizzle-orm'
+import { and, gte, lte } from '@sv-sdk/db-config'
 import { logger } from '@sv-sdk/shared'
 
 /**
@@ -65,7 +65,9 @@ export async function calculateEmailCosts(
         cost = (stats.count / 1000) * PROVIDER_PRICING.ses.costPer1000
       }
 
-      byProvider[provider].cost = cost
+      if (byProvider[provider]) {
+        byProvider[provider].cost = cost
+      }
       total += cost
     }
 
@@ -104,4 +106,3 @@ export function estimateSendCost(count: number, provider: string): number {
 
   return 0
 }
-

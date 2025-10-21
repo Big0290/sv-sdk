@@ -25,8 +25,19 @@ export function getEmailProvider(): EmailProvider {
     case 'brevo':
       return createBrevoProvider()
 
-    case 'ses':
-      return createSESProvider()
+    case 'ses': {
+      // SES provider doesn't have getDeliveryStatus and test methods yet
+      // Return as EmailProvider with partial implementation
+      const ses = createSESProvider()
+      return {
+        ...ses,
+        getDeliveryStatus: async () => ({
+          status: 'unknown' as const,
+          timestamp: new Date(),
+        }),
+        test: async () => true,
+      }
+    }
 
     case 'mock':
       return createMockProvider()
@@ -36,4 +47,3 @@ export function getEmailProvider(): EmailProvider {
       return createMockProvider()
   }
 }
-

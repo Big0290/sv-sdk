@@ -6,8 +6,7 @@
 import { enqueueEmail } from './queue.js'
 import { renderTemplate, previewTemplate } from './renderer.js'
 import { getEmailProvider } from './providers/index.js'
-import { db, emailTemplates, emailSends } from '@sv-sdk/db-config'
-import { eq, desc } from 'drizzle-orm'
+import { db, emailSends, eq, desc } from '@sv-sdk/db-config'
 import { logger, type Result, ok, err } from '@sv-sdk/shared'
 import type { PaginatedResponse, PaginationParams } from '@sv-sdk/shared'
 import { calculatePaginationMeta, calculateOffset } from '@sv-sdk/shared'
@@ -18,6 +17,7 @@ import { calculatePaginationMeta, calculateOffset } from '@sv-sdk/shared'
 export async function sendEmail(
   templateName: string,
   to: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   variables: Record<string, any>,
   options: {
     priority?: number
@@ -44,6 +44,7 @@ export async function sendEmail(
 export async function sendEmailImmediate(
   templateName: string,
   to: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   variables: Record<string, any>,
   locale: string = 'en'
 ): Promise<Result<{ messageId: string }, Error>> {
@@ -86,6 +87,7 @@ export async function getEmailHistory(
     status?: string
   } = {},
   pagination: PaginationParams = { page: 1, pageSize: 20 }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<PaginatedResponse<any>> {
   try {
     const conditions = []
@@ -105,6 +107,7 @@ export async function getEmailHistory(
     let query = db.select().from(emailSends)
 
     if (conditions.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       query = query.where(eq(emailSends.recipient, filters.recipient!)) as any
     }
 
@@ -176,6 +179,7 @@ export async function getEmailStats(): Promise<{
 export async function testTemplate(
   templateName: string,
   testRecipient: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sampleVariables: Record<string, any>
 ): Promise<Result<{ messageId: string }, Error>> {
   try {
@@ -189,4 +193,3 @@ export async function testTemplate(
     return err(error as Error)
   }
 }
-

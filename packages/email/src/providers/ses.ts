@@ -27,7 +27,7 @@ export class SESProvider implements EmailProvider {
     logger.info('AWS SES provider initialized', { region })
   }
 
-  async send(message: EmailMessage): Promise<EmailResult> {
+  async send(message: EmailMessage): Promise<import('@sv-sdk/shared').Result<EmailResult, Error>> {
     try {
       const command = new SendEmailCommand({
         Source: message.from,
@@ -73,10 +73,11 @@ export class SESProvider implements EmailProvider {
     }
   }
 
-  verifyWebhook(payload: unknown, signature: string): WebhookEvent {
+  verifyWebhook(payload: unknown): WebhookEvent {
     // AWS SES uses SNS for webhooks
     // This is a simplified implementation - would need SNS message verification
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const event = payload as any
 
     return {
@@ -107,4 +108,3 @@ export class SESProvider implements EmailProvider {
 export function createSESProvider(): SESProvider {
   return new SESProvider()
 }
-

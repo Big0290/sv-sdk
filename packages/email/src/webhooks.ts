@@ -4,7 +4,7 @@
  */
 
 import { db, emailSends, emailWebhooks } from '@sv-sdk/db-config'
-import { eq } from 'drizzle-orm'
+import { eq } from '@sv-sdk/db-config'
 import { getEmailProvider } from './providers/index.js'
 import { logAudit } from '@sv-sdk/audit'
 import { logger } from '@sv-sdk/shared'
@@ -70,6 +70,7 @@ export async function processWebhook(payload: unknown, signature: string, provid
  */
 async function updateEmailStatus(event: WebhookEvent): Promise<void> {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const updates: any = {
       updatedAt: new Date(),
     }
@@ -135,6 +136,7 @@ async function handleUnsubscribe(recipient: string): Promise<void> {
 /**
  * Get unprocessed webhooks
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getUnprocessedWebhooks(limit: number = 100): Promise<any[]> {
   try {
     const result = await db.select().from(emailWebhooks).where(eq(emailWebhooks.processed, false)).limit(limit)
@@ -158,10 +160,14 @@ export async function retryWebhookProcessing(webhookId: string): Promise<void> {
     }
 
     const event = webhook[0]
+    if (!event) {
+      return
+    }
 
     // Reconstruct webhook event
     const webhookEvent: WebhookEvent = {
       provider: event.provider,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       eventType: event.eventType as any,
       messageId: event.messageId || '',
       recipient: event.recipient || '',
@@ -173,7 +179,10 @@ export async function retryWebhookProcessing(webhookId: string): Promise<void> {
     await updateEmailStatus(webhookEvent)
 
     // Mark as processed
-    await db.update(emailWebhooks).set({ processed: true, processedAt: new Date() }).where(eq(emailWebhooks.id, webhookId))
+    await db
+      .update(emailWebhooks)
+      .set({ processed: true, processedAt: new Date() })
+      .where(eq(emailWebhooks.id, webhookId))
 
     logger.info('Webhook reprocessed', { webhookId })
   } catch (error) {
@@ -181,4 +190,3 @@ export async function retryWebhookProcessing(webhookId: string): Promise<void> {
     throw error
   }
 }
-
