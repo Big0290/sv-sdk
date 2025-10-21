@@ -2,8 +2,7 @@
  * Role management service
  */
 
-import { db, roles, userRoles, type Role, type NewRole, type UserRole } from '@sv-sdk/db-config'
-import { eq, and } from 'drizzle-orm'
+import { db, roles, userRoles, type Role, type NewRole, eq, and } from '@sv-sdk/db-config'
 import { invalidatePermissionCache, invalidateRolePermissionCache } from './cache.js'
 import { logAudit } from '@sv-sdk/audit'
 import { logger, NotFoundError, ConstraintError, RoleError } from '@sv-sdk/shared'
@@ -33,7 +32,7 @@ export async function getRoleById(id: string): Promise<Role | null> {
       return null
     }
 
-    return result[0]
+    return result[0] || null
   } catch (error) {
     logger.error('Failed to get role by ID', error as Error, { id })
     return null
@@ -51,7 +50,7 @@ export async function getRoleByName(name: string): Promise<Role | null> {
       return null
     }
 
-    return result[0]
+    return result[0] || null
   } catch (error) {
     logger.error('Failed to get role by name', error as Error, { name })
     return null
@@ -69,6 +68,10 @@ export async function createRole(data: Omit<NewRole, 'id' | 'createdAt' | 'updat
     }
 
     const [role] = await db.insert(roles).values(newRole).returning()
+
+    if (!role) {
+      throw new Error('Failed to create role')
+    }
 
     logger.info('Role created', { roleId: role.id, name: role.name })
 
@@ -152,7 +155,11 @@ export async function deleteRole(id: string, reassignToRoleId?: string): Promise
           await assignRole(userRole.userId, reassignToRoleId)
         }
 
-        logger.info('Users reassigned to new role', { fromRoleId: id, toRoleId: reassignToRoleId, count: usersWithRole.length })
+        logger.info('Users reassigned to new role', {
+          fromRoleId: id,
+          toRoleId: reassignToRoleId,
+          count: usersWithRole.length,
+        })
       } else {
         throw new ConstraintError('Cannot delete role with assigned users. Provide reassignToRoleId to reassign users.')
       }
@@ -308,4 +315,3 @@ export async function bulkAssignRole(userIds: string[], roleId: string, grantedB
     throw error
   }
 }
-

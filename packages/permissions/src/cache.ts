@@ -2,8 +2,7 @@
  * Permission caching with Redis
  */
 
-import { db, userRoles, roles, permissionCache, type PermissionCache } from '@sv-sdk/db-config'
-import { eq } from 'drizzle-orm'
+import { db, userRoles, roles, permissionCache, eq } from '@sv-sdk/db-config'
 import { cacheGet, cacheSet, cacheDelete, CACHE_KEYS, CACHE_TTL } from '@sv-sdk/cache'
 import { logger } from '@sv-sdk/shared'
 import { nanoid } from 'nanoid'
@@ -124,6 +123,7 @@ async function upsertPermissionCache(userId: string, permissions: string[]): Pro
       await db
         .update(permissionCache)
         .set({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           permissions: permissions as any,
           expiresAt,
         })
@@ -133,6 +133,7 @@ async function upsertPermissionCache(userId: string, permissions: string[]): Pro
       await db.insert(permissionCache).values({
         id: nanoid(),
         userId,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         permissions: permissions as any,
         expiresAt,
       })
@@ -149,7 +150,7 @@ async function upsertPermissionCache(userId: string, permissions: string[]): Pro
  */
 export async function cleanExpiredPermissionCache(): Promise<number> {
   try {
-    const { lt } = await import('drizzle-orm')
+    const { lt } = await import('@sv-sdk/db-config')
     const now = new Date()
 
     const deleted = await db.delete(permissionCache).where(lt(permissionCache.expiresAt, now)).returning()
@@ -162,4 +163,3 @@ export async function cleanExpiredPermissionCache(): Promise<number> {
     return 0
   }
 }
-

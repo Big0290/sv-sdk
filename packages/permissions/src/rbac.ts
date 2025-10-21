@@ -2,9 +2,8 @@
  * RBAC (Role-Based Access Control) implementation
  */
 
-import { getUserPermissions, refreshPermissionCache } from './cache.js'
+import { getUserPermissions } from './cache.js'
 import { parsePermission } from '@sv-sdk/shared'
-import { isWildcardPermission } from './permissions.js'
 import { logAudit } from '@sv-sdk/audit'
 import { logger, PermissionError } from '@sv-sdk/shared'
 
@@ -143,7 +142,7 @@ export async function getUserPermissionsList(userId: string): Promise<string[]> 
 export async function hasRole(userId: string, roleName: string): Promise<boolean> {
   try {
     const { db, userRoles, roles } = await import('@sv-sdk/db-config')
-    const { eq } = await import('drizzle-orm')
+    const { eq } = await import('@sv-sdk/db-config')
 
     const result = await db
       .select()
@@ -157,4 +156,3 @@ export async function hasRole(userId: string, roleName: string): Promise<boolean
     return false
   }
 }
-
