@@ -10,7 +10,7 @@ import { db, emailTemplates } from '@sv-sdk/db-config'
 import { eq, and } from '@sv-sdk/db-config'
 import { cacheGet, cacheSet, CACHE_KEYS, CACHE_TTL } from '@sv-sdk/cache'
 import { ValidationError, NotFoundError, logger } from '@sv-sdk/shared'
-import { z } from '@sv-sdk/validators'
+import { z } from 'zod'
 
 /**
  * Rendered email result
@@ -130,9 +130,9 @@ async function fetchTemplate(
 /**
  * Render email template
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function renderTemplate(
   templateName: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   variables: Record<string, any>,
   locale: string = 'en'
 ): Promise<RenderedEmail> {
@@ -238,9 +238,9 @@ export function validateTemplateMJML(mjml: string): {
 /**
  * Preview template with sample variables
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function previewTemplate(
   templateName: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sampleVariables: Record<string, any>
 ): Promise<RenderedEmail> {
   return renderTemplate(templateName, sampleVariables)
