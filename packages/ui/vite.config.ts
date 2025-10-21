@@ -5,10 +5,13 @@ export default defineConfig({
   plugins: [
     svelte({
       compilerOptions: {
-        runes: true,
-        compatibility: {
-          componentApi: 4, // Allow Svelte 4 components in dependencies
-        },
+        runes: undefined, // Let individual files decide
+      },
+      // Only apply runes to our own components, not dependencies
+      onwarn: (warning, handler) => {
+        // Ignore warnings from node_modules
+        if (warning.filename?.includes('node_modules')) return
+        handler(warning)
       },
     }),
   ],
