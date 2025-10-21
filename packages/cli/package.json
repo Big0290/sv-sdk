@@ -2,12 +2,25 @@
   "name": "@sv-sdk/cli",
   "version": "0.0.1",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Big0290/sv-sdk.git",
+    "directory": "packages/cli"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "description": "Command-line interface for SV-SDK",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
     "sdk": "./dist/index.js"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
@@ -37,4 +50,3 @@
     "vitest": "^3.2.4"
   }
 }
-

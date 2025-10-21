@@ -2,6 +2,15 @@
   "name": "@sv-sdk/email",
   "version": "0.0.1",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Big0290/sv-sdk.git",
+    "directory": "packages/email"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "description": "Email system with MJML templates and queue processing",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

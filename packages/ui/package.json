@@ -4,11 +4,12 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sv-sdk/ui.git",
+    "url": "https://github.com/Big0290/sv-sdk.git",
     "directory": "packages/ui"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
   },
   "description": "UI component library for SV-SDK built with Svelte 5 and Tailwind CSS",
   "svelte": "./src/index.ts",

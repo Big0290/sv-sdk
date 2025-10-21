@@ -2,6 +2,15 @@
   "name": "@sv-sdk/audit",
   "version": "0.0.1",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Big0290/sv-sdk.git",
+    "directory": "packages/audit"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "description": "Audit logging package with PII handling and retention policies",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -36,4 +45,3 @@
     "vitest": "^3.2.4"
   }
 }
-

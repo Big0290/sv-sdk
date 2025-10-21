@@ -2,6 +2,15 @@
   "name": "@sv-sdk/db-config",
   "version": "0.0.1",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Big0290/sv-sdk.git",
+    "directory": "packages/db-config"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "description": "Database configuration and schemas using Drizzle ORM",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -43,4 +52,3 @@
     "vitest": "^3.2.4"
   }
 }
-

@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+/**
+ * SV-SDK CLI Entry Point
+ */
 
 /**
  * SV-SDK CLI
@@ -52,4 +55,3 @@ program.addCommand(createDevCommand())
 
 // Parse arguments
 program.parse()
-
