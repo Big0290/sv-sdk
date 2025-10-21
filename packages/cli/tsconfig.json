@@ -6,6 +6,7 @@
     "moduleResolution": "bundler",
     "skipLibCheck": true,
     "noImplicitAny": false,
+    "noEmit": false,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true

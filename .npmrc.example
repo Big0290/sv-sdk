@@ -1,0 +1,19 @@
+# GitHub Package Registry Configuration
+# Copy this file to .npmrc and replace YOUR_GITHUB_TOKEN with your actual token
+
+@sv-sdk:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+
+# To create a GitHub token:
+# 1. Go to GitHub Settings > Developer settings > Personal access tokens > Tokens (classic)
+# 2. Click "Generate new token (classic)"
+# 3. Give it a name like "sv-sdk-packages"
+# 4. Select scopes: read:packages, write:packages, delete:packages
+# 5. Click "Generate token" and copy the token
+# 6. Set the token as an environment variable:
+#    export GITHUB_TOKEN=ghp_your_token_here
+# 7. Or replace ${GITHUB_TOKEN} above with your actual token (not recommended for security)
+
+# For CI/CD (GitHub Actions):
+# Add GITHUB_TOKEN as a repository secret and it will be automatically available
+
