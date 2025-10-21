@@ -20,23 +20,51 @@ const schema = {
   ...permissionsSchema,
 }
 
-// Get database URL from environment
-const DATABASE_URL = process.env.DATABASE_URL
+// Lazy-loaded database connection
+let _sql: postgres.Sql | null = null
+let _db: ReturnType<typeof drizzle> | null = null
 
-if (!DATABASE_URL) {
-  throw new Error('DATABASE_URL environment variable is not set')
+function getConnection() {
+  if (!_sql) {
+    const DATABASE_URL = process.env.DATABASE_URL
+
+    if (!DATABASE_URL) {
+      throw new Error('DATABASE_URL environment variable is not set')
+    }
+
+    // Create postgres connection with connection pooling
+    _sql = postgres(DATABASE_URL, {
+      max: parseInt(process.env.DB_POOL_SIZE || '20'), // Connection pool size
+      idle_timeout: 20, // Close idle connections after 20 seconds
+      connect_timeout: 10, // Connection timeout in seconds
+      ssl: process.env.NODE_ENV === 'production' ? 'require' : false,
+    })
+
+    // Create Drizzle instance
+    _db = drizzle(_sql, { schema })
+  }
+
+  return { sql: _sql, db: _db! }
 }
 
-// Create postgres connection with connection pooling
-export const sql = postgres(DATABASE_URL, {
-  max: parseInt(process.env.DB_POOL_SIZE || '20'), // Connection pool size
-  idle_timeout: 20, // Close idle connections after 20 seconds
-  connect_timeout: 10, // Connection timeout in seconds
-  ssl: process.env.NODE_ENV === 'production' ? 'require' : false,
+// Export lazy-loaded instances via getters
+export const sql = new Proxy({} as postgres.Sql, {
+  get(_target, prop) {
+    const { sql } = getConnection()
+    return sql[prop as keyof postgres.Sql]
+  },
+  apply(_target, _thisArg, args) {
+    const { sql } = getConnection()
+    return (sql as unknown as (...args: unknown[]) => unknown)(...args)
+  },
 })
 
-// Create Drizzle instance
-export const db = drizzle(sql, { schema })
+export const db = new Proxy({} as ReturnType<typeof drizzle>, {
+  get(_target, prop) {
+    const { db } = getConnection()
+    return db[prop as keyof typeof db]
+  },
+})
 
 /**
  * Health check function
@@ -113,7 +141,9 @@ export async function getConnectionStats() {
  * Should be called on application shutdown
  */
 export async function closeConnections(): Promise<void> {
-  await sql.end()
+  if (_sql) {
+    await _sql.end()
+  }
 }
 
 // Export types

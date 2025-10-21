@@ -206,7 +206,7 @@ ${volumes.length > 0 ? `volumes:\n${volumes.join('\n')}` : ''}
   const drizzleConfig = `import { defineConfig } from 'drizzle-kit'
 
 export default defineConfig({
-  schema: './node_modules/@big0290/db-config/src/schemas/*.schema.ts',
+  schema: './src/lib/schema.ts',
   out: './drizzle',
   dialect: 'postgresql',
   dbCredentials: {
