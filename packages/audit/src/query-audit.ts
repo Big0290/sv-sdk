@@ -115,7 +115,7 @@ export async function getAuditLogById(id: string): Promise<AuditLog | null> {
       return null
     }
 
-    return result[0]
+    return result[0] || null
   } catch (error) {
     logger.error('Failed to get audit log by ID', error as Error, { id })
     return null

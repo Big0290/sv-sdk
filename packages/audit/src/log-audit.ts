@@ -94,7 +94,7 @@ export async function logAudit(
     } else {
       // Write immediately
       await db.insert(auditLogs).values(logEntry)
-      logger.debug('Audit log written', { eventType, userId })
+      logger.debug('Audit log written', { eventType, userId: userId || undefined })
     }
   } catch (error) {
     // Don't throw - audit logging failures should not break application
