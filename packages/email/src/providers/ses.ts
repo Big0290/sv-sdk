@@ -13,6 +13,18 @@ export class SESProvider implements EmailProvider {
   name = 'ses' as const
   private client: SESClient
 
+  async getDeliveryStatus(messageId: string): Promise<import('./types.js').DeliveryStatus> {
+    return {
+      messageId,
+      status: 'unknown',
+      timestamp: new Date(),
+    }
+  }
+
+  async test(): Promise<boolean> {
+    return true
+  }
+
   constructor() {
     const region = process.env.AWS_REGION || 'us-east-1'
 
@@ -62,6 +74,7 @@ export class SESProvider implements EmailProvider {
       return ok({
         messageId: response.MessageId || 'unknown',
         provider: this.name,
+        timestamp: new Date(),
       })
     } catch (error) {
       logger.error('Failed to send email via SES', error as Error, {

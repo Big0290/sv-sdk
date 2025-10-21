@@ -32,6 +32,7 @@ export function getEmailProvider(): EmailProvider {
       return {
         ...ses,
         getDeliveryStatus: async () => ({
+          messageId: 'unknown',
           status: 'unknown' as const,
           timestamp: new Date(),
         }),

@@ -15,11 +15,11 @@ export class BrevoProvider implements EmailProvider {
   private client: brevo.TransactionalEmailsApi
   private webhookSecret: string
 
-  constructor(apiKey: string, webhookSecret: string) {
+  constructor(_apiKey: string, webhookSecret: string) {
     // Initialize Brevo client with API key
     // Note: Brevo v2+ uses constructor-based initialization
+    // API key is passed but v2+ API uses environment variables
     this.client = new brevo.TransactionalEmailsApi()
-    // API key should be set via environment variable BREVO_API_KEY
     this.webhookSecret = webhookSecret
 
     logger.info('Brevo provider initialized')
