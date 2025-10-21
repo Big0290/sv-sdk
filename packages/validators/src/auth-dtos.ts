@@ -4,7 +4,7 @@
  */
 
 import { z } from 'zod'
-import { insertUserSchema, selectUserSchema } from '@sv-sdk/db-config'
+import { insertUserSchema } from '@sv-sdk/db-config'
 
 /**
  * Login request schema

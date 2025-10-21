@@ -135,7 +135,8 @@ export function validatePasswordStrength(password: string): PasswordStrengthResu
  * Uses k-anonymity with Have I Been Pwned API
  * Note: In production, implement actual API call
  */
-export async function checkPasswordBreach(password: string): Promise<boolean> {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function checkPasswordBreach(_password: string): Promise<boolean> {
   // TODO: Implement HaveIBeenPwned API integration
   // For now, return false (not breached)
   //
