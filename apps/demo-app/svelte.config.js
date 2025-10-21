@@ -5,12 +5,15 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 const config = {
   preprocess: vitePreprocess(),
 
-  kit: {
-    adapter: adapter(),
-  },
-
   compilerOptions: {
     runes: true,
+    compatibility: {
+      componentApi: 4, // Allow Svelte 4 components like lucide-svelte
+    },
+  },
+
+  kit: {
+    adapter: adapter(),
   },
 }
 
