@@ -8,9 +8,4 @@ export default {
       componentApi: 4, // Allow Svelte 4 components like lucide-svelte
     },
   },
-  kit: {
-    files: {
-      lib: 'src',
-    },
-  },
 }
