@@ -28,7 +28,8 @@ export async function getUsers(
   pagination: PaginationParams = { page: 1, pageSize: 20 }
 ): Promise<PaginatedResponse<User>> {
   try {
-    const conditions = []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const conditions: any[] = []
 
     if (filters.email) {
       conditions.push(eq(users.email, filters.email))
