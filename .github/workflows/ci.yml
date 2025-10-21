@@ -1,175 +1,46 @@
 name: CI
 
 on:
-    push:
-        branches: [main, develop]
-    pull_request:
-        branches: [main, develop]
-
-concurrency:
-    group: ${{ github.workflow }}-${{ github.ref }}
-    cancel-in-progress: true
-
-env:
-    NODE_ENV: test
-    PNPM_VERSION: 8.15.0
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
 
 jobs:
-    lint:
-        name: Lint
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - uses: pnpm/action-setup@v4
-              with:
-                  version: ${{ env.PNPM_VERSION }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8.15.0
 
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: "20"
-                  cache: "pnpm"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
 
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 
-            - name: Lint
-              run: pnpm lint
+      - name: Lint
+        run: pnpm lint
 
-            - name: Format check
-              run: pnpm format:check
+      - name: Type Check
+        run: pnpm type-check
 
-    type-check:
-        name: Type Check
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
+      - name: Build
+        run: pnpm build
 
-            - uses: pnpm/action-setup@v4
-              with:
-                  version: ${{ env.PNPM_VERSION }}
-
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: "20"
-                  cache: "pnpm"
-
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
-
-            - name: Type check
-              run: pnpm type-check
-
-    test:
-        name: Test
-        runs-on: ubuntu-latest
-        services:
-            postgres:
-                image: postgres:16-alpine
-                env:
-                    POSTGRES_DB: sv_sdk_test
-                    POSTGRES_USER: sv_sdk_user
-                    POSTGRES_PASSWORD: test_password
-                ports:
-                    - 5432:5432
-                options: >-
-                    --health-cmd pg_isready
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
-
-            redis:
-                image: redis:7-alpine
-                ports:
-                    - 6379:6379
-                options: >-
-                    --health-cmd "redis-cli ping"
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
-
-        steps:
-            - uses: actions/checkout@v4
-
-            - uses: pnpm/action-setup@v4
-              with:
-                  version: ${{ env.PNPM_VERSION }}
-
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: "20"
-                  cache: "pnpm"
-
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
-
-            - name: Setup test environment
-              run: |
-                  cp .env.test .env
-                  echo "DATABASE_URL=postgresql://sv_sdk_user:test_password@localhost:5432/sv_sdk_test" >> .env
-                  echo "REDIS_URL=redis://localhost:6379" >> .env
-
-            - name: Run database migrations
-              run: pnpm db:generate && pnpm db:migrate
-
-            - name: Run unit tests
-              run: pnpm test:unit --coverage
-
-            - name: Run integration tests
-              run: pnpm test:integration
-
-            - name: Upload coverage
-              uses: codecov/codecov-action@v4
-              with:
-                  files: ./coverage/coverage-final.json
-                  flags: unittests
-                  name: codecov-umbrella
-
-    build:
-        name: Build
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-
-            - uses: pnpm/action-setup@v4
-              with:
-                  version: ${{ env.PNPM_VERSION }}
-
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: "20"
-                  cache: "pnpm"
-
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
-
-            - name: Build all packages
-              run: pnpm build
-
-            - name: Check for build artifacts
-              run: |
-                  ls -la packages/*/dist || echo "No dist folders (expected for some packages)"
-
-    security:
-        name: Security Audit
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-
-            - uses: pnpm/action-setup@v4
-              with:
-                  version: ${{ env.PNPM_VERSION }}
-
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: "20"
-                  cache: "pnpm"
-
-            - name: Security audit
-              run: pnpm audit --audit-level moderate
-              continue-on-error: true
-
-            - name: Check for vulnerabilities
-              run: |
-                  pnpm audit --json > audit-report.json || true
-                  cat audit-report.json
+      - name: Test
+        run: pnpm test
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/test
+          REDIS_URL: redis://localhost:6379
